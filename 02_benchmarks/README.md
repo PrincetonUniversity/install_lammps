@@ -240,12 +240,3 @@ export OMP_NUM_THREADS=$SLURM_CPUS_PER_TASK
  
 srun $HOME/.local/bin/lmp_tgrgpu -sf gpu -pk gpu 2 -in ../in.peptide.modified
 ```
-
-Notes
-
-grep says the only file outside of those in USER-OMP that have "pragma omp" is kspace.cpp.
-grep -i OPENMP * //shows more
-grep -i -d skip OPENMP *
-
-grep -r -i ASSERT *
-shows in places not important so don't need -DNDEBUG
