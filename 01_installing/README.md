@@ -6,7 +6,7 @@ The performance of the LAMMPS executable can be greatly improved by including th
 
 ## Obtaining the code and starting the build
 
-The first step is to download the code and make a build directory:
+The first step is to download the source code and make a build directory:
 
 ```
 wget https://github.com/lammps/lammps/archive/stable_7Aug2019.tar.gz
