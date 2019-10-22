@@ -1,0 +1,481 @@
+# Installing and Running LAMMPS on the HPC Clusters
+
+Below are a set of directions for building CPU and GPU versions of the code on the HPC clusters. LAMMPS can be built in many different ways. You may need to include additional packages when building the executable for your work.
+
+The performance of the LAMMPS executable can be greatly improved by including the USER-OMP and USER-INTEL acceleration packages. The [USER-INTEL](https://lammps.sandia.gov/doc/Build_extras.html#user-intel) package takes advantage of our Intel hardware and software. The acceleration arises from mixed-precision arithmetic and vectorization. If mixed-precision arithmetic is valid for your work then we recommend the mixed-precision version of LAMMPS. If not then follow the directions for the double-precision version. Note that one can do [test runs](../mixed_versus_double/README.md) using both versions to see if the results differ substantially.
+
+## Obtaining the code and starting the build
+
+The first step is to download the code and make a build directory:
+
+```
+wget https://github.com/lammps/lammps/archive/stable_7Aug2019.tar.gz
+tar -zxvf stable_7Aug2019.tar.gz
+cd lammps-stable_7Aug2019
+mkdir build
+cd build
+```
+
+The next set of directions vary by cluster. Follow the directions below for the cluster of interest.
+
+## TigerGPU
+
+This cluster is composed of 80 nodes with 28 CPU-cores per node and 4 NVIDIA P100 GPUs per node. TigerGPU should only be used for multi-node jobs that take advantage of GPUs. Connect with: `ssh <NetID>@tigergpu.princeton.edu`.
+
+#### Mixed-precision version
+
+```
+# make sure you are on tigergpu.princeton.edu
+
+module load intel intel-mpi cudatoolkit
+
+# copy and paste the next 6 lines into the terminal
+cmake3 -D CMAKE_INSTALL_PREFIX=$HOME/.local -D CMAKE_BUILD_TYPE=Release -D LAMMPS_MACHINE=tigerGpu \
+-D ENABLE_TESTING=yes -D BUILD_MPI=yes -D BUILD_OMP=yes -D CMAKE_C_COMPILER=icc \
+-D CMAKE_CXX_COMPILER=icpc -D CMAKE_CXX_FLAGS_RELEASE="-Ofast -mtune=broadwell -DNDEBUG" \
+-D PKG_USER-OMP=yes -D FFT=MKL -D FFT_SINGLE=yes -D PKG_MOLECULE=yes -D PKG_RIGID=yes \
+-D PKG_KSPACE=yes -D PKG_GPU=yes -D GPU_API=cuda -D GPU_PREC=mixed -D GPU_ARCH=sm_60 \
+-D CUDPP_OPT=yes -D PKG_USER-INTEL=yes -D INTEL_ARCH=cpu -D INTEL_LRT_MODE=threads ../cmake
+
+make -j 10
+make test
+make install
+```
+
+The LAMMPS build system will add `-qopenmp`, `-restrict` and `-xHost` to the CXX_FLAGS. Note that the build above includes the MOLECULE, RIGID and KSPACE packages. If you do not need these for your simulations then you should remove them.
+
+The following Slurm script can be used to run the job on the TigerGPU cluster:
+
+```
+#!/bin/bash
+#SBATCH --job-name=lj-melt       # create a short name for your job
+#SBATCH --nodes=1                # node count
+#SBATCH --ntasks=7               # total number of tasks across all nodes
+#SBATCH --cpus-per-task=2        # cpu-cores per task (>1 if multi-threaded tasks)
+#SBATCH --mem-per-cpu=4G         # memory per cpu-core (4G is default)
+#SBATCH --gres=gpu:1             # number of gpus per node
+#SBATCH --time=00:01:00          # total run time limit (HH:MM:SS)
+
+module load intel intel-mpi
+export OMP_NUM_THREADS=$SLURM_CPUS_PER_TASK
+ 
+srun $HOME/.local/bin/lmp_tigerGpu -sf gpu -sf intel -sf omp -in in.melt.gpu
+```
+
+The user should vary the various quantities in the Slurm script to find the optimal values.
+
+#### Double-precision version
+
+```
+# make sure you are on tigergpu.princeton.edu
+
+module load intel intel-mpi cudatoolkit
+
+# copy and paste the next 5 lines into the terminal
+cmake3 -D CMAKE_INSTALL_PREFIX=$HOME/.local -D CMAKE_BUILD_TYPE=Release -D LAMMPS_MACHINE=tigerGpuD \
+-D ENABLE_TESTING=yes -D BUILD_MPI=yes -D BUILD_OMP=yes -D CMAKE_C_COMPILER=icc \
+-D CMAKE_CXX_COMPILER=icpc -D CMAKE_CXX_FLAGS_RELEASE="-Ofast -xHost -mtune=broadwell -DNDEBUG" \
+-D PKG_USER-OMP=yes -D FFT=MKL -D PKG_MOLECULE=yes -D PKG_RIGID=yes -D PKG_KSPACE=yes \
+-D PKG_GPU=yes -D GPU_API=cuda -D GPU_PREC=mixed -D GPU_ARCH=sm_60 -D CUDPP_OPT=yes ../cmake
+
+make -j 10
+make test
+make install
+```
+
+The LAMMPS build system will add `-qopenmp` and `-restrict` to the CXX_FLAGS. Note that the build above includes the MOLECULE, RIGID and KSPACE packages. If you do not need these for your simulations then you should remove them.
+
+The following Slurm script can be used to run the job on the TigerGPU cluster:
+
+```
+#!/bin/bash
+#SBATCH --job-name=lj-melt       # create a short name for your job
+#SBATCH --nodes=1                # node count
+#SBATCH --ntasks=7               # total number of tasks across all nodes
+#SBATCH --cpus-per-task=2        # cpu-cores per task (>1 if multi-threaded tasks)
+#SBATCH --mem-per-cpu=4G         # memory per cpu-core (4G is default)
+#SBATCH --gres=gpu:1             # number of gpus per node
+#SBATCH --time=00:01:00          # total run time limit (HH:MM:SS)
+
+module load intel intel-mpi
+export OMP_NUM_THREADS=$SLURM_CPUS_PER_TASK
+ 
+srun $HOME/.local/bin/lmp_tigerGpuD -sf gpu -sf omp -in in.melt.gpu
+```
+
+The user should vary the various quantities in the Slurm script to find the optimal values.
+
+Here is a sample LAMMPS script called `in.melt.gpu`:
+
+```
+package         gpu 1
+
+units           lj
+atom_style      atomic
+
+lattice         fcc 0.8442
+region          box block 0 30 0 30 0 30
+create_box      1 box
+create_atoms    1 box
+mass            1 1.0
+
+velocity        all create 1.0 87287
+
+pair_style      lj/cut/gpu 2.5 # explicit gpu pair style
+pair_coeff      1 1 1.0 1.0 2.5
+
+neighbor        0.3 bin
+neigh_modify    every 20 delay 0 check no
+
+fix             1 all nve
+fix             2 all langevin 1.0 1.0 1.0 48279
+
+timestep        0.005
+
+thermo          5000
+run             10000
+```
+
+To use 2 GPUs, replace `package gpu 1` with `package gpu 2` and `srun $HOME/.local/bin/lmp_tigerGpu -sf gpu -in in.melt.gpu` with `srun $HOME/.local/bin/lmp_tigerGpu -sf gpu -pk gpu 2 -in in.melt.gpu` and `#SBATCH --gres=gpu:1` with `#SBATCH --gres=gpu:2`.
+
+## TigerCPU
+
+This cluster is composed of 408 nodes with 40 CPU-cores per node. TigerCPU should be used for running multi-node parallel jobs. Single-node jobs should be run on Della. Connect with: `ssh <NetID>@tigercpu.princeton.edu`.
+
+#### Mixed-precision version
+
+```
+# make sure you are on tigercpu.princeton.edu
+
+module load intel intel-mpi
+
+# copy and paste the next 4 lines into the terminal
+cmake3 -D CMAKE_INSTALL_PREFIX=$HOME/.local -D LAMMPS_MACHINE=tigerCpu -D ENABLE_TESTING=yes \
+-D BUILD_MPI=yes -D BUILD_OMP=yes -D CMAKE_CXX_COMPILER=icpc -D CMAKE_BUILD_TYPE=Release \
+-D CMAKE_CXX_FLAGS_RELEASE="-Ofast -mtune=skylake-avx512 -DNDEBUG" -D PKG_USER-OMP=yes \
+-D PKG_MOLECULE=yes -D PKG_USER-INTEL=yes -D INTEL_ARCH=cpu -D INTEL_LRT_MODE=threads ../cmake
+
+make -j 10
+make test
+make install
+```
+
+Note that the LAMMPS build system will add `-qopenmp`, `-restrict` and `-xHost` to the CXX_FLAGS.
+
+Below is a sample Slurm script:
+
+```
+#!/bin/bash
+#SBATCH --job-name=lj-melt       # create a short name for your job
+#SBATCH --nodes=1                # node count
+#SBATCH --ntasks=10              # total number of tasks across all nodes
+#SBATCH --cpus-per-task=1        # cpu-cores per task (>1 if multi-threaded tasks)
+#SBATCH --mem-per-cpu=4G         # memory per cpu-core (4G is default)
+#SBATCH --time=00:05:00          # total run time limit (HH:MM:SS)
+
+module load intel-mpi intel
+export OMP_NUM_THREADS=$SLURM_CPUS_PER_TASK
+
+srun $HOME/.local/bin/lmp_tigerCpu -sf omp -sf intel -in in.melt
+```
+
+The user should vary the various quantities in the Slurm script to find the optimal values.
+
+#### Double-precision version
+
+```
+# make sure you are on tigercpu.princeton.edu
+
+module load intel intel-mpi
+
+# copy and paste the next 4 lines into the terminal
+cmake3 -D CMAKE_INSTALL_PREFIX=$HOME/.local -D LAMMPS_MACHINE=tigerCpuD -D ENABLE_TESTING=yes \
+-D BUILD_MPI=yes -D BUILD_OMP=yes -D CMAKE_CXX_COMPILER=icpc -D CMAKE_BUILD_TYPE=Release \
+-D CMAKE_CXX_FLAGS_RELEASE="-Ofast -xHost -mtune=skylake-avx512 -DNDEBUG" -D PKG_USER-OMP=yes \
+-D PKG_MOLECULE=yes ../cmake
+
+make -j 10
+make test
+make install
+```
+
+Note that the LAMMPS build system will add `-qopenmp` and `-restrict` to the CXX_FLAGS.
+
+Below is a sample Slurm script:
+
+```
+#!/bin/bash
+#SBATCH --job-name=lj-melt       # create a short name for your job
+#SBATCH --nodes=1                # node count
+#SBATCH --ntasks=10              # total number of tasks across all nodes
+#SBATCH --cpus-per-task=1        # cpu-cores per task (>1 if multi-threaded tasks)
+#SBATCH --mem-per-cpu=4G         # memory per cpu-core (4G is default)
+#SBATCH --time=00:05:00          # total run time limit (HH:MM:SS)
+
+module load intel-mpi intel
+export OMP_NUM_THREADS=$SLURM_CPUS_PER_TASK
+
+srun $HOME/.local/bin/lmp_tigerCpuD -sf omp -in in.melt
+```
+
+The user should vary the various quantities in the Slurm script to find the optimal values.
+
+Here is a sample LAMMPS script called in.melt:
+
+```
+units           lj
+atom_style      atomic
+
+lattice         fcc 0.8442
+region          box block 0 30 0 30 0 30
+create_box      1 box
+create_atoms    1 box
+mass            1 1.0
+
+velocity        all create 1.0 87287
+
+pair_style      lj/cut 2.5
+pair_coeff      1 1 1.0 1.0 2.5
+
+neighbor        0.3 bin
+neigh_modify    every 20 delay 0 check no
+
+fix             1 all nve
+fix             2 all langevin 1.0 1.0 1.0 48279
+
+timestep        0.005
+
+thermo          5000
+run             10000
+```
+
+## Della
+
+Della is a heterogeneous cluster composed of more than 200 Intel nodes. The microarchitectures of the nodes are Cascade Lake, SkyLake, Broadwell and Haswell. Della can be used to run a variety of jobs from single-core to parallel, multi-node.
+
+The head node features Intel Broadwell CPUs. Here we build an executable that includes the vector instructions for Broadwell, Skylake and Cascade Lake.
+
+#### Mixed-precision version
+
+```
+module load intel intel-mpi
+
+# copy and paste the next 5 lines into the terminal
+cmake3 -D CMAKE_INSTALL_PREFIX=$HOME/.local -D LAMMPS_MACHINE=della -D ENABLE_TESTING=yes \
+-D BUILD_MPI=yes -D BUILD_OMP=yes -D CMAKE_CXX_COMPILER=icpc -D CMAKE_BUILD_TYPE=Release \
+-D CMAKE_CXX_FLAGS_RELEASE="-Ofast -axCORE-AVX512 -DNDEBUG" \
+-D PKG_USER-OMP=yes -D PKG_MOLECULE=yes -D PKG_USER-INTEL=yes -D INTEL_ARCH=cpu \
+-D INTEL_LRT_MODE=threads ../cmake
+
+make -j 10
+make test
+make install
+```
+
+The LAMMPS build system will add `-qopenmp`,  `-restrict` and `-xHost` to the CXX_FLAGS. It is normal to see a large number of messages containing the phrase "has been targeted for automatic cpu dispatch".
+
+The following Slurm script can be used to run the job on Della:
+
+```
+#!/bin/bash
+#SBATCH --job-name=lj-melt                       # create a short name for your job
+#SBATCH --nodes=1                                # node count
+#SBATCH --ntasks=16                              # total number of tasks across all nodes
+#SBATCH --cpus-per-task=1                        # cpu-cores per task (>1 if multi-threaded tasks)
+#SBATCH --mem-per-cpu=4G                         # memory per cpu-core (4G is default)
+#SBATCH --time=00:05:00                          # total run time limit (HH:MM:SS)
+#SBATCH --constraint=broadwell|skylake|cascade   # exclude haswell nodes
+
+module load intel-mpi intel
+export OMP_NUM_THREADS=$SLURM_CPUS_PER_TASK
+
+srun $HOME/.local/bin/lmp_della -sf omp -sf intel -in in.melt
+```
+
+Users should vary the various quantities in the Slurm script to find the optimal values.
+
+#### Double-precision version
+
+```
+module load intel intel-mpi
+
+# copy and paste the next 4 lines into the terminal
+cmake3 -D CMAKE_INSTALL_PREFIX=$HOME/.local -D LAMMPS_MACHINE=dellaD -D ENABLE_TESTING=yes \
+-D BUILD_MPI=yes -D BUILD_OMP=yes -D CMAKE_CXX_COMPILER=icpc -D CMAKE_BUILD_TYPE=Release \
+-D CMAKE_CXX_FLAGS_RELEASE="-Ofast -xCORE-AVX2 -axCORE-AVX512 -DNDEBUG" \
+-D PKG_USER-OMP=yes -D PKG_MOLECULE=yes ../cmake
+
+make -j 10
+make test
+make install
+```
+
+The LAMMPS build system will add `-qopenmp` and  `-restrict` to the CXX_FLAGS. It is normal to see a large number of messages containing the phrase "has been targeted for automatic cpu dispatch".
+
+The following Slurm script can be used to run the job on Della:
+
+```
+#!/bin/bash
+#SBATCH --job-name=lj-melt                       # create a short name for your job
+#SBATCH --nodes=1                                # node count
+#SBATCH --ntasks=16                              # total number of tasks across all nodes
+#SBATCH --cpus-per-task=1                        # cpu-cores per task (>1 if multi-threaded tasks)
+#SBATCH --mem-per-cpu=4G                         # memory per cpu-core
+#SBATCH --time=00:05:00                          # total run time limit (HH:MM:SS)
+#SBATCH --constraint=broadwell|skylake|cascade   # exclude haswell nodes
+
+module load intel-mpi intel
+export OMP_NUM_THREADS=$SLURM_CPUS_PER_TASK
+
+srun $HOME/.local/bin/lmp_dellaD -sf omp -in in.melt
+```
+
+Here is a sample LAMMPS script called `in.melt`:
+
+```
+units           lj
+atom_style      atomic
+
+lattice         fcc 0.8442
+region          box block 0 30 0 30 0 30
+create_box      1 box
+create_atoms    1 box
+mass            1 1.0
+
+velocity        all create 1.0 87287
+
+pair_style      lj/cut 2.5
+pair_coeff      1 1 1.0 1.0 2.5
+
+neighbor        0.3 bin
+neigh_modify    every 20 delay 0 check no
+
+fix             1 all nve
+fix             2 all langevin 1.0 1.0 1.0 48279
+
+timestep        0.005
+
+thermo          5000
+run             10000
+```
+
+## Traverse
+
+This cluster is quite different from the others given its IBM POWER9 CPUs. Traverse is composed of 46 nodes with 32 physical CPU cores per node and 4 NVIDIA V100 GPUs per node. Users should only be using this cluster if their LAMMPS simulations can use GPUs. The USER-INTEL package cannot be used on Traverse because the CPUs are made by IBM and not Intel.
+
+Below are the build directions:
+
+```
+module load openmpi/gcc/3.1.4/64 cudatoolkit/10.1
+
+# copy and paste the next 5 lines into the terminal
+cmake3 -D CMAKE_INSTALL_PREFIX=$HOME/.local -D CMAKE_BUILD_TYPE=Release -D LAMMPS_MACHINE=traverse \
+-D ENABLE_TESTING=yes -D BUILD_MPI=yes -D BUILD_OMP=yes -D CMAKE_C_COMPILER=xlc \
+-D CMAKE_CXX_COMPILER=xlC -D CMAKE_CXX_FLAGS_RELEASE="-O3 -qarch=pwr9 -qtune=pwr9" \
+-D PKG_USER-OMP=yes -D PKG_MOLECULE=yes -D PKG_GPU=yes -D GPU_API=cuda -D GPU_PREC=mixed \
+-D GPU_ARCH=sm_70 -D CUDPP_OPT=yes ../cmake
+
+make -j 10
+make test
+make install
+```
+
+The LAMMPS build system will add `-qthreaded` and `-qsmp=omp` to the CXX_FLAGS.
+
+Below is a sample Slurm script to run a simple Lennard-Jones melt:
+
+```
+#!/bin/bash
+#SBATCH --job-name=lj-melt       # create a short name for your job
+#SBATCH --nodes=1                # node count
+#SBATCH --ntasks=16              # total number of tasks across all nodes
+#SBATCH --cpus-per-task=1        # cpu-cores per task (>1 if multi-threaded tasks)
+#SBATCH --mem=4G                 # total memory per node (4G is default per cpu-core)
+#SBATCH --gres=gpu:1             # number of gpus per node
+#SBATCH --time=00:05:00          # total run time limit (HH:MM:SS)
+
+module load openmpi/gcc/3.1.4/64
+export OMP_NUM_THREADS=$SLURM_CPUS_PER_TASK
+
+srun $HOME/.local/bin/lmp_traverse -sf gpu -in in.melt.gpu
+```
+
+Users will need to find the optimal values for `nodes`, `ntasks`, `cpus-per-task` and `gres`.
+
+Below is a sample LAMMPS script called `in.melt.gpu`:
+
+```
+package         gpu 1
+
+units           lj
+atom_style      atomic
+
+lattice         fcc 0.8442
+region          box block 0 30 0 30 0 30
+create_box      1 box
+create_atoms    1 box
+mass            1 1.0
+
+velocity        all create 1.0 87287
+
+pair_style      lj/cut/gpu 2.5 # explicit gpu pair style
+pair_coeff      1 1 1.0 1.0 2.5
+
+neighbor        0.3 bin
+neigh_modify    every 20 delay 0 check no
+
+fix             1 all nve
+fix             2 all langevin 1.0 1.0 1.0 48279
+
+timestep        0.005
+
+thermo          5000
+run             10000
+```
+
+To use 2 GPUs, replace `package gpu 1` with `package gpu 2` and `srun $HOME/.local/bin/lmp_traverse -sf gpu -in in.melt.gpu` with `srun $HOME/.local/bin/lmp_traverse -sf gpu -pk gpu 2 -in in.melt.gpu` and `#SBATCH --gres=gpu:1` with `#SBATCH --gres=gpu:2`.
+
+## Perseus
+
+This cluster is similar to TigerCPU except the CPUs are one generation behind. The directions are exactly the same except for Perseus replace `-mtune=skylake-avx512` with `-mtune=broadwell` and `LAMMPS_MACHINE=tigerCpu` with `LAMMPS_MACHINE=perseus`.
+
+## Adroit
+
+Adroit is a heterogeneous cluster with nodes having different microarchitectures. Two of the eighteen nodes have GPUs. A CPU version of LAMMPS on Adroit can be built as follows:
+
+```
+module load intel intel-mpi
+
+# copy and paste the next 4 lines into the terminal
+cmake3 -D CMAKE_INSTALL_PREFIX=$HOME/.local -D LAMMPS_MACHINE=adroit -D ENABLE_TESTING=yes \
+-D BUILD_MPI=yes -D BUILD_OMP=yes -D CMAKE_CXX_COMPILER=icpc -D CMAKE_BUILD_TYPE=Release \
+-D CMAKE_CXX_FLAGS_RELEASE="-Ofast -DNDEBUG" -D PKG_USER-OMP=yes -D FFT=MKL \
+-D FFT_SINGLE=yes -D PKG_MOLECULE=yes -D PKG_RIGID=yes -D PKG_KSPACE=yes ../cmake
+
+make -j 10
+make test
+make install
+```
+
+The LAMMPS build system will add `-qopenmp` and `-restrict` to the CXX_FLAGS.
+
+Below is a sample Slurm script:
+
+```
+#!/bin/bash
+#SBATCH --job-name=lj-melt       # create a short name for your job
+#SBATCH --nodes=1                # node count
+#SBATCH --ntasks=4               # total number of tasks across all nodes
+#SBATCH --cpus-per-task=1        # cpu-cores per task (>1 if multi-threaded tasks)
+#SBATCH --mem-per-cpu=1G         # memory per cpu-core (4G is default)
+#SBATCH --time=00:05:00          # total run time limit (HH:MM:SS)
+
+module load intel intel-mpi
+export OMP_NUM_THREADS=$SLURM_CPUS_PER_TASK
+
+srun $HOME/.local/bin/lmp_adroit -sf omp -in in.melt
+```
+
+## Getting Help
+
+If you encounter any difficulties while working with LAMMPS then please send an email to <a href="mailto:cses@princeton.edu">cses@princeton.edu</a> or attend a [help session](https://researchcomputing.princeton.edu/education/help-sessions).

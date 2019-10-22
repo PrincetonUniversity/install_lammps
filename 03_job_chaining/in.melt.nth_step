@@ -1,0 +1,19 @@
+# this script is used for the 2nd step and higher (up to max_steps)
+
+read_restart    restart.equil.*
+
+pair_style	lj/cut 2.5
+pair_coeff	1 1 1.0 1.0 2.5
+
+neighbor	0.3 bin
+neigh_modify	every 20 delay 0 check no
+
+fix		1 all nve
+fix             2 all langevin 1.0 1.0 1.0 48279
+
+timestep        0.005
+
+thermo		5000
+run		10000
+
+write_restart   restart.equil.*

@@ -1,0 +1,23 @@
+#!/bin/bash
+#SBATCH --nodes=1
+#SBATCH --ntasks-per-node=1
+#SBATCH --cpus-per-task=1
+#SBATCH --time=00:05:00
+#SBATCH --mem-per-cpu=4G
+
+module load intel intel-mpi
+export OMP_NUM_THREADS=$SLURM_CPUS_PER_TASK
+ 
+srun $HOME/.local/bin/lmp_mpi -in in.melt.nth_step
+
+if [ ! -f step.txt ]; then
+  echo "step.txt must exist to use job chaining. Exiting ..."
+  exit
+fi
+
+declare -i max_steps=10
+declare -i step=$(cat step.txt)
+if [ $step -lt $max_steps ]; then
+  sbatch job.slurm.nth_step
+  echo $((step + 1)) > step.txt
+fi
