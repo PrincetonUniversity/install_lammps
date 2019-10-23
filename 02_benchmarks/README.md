@@ -55,6 +55,18 @@ run             10000
 [lmp_tigercpu_omp_intel] module load intel intel-mpi; cmake3 -D CMAKE_INSTALL_PREFIX=$HOME/.local -D LAMMPS_MACHINE=tigercpu_omp_intel -D ENABLE_TESTING=yes -D BUILD_MPI=yes -D BUILD_OMP=yes -D CMAKE_C_COMPILER=icc -D CMAKE_CXX_COMPILER=icpc -D CMAKE_CXX_FLAGS_RELEASE="-Ofast -xHost" -D PKG_MOLECULE=yes -D PKG_USER-INTEL=yes -D INTEL_ARCH=cpu -D INTEL_LRT_MODE=threads -D PKG_USER-OMP=yes ../cmake
 ```
 
+| build                 | time (s)  | cluster       |  ntasks  |  cpus-per-task  | total cores |  GPU  |
+|:----------------------|----------:| -------------:|---------:|-----------------|-------------|-------|
+| lmp_tigerGpu (mixed)  |   48.0    | TigerGPU      |   2      | 1               |  2          | 1     |
+| lmp_tigerGpu (mixed)  |   29.7    | TigerGPU      |   4      | 1               |  4          | 1     |
+| lmp_tigerGpu (mixed)  |   22.7    | TigerGPU      |   4      | 1               |  4          | 2     |
+| lmp_tigerGpu (mixed)  |   20.2    | TigerGPU      |   7      | 1               |  7          | 1     |
+| lmp_tigerGpu (mixed)  |   19.3    | TigerGPU      |   7      | 2               |  14         | 1     |
+| lmp_tigerGpu (mixed)  |   20.3    | TigerGPU      |   14     | 1               |  14         | 1     |
+
+
+
+
 | build                 | time (s)  | cluster       |  ntasks  |  threads  |  GPU  |
 |:----------------------|----------:| -------------:|---------:|-----------|-------|
 | lmp_gcc_openmpi       |   49.1    | della-skylake |  16      | 1         | no    |
