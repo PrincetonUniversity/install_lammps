@@ -48,6 +48,7 @@ The following benchmarks were produced on October 23, 2019:
 | lmp_tigerGpu (mixed)  |   20.2    | TigerGPU      |   7      | 1               |  7          | 1     |
 | lmp_tigerGpu (mixed)  |   19.3    | TigerGPU      |   7      | 2               |  14         | 1     |
 | lmp_tigerGpu (mixed)  |   20.3    | TigerGPU      |   14     | 1               |  14         | 1     |
+| lmp_tigerGpuD (double)|   21.9    | TigerGPU      |   14     | 1               |  14         | 1     |
 | lmp_tigerCpu (mixed)  |   75.7    | TigerCPU      |   4      | 1               |  4          | 0     |
 | lmp_tigerCpu (mixed)  |   50.7    | TigerCPU      |   7      | 1               |  7          | 0     |
 | lmp_tigerCpu (mixed)  |   25.6    | TigerCPU      |   14     | 1               |  14         | 0     |
@@ -64,8 +65,8 @@ The following benchmarks were produced on October 23, 2019:
 | lmp_traverse (double) |   25.6    | Traverse      |    21    | 1               |   21        | 2     |
 | lmp_della (mixed)     |  123.0    | Della         |    4     | 1               |   4         | 0     |
 | lmp_della (mixed)     |   25.2    | Della         |   14     | 1               |  14         | 0     |
-| lmp_della (mixed)     |   26.1    | Della         |   21     | 1               |  21         | 0     |
 | lmp_della (double)    |   48.4    | Della         |   14     | 1               |  14         | 0     |
+| lmp_della (mixed)     |   26.1    | Della         |   21     | 1               |  21         | 0     |
 | lmp_adroit (double)   |   139.4   | Adroit        |    4     | 1               |   4         | 0     |
 | lmp_adroit (double)   |    45.7   | Adroit        |    14    | 1               |   14        | 0     |
 | lmp_adroitGPU (mixed) |    28.2   | Adroit        |    4     | 1               |   4         | 1     |
