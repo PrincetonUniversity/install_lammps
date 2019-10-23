@@ -36,6 +36,8 @@ run             10000
 
 When a GPU is used, one needs to add `package gpu 1` and replace `lj/cut 2.5` with `lj/cut/gpu 2.5` in the LAMMPS script above.
 
+#### Traverse
+
 The following benchmarks were produced on October 23, 2019:
 
 | Cluster               | time (s)  | threads-per-core  |  ntasks  |  cpus-per-task  | total cores (seff) |  GPU  |
@@ -55,6 +57,10 @@ The following benchmarks were produced on October 23, 2019:
 | Traverse              |    9.4    | 1                 |   16     | 1               |  64                | 4     |
 | Traverse              |   13.0    | 1                 |   32     | 1               |  128               | 4     |
 
+
+#### Tiger, Della, Traverse and Adroit
+
+The following benchmarks were produced on October 23, 2019:
 
 | build                 | time (s)  | cluster       |  ntasks  |  cpus-per-task  | total cores |  GPU  |
 |:----------------------|----------:|:-------------:|---------:|:---------------:|------------:|:-----:|
@@ -87,6 +93,8 @@ The following benchmarks were produced on October 23, 2019:
 | lmp_adroitGPU (mixed) |    15.8   | Adroit        |   14     | 1               |   14        | 2     |
 | lmp_adroitGPU (mixed) |    13.0   | Adroit        |   14     | 1               |   14        | 4     |
 ___
+
+The next set of benchmarks were generated in July of 2019:
 
 ```
 [lmp_gcc_openmpi] module load openmpi/gcc/1.10.2/64; cmake3 -D CMAKE_INSTALL_PREFIX=$HOME/.local -D LAMMPS_MACHINE=gcc_openmpi -D ENABLE_TESTING=yes -D BUILD_MPI=yes -D BUILD_OMP=no -D CMAKE_CXX_FLAGS_RELEASE=-O2 -D PKG_MOLECULE=yes ../cmake
