@@ -84,7 +84,7 @@ When a GPU is used, one needs to add `package gpu 1` and replace `lj/cut 2.5` wi
 | lmp_della (mixed)     |   25.2    | Della         |   14     | 1               |  14         | 0     |
 | lmp_della (mixed)     |   26.1    | Della         |   21     | 1               |  21         | 0     |
 | lmp_adroit            |   139.4   | Adroit        |    4     | 1               |   4         | 0     |
-| lmp_adroit            |   xxxxx   | Adroit        |    14    | 1               |   14        | 0     |
+| lmp_adroit            |    45.7   | Adroit        |    14    | 1               |   14        | 0     |
 | lmp_adroitGPU         |    28.2   | Adroit        |    4     | 1               |   4         | 1     |
 | lmp_adroitGPU         |    26.1   | Adroit        |   14     | 1               |   14        | 1     |
 | lmp_adroitGPU         |    15.8   | Adroit        |   14     | 1               |   14        | 2     |
