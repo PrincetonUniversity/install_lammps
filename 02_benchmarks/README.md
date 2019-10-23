@@ -49,8 +49,8 @@ The following benchmarks were produced on October 23, 2019:
 | lmp_tigerGpu (mixed)  |   19.3    | TigerGPU      |   7      | 2               |  14         | 1     |
 | lmp_tigerGpu (mixed)  |   20.3    | TigerGPU      |   14     | 1               |  14         | 1     |
 | lmp_tigerGpuD (double)|   21.9    | TigerGPU      |   14     | 1               |  14         | 1     |
-| lmp_tigerGpu (mixed)  |       | TigerGPU      |   14     | 1               |  14         | 2     |
-| lmp_tigerGpuD (double)|   14.1    | TigerGPU      |   14     | 1               |  14         | 2     |
+| lmp_tigerGpu (mixed)  |   14.2    | TigerGPU      |   14     | 1               |  14         | 2     |
+| lmp_tigerGpuD (double)|   16.3    | TigerGPU      |   14     | 1               |  14         | 2     |
 | lmp_tigerCpu (mixed)  |   75.7    | TigerCPU      |   4      | 1               |  4          | 0     |
 | lmp_tigerCpu (mixed)  |   50.7    | TigerCPU      |   7      | 1               |  7          | 0     |
 | lmp_tigerCpu (mixed)  |   25.6    | TigerCPU      |   14     | 1               |  14         | 0     |
