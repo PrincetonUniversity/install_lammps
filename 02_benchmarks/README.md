@@ -72,23 +72,23 @@ When a GPU is used, one needs to add `package gpu 1` and replace `lj/cut 2.5` wi
 | lmp_tigerCpu (mixed)  |   38.2    | TigerCPU      |   7      | 2               |  14         | 0     |
 | lmp_tigerCpuD (double)|   47.0    | TigerCPU      |   7      | 2               |  14         | 0     |
 | lmp_tigerCpuD (double)|   38.4    | TigerCPU      |   14     | 1               |  14         | 0     |
-| lmp_traverse          |   51.3    | Traverse      |    4     | 1               |   4         | 1     |
-| lmp_traverse          |   36.0    | Traverse      |    7     | 1               |   7         | 1     |
-| lmp_traverse          |   33.6    | Traverse      |   14     | 1               |  14         | 1     |
-| lmp_traverse          |   48.0    | Traverse      |   28     | 1               |  28         | 1     |
-| lmp_traverse          |   39.9    | Traverse      |    7     | 2               |  14         | 1     |
-| lmp_traverse          |   25.1    | Traverse      |   14     | 1               |  14         | 2     |
-| lmp_traverse          |   32.2    | Traverse      |    7     | 1               |   7         | 2     |
-| lmp_traverse          |   25.6    | Traverse      |    21    | 1               |   21        | 2     |
+| lmp_traverse (double) |   51.3    | Traverse      |    4     | 1               |   4         | 1     |
+| lmp_traverse (double) |   36.0    | Traverse      |    7     | 1               |   7         | 1     |
+| lmp_traverse (double) |   33.6    | Traverse      |   14     | 1               |  14         | 1     |
+| lmp_traverse (double) |   48.0    | Traverse      |   28     | 1               |  28         | 1     |
+| lmp_traverse (double) |   39.9    | Traverse      |    7     | 2               |  14         | 1     |
+| lmp_traverse (double) |   25.1    | Traverse      |   14     | 1               |  14         | 2     |
+| lmp_traverse (double) |   32.2    | Traverse      |    7     | 1               |   7         | 2     |
+| lmp_traverse (double) |   25.6    | Traverse      |    21    | 1               |   21        | 2     |
 | lmp_della (mixed)     |  123.0    | Della         |    4     | 1               |   4         | 0     |
 | lmp_della (mixed)     |   25.2    | Della         |   14     | 1               |  14         | 0     |
 | lmp_della (mixed)     |   26.1    | Della         |   21     | 1               |  21         | 0     |
-| lmp_adroit            |   139.4   | Adroit        |    4     | 1               |   4         | 0     |
-| lmp_adroit            |    45.7   | Adroit        |    14    | 1               |   14        | 0     |
-| lmp_adroitGPU         |    28.2   | Adroit        |    4     | 1               |   4         | 1     |
-| lmp_adroitGPU         |    26.1   | Adroit        |   14     | 1               |   14        | 1     |
-| lmp_adroitGPU         |    15.8   | Adroit        |   14     | 1               |   14        | 2     |
-| lmp_adroitGPU         |    13.0   | Adroit        |   14     | 1               |   14        | 4     |
+| lmp_adroit (double)   |   139.4   | Adroit        |    4     | 1               |   4         | 0     |
+| lmp_adroit (double)   |    45.7   | Adroit        |    14    | 1               |   14        | 0     |
+| lmp_adroitGPU (mixed) |    28.2   | Adroit        |    4     | 1               |   4         | 1     |
+| lmp_adroitGPU (mixed) |    26.1   | Adroit        |   14     | 1               |   14        | 1     |
+| lmp_adroitGPU (mixed) |    15.8   | Adroit        |   14     | 1               |   14        | 2     |
+| lmp_adroitGPU (mixed) |    13.0   | Adroit        |   14     | 1               |   14        | 4     |
 ___
 
 
