@@ -44,6 +44,7 @@ The following benchmarks were produced on October 23, 2019:
 | Traverse              |   49.4    | 4                 |   4      | 1               |  4                 | 1     |
 | Traverse              |   23.2    | 1                 |   4      | 1               |  16                | 1     |
 | Traverse              |   19.5    | 1                 |   8      | 1               |  32                | 1     |
+| Traverse              |   21.9    | 1                 |   12     | 1               |  48                | 1     |
 | Traverse              |   26.0    | 1                 |   16     | 1               |  64                | 1     |
 
 
