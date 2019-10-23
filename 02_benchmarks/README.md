@@ -72,6 +72,7 @@ When a GPU is used, one needs to add `package gpu 1` and replace `lj/cut 2.5` wi
 | lmp_tigerCpu (mixed)  |   38.2    | TigerCPU      |   7      | 2               |  14         | 0     |
 | lmp_tigerCpuD (double)|   47.0    | TigerCPU      |   7      | 2               |  14         | 0     |
 | lmp_tigerCpuD (double)|   38.4    | TigerCPU      |   14     | 1               |  14         | 0     |
+| lmp_traverse          |           | Traverse      |    4     | 1               |   4         | 1     |
 ___
 
 
