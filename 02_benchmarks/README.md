@@ -66,8 +66,11 @@ When a GPU is used, one needs to add `package gpu 1` and replace `lj/cut 2.5` wi
 | lmp_tigerGpu (mixed)  |   20.2    | TigerGPU      |   7      | 1               |  7          | 1     |
 | lmp_tigerGpu (mixed)  |   19.3    | TigerGPU      |   7      | 2               |  14         | 1     |
 | lmp_tigerGpu (mixed)  |   20.3    | TigerGPU      |   14     | 1               |  14         | 1     |
-
-
+| lmp_tigerCpu (mixed)  |   75.7    | TigerCPU      |   4      | 1               |  4          | 0     |
+| lmp_tigerCpu (mixed)  |   50.7    | TigerCPU      |   7      | 1               |  7          | 0     |
+| lmp_tigerCpu (mixed)  |   25.6    | TigerCPU      |   14     | 1               |  14         | 0     |
+| lmp_tigerCpu (mixed)  |   38.2    | TigerCPU      |   7      | 2               |  14         | 0     |
+___
 
 
 | build                 | time (s)  | cluster       |  ntasks  |  threads  |  GPU  |
