@@ -38,10 +38,11 @@ When a GPU is used, one needs to add `package gpu 1` and replace `lj/cut 2.5` wi
 
 The following benchmarks were produced on October 23, 2019:
 
-| Cluster               | time (s)  | threads-per-core  |  ntasks  |  cpus-per-task  | total cores |  GPU  |
-|:----------------------|----------:|:-----------------:|:--------:|:---------------:|------------:|:-----:|
-| Traverse              |   23.2    | 1                 |   4      | 1               |  16         | 1     |
-| Traverse              |   49.4    | 4                 |   4      | 1               |  4          | 1     |
+| Cluster               | time (s)  | threads-per-core  |  ntasks  |  cpus-per-task  | total cores (seff) |  GPU  |
+|:----------------------|----------:|:-----------------:|:--------:|:---------------:|-------------------:|:-----:|
+| Traverse              |   49.4    | 4                 |   4      | 1               |  4                 | 1     |
+| Traverse              |   23.2    | 1                 |   4      | 1               |  16                | 1     |
+| Traverse              |   19.5    | 1                 |   8      | 1               |  32                | 1     |
 
 
 
