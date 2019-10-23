@@ -76,7 +76,7 @@ cmake3 -D CMAKE_INSTALL_PREFIX=$HOME/.local -D CMAKE_BUILD_TYPE=Release -D LAMMP
 -D ENABLE_TESTING=yes -D BUILD_MPI=yes -D BUILD_OMP=yes -D CMAKE_C_COMPILER=icc \
 -D CMAKE_CXX_COMPILER=icpc -D CMAKE_CXX_FLAGS_RELEASE="-Ofast -xHost -mtune=broadwell -DNDEBUG" \
 -D PKG_USER-OMP=yes -D FFT=MKL -D PKG_MOLECULE=yes -D PKG_RIGID=yes -D PKG_KSPACE=yes \
--D PKG_GPU=yes -D GPU_API=cuda -D GPU_PREC=mixed -D GPU_ARCH=sm_60 -D CUDPP_OPT=yes ../cmake
+-D PKG_GPU=yes -D GPU_API=cuda -D GPU_PREC=double -D GPU_ARCH=sm_60 -D CUDPP_OPT=yes ../cmake
 
 make -j 10
 make test
@@ -136,7 +136,7 @@ thermo          5000
 run             10000
 ```
 
-To use 2 GPUs, replace `package gpu 1` with `package gpu 2` and `srun $HOME/.local/bin/lmp_tigerGpu -sf gpu -in in.melt.gpu` with `srun $HOME/.local/bin/lmp_tigerGpu -sf gpu -pk gpu 2 -in in.melt.gpu` and `#SBATCH --gres=gpu:1` with `#SBATCH --gres=gpu:2`.
+To use 2 GPUs, replace `package gpu 1` with `package gpu 2` and `-sf gpu` with `-sf gpu -pk gpu 2` and `#SBATCH --gres=gpu:1` with `#SBATCH --gres=gpu:2`.
 
 ## TigerCPU
 
