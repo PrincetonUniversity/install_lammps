@@ -80,6 +80,10 @@ When a GPU is used, one needs to add `package gpu 1` and replace `lj/cut 2.5` wi
 | lmp_traverse          |   25.1    | Traverse      |   14     | 1               |  14         | 2     |
 | lmp_traverse          |   32.2    | Traverse      |    7     | 1               |   7         | 2     |
 | lmp_traverse          |   25.6    | Traverse      |    21    | 1               |   21        | 2     |
+| lmp_della (mixed)     |  123.0    | Della         |    4     | 1               |   4         | 0     |
+| lmp_della (mixed)     |   25.2    | Della         |   14     | 1               |  14         | 0     |
+| lmp_della (mixed)     |       | Della         |   21     | 1               |  21         | 0     |
+
 | lmp_adroit            |   139.4   | Adroit        |    4     | 1               |   4         | 0     |
 | lmp_adroit            |   xxxxx   | Adroit        |    14    | 1               |   14        | 0     |
 | lmp_adroitGPU         |    28.2   | Adroit        |    4     | 1               |   4         | 1     |
