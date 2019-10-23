@@ -77,6 +77,9 @@ When a GPU is used, one needs to add `package gpu 1` and replace `lj/cut 2.5` wi
 | lmp_traverse          |   33.6    | Traverse      |   14     | 1               |  14         | 1     |
 | lmp_traverse          |   48.0    | Traverse      |   28     | 1               |  28         | 1     |
 | lmp_traverse          |   39.9    | Traverse      |    7     | 2               |  14         | 1     |
+| lmp_traverse          |   25.1    | Traverse      |   14     | 1               |  14         | 2     |
+| lmp_traverse          |   32.2    | Traverse      |    7     | 1               |   7         | 2     |
+| lmp_traverse          |   25.6    | Traverse      |    21     | 1               |   21         | 2     |
 ___
 
 
