@@ -390,6 +390,7 @@ Below is a sample Slurm script to run a simple Lennard-Jones melt:
 #SBATCH --nodes=1                # node count
 #SBATCH --ntasks=16              # total number of tasks across all nodes
 #SBATCH --cpus-per-task=1        # cpu-cores per task (>1 if multi-threaded tasks)
+#SBATCH --threads-per-core=1     # setting to 1 turns off SMT (max value is 4)
 #SBATCH --mem=4G                 # total memory per node (4G is default per cpu-core)
 #SBATCH --gres=gpu:1             # number of gpus per node
 #SBATCH --time=00:05:00          # total run time limit (HH:MM:SS)
