@@ -433,7 +433,7 @@ thermo          5000
 run             10000
 ```
 
-To use 2 GPUs, replace `package gpu 1` with `package gpu 2` and `srun $HOME/.local/bin/lmp_traverse -sf gpu -in in.melt.gpu` with `srun $HOME/.local/bin/lmp_traverse -sf gpu -pk gpu 2 -in in.melt.gpu` and `#SBATCH --gres=gpu:1` with `#SBATCH --gres=gpu:2`.
+To use 2 GPUs, replace `package gpu 1` with `package gpu 2` and `-sf gpu` with `-sf gpu -pk gpu 2` and `#SBATCH --gres=gpu:1` with `#SBATCH --gres=gpu:2`.
 
 ## Perseus
 
