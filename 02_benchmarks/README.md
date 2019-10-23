@@ -18,7 +18,7 @@ mass            1 1.0
 
 velocity        all create 1.0 87287
 
-pair_style      lj/cut 2.5
+pair_style      lj/cut 2.5   # or lj/cut/gpu 2.5 for gpu runs
 pair_coeff      1 1 1.0 1.0 2.5
 
 neighbor        0.3 bin
