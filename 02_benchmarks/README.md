@@ -58,7 +58,7 @@ When a GPU is used, one needs to add `package gpu 1` and replace `lj/cut 2.5` wi
 ```
 
 | build                 | time (s)  | cluster       |  ntasks  |  cpus-per-task  | total cores |  GPU  |
-|:----------------------|----------:|:-------------:|---------:|:---------------:|-------------|:-----:|
+|:----------------------|----------:|:-------------:|---------:|:---------------:|------------:|:-----:|
 | lmp_tigerGpu (mixed)  |   48.0    | TigerGPU      |   2      | 1               |  2          | 1     |
 | lmp_tigerGpu (mixed)  |   29.7    | TigerGPU      |   4      | 1               |  4          | 1     |
 | lmp_tigerGpuD (double)|   33.6    | TigerGPU      |   4      | 1               |  4          | 1     |
@@ -70,6 +70,8 @@ When a GPU is used, one needs to add `package gpu 1` and replace `lj/cut 2.5` wi
 | lmp_tigerCpu (mixed)  |   50.7    | TigerCPU      |   7      | 1               |  7          | 0     |
 | lmp_tigerCpu (mixed)  |   25.6    | TigerCPU      |   14     | 1               |  14         | 0     |
 | lmp_tigerCpu (mixed)  |   38.2    | TigerCPU      |   7      | 2               |  14         | 0     |
+| lmp_tigerCpuD (double)|   47.0    | TigerCPU      |   7      | 2               |  14         | 0     |
+| lmp_tigerCpuD (double)|   38.4    | TigerCPU      |   14     | 1               |  14         | 0     |
 ___
 
 
