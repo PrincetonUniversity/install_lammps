@@ -74,14 +74,8 @@ The following benchmarks were produced on October 23, 2019:
 | lmp_tigerCpu (mixed)  |   38.2    | TigerCPU      |   7      | 2               |  14         | 0     |
 | lmp_tigerCpuD (double)|   47.0    | TigerCPU      |   7      | 2               |  14         | 0     |
 | lmp_tigerCpuD (double)|   38.4    | TigerCPU      |   14     | 1               |  14         | 0     |
-| lmp_traverse (double) |   51.3    | Traverse      |    4     | 1               |   4         | 1     |
-| lmp_traverse (double) |   36.0    | Traverse      |    7     | 1               |   7         | 1     |
-| lmp_traverse (double) |   33.6    | Traverse      |   14     | 1               |  14         | 1     |
-| lmp_traverse (double) |   48.0    | Traverse      |   28     | 1               |  28         | 1     |
-| lmp_traverse (double) |   39.9    | Traverse      |    7     | 2               |  14         | 1     |
-| lmp_traverse (double) |   25.1    | Traverse      |   14     | 1               |  14         | 2     |
-| lmp_traverse (double) |   32.2    | Traverse      |    7     | 1               |   7         | 2     |
-| lmp_traverse (double) |   25.6    | Traverse      |    21    | 1               |   21        | 2     |
+| lmp_traverse (double) |   19.5    | Traverse      |    8     | 1               |   8 (32)    | 1     |
+| lmp_traverse (double) |   9.4     | Traverse      |    16     | 1              |   16 (64)   | 4     |
 | lmp_della (mixed)     |  123.0    | Della         |    4     | 1               |   4         | 0     |
 | lmp_della (mixed)     |   25.2    | Della         |   14     | 1               |  14         | 0     |
 | lmp_della (double)    |   48.4    | Della         |   14     | 1               |  14         | 0     |
