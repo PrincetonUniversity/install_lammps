@@ -292,7 +292,7 @@ export OMP_NUM_THREADS=$SLURM_CPUS_PER_TASK
 srun $HOME/.local/bin/lmp_della -sf omp -sf intel -in in.melt
 ```
 
-Users should vary the various quantities in the Slurm script to find the optimal values.
+Users should vary the various quantities in the Slurm script to find the optimal values. If you fail to exclude the Intel Ivy Bridge nodes on Della then you will see an error message like "Please verify that both the operating system and the processor support Intel(R) MOVBE, FMA, BMI, LZCNT and AVX2 instructions."
 
 #### Double-precision version
 
