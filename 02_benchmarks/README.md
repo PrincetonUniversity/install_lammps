@@ -42,20 +42,20 @@ The following benchmarks were produced on October 23, 2019:
 
 | Cluster               | time (s)  | threads-per-core  |  ntasks  |  cpus-per-task  | total cores (seff) |  GPU  |
 |:----------------------|----------:|:-----------------:|:--------:|:---------------:|:------------------:|:-----:|
-| Traverse              |   51.7    | not specified     |   4      | 1               |  4                 | 1     |
-| Traverse              |   49.4    | 4                 |   4      | 1               |  4                 | 1     |
-| Traverse              |   34.6    | 2                 |   4      | 1               |  8                 | 1     |
-| Traverse              |   23.2    | 1                 |   4      | 1               |  16                | 1     |
-| Traverse              |   19.5    | 1                 |   8      | 1               |  32                | 1     |
-| Traverse              |   34.4    | 1                 |   4      | 2               |  32                | 1     |
-| Traverse              |   34.3    | 1                 |   2      | 4               |  32                | 1     |
-| Traverse              |   21.9    | 1                 |   12     | 1               |  48                | 1     |
-| Traverse              |   26.0    | 1                 |   16     | 1               |  64                | 1     |
-| Traverse              |   21.1    | 1                 |   4      | 4               |  64                | 1     |
-| Traverse              |   14.2    | 1                 |   8      | 1               |  32                | 2     |
-| Traverse              |   10.4    | 1                 |   8      | 1               |  32                | 4     |
-| Traverse              |    9.4    | 1                 |   16     | 1               |  64                | 4     |
-| Traverse              |   13.0    | 1                 |   32     | 1               |  128               | 4     |
+| Traverse              |   51.7    | not specified     |   4      | 1               |  4 (4)                | 1     |
+| Traverse              |   49.4    | 4                 |   4      | 1               |  4 (4)                | 1     |
+| Traverse              |   34.6    | 2                 |   4      | 1               |  4 (8)                | 1     |
+| Traverse              |   23.2    | 1                 |   4      | 1               |  4 (16)               | 1     |
+| Traverse              |   19.5    | 1                 |   8      | 1               |  8 (32)               | 1     |
+| Traverse              |   34.4    | 1                 |   4      | 2               |  8 (32)               | 1     |
+| Traverse              |   34.3    | 1                 |   2      | 4               |  8 (32)               | 1     |
+| Traverse              |   21.9    | 1                 |   12     | 1               |  12 (48)              | 1     |
+| Traverse              |   26.0    | 1                 |   16     | 1               |  16 (64)              | 1     |
+| Traverse              |   21.1    | 1                 |   4      | 4               |  16 (64)              | 1     |
+| Traverse              |   14.2    | 1                 |   8      | 1               |  8 (32)               | 2     |
+| Traverse              |   10.4    | 1                 |   8      | 1               |  8 (32)               | 4     |
+| Traverse              |    9.4    | 1                 |   16     | 1               |  16 (64)              | 4     |
+| Traverse              |   13.0    | 1                 |   32     | 1               |  32 (128)             | 4     |
 
 
 #### Tiger, Della, Traverse and Adroit
