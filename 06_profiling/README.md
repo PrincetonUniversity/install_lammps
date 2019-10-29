@@ -51,7 +51,7 @@ export MPICC=`which mpicc`
 
 4. Launch the MAP profiler: `/usr/licensed/bin/map`
 
-5. Click on "Profile" in the main menu and then input the setting shown below:
+5. Click on "Profile" in the main menu and then input the settings shown below:
 
 <p align="center">
 <img src="run_settings.png">
