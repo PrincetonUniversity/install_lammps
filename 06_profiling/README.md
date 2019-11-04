@@ -130,7 +130,7 @@ Dangerous builds not checked
 Total wall time: 0:00:46
 ```
 
-Note that that LAMMPS provides its own profiling information. The pair, neigh and comm sections dominate the calculation. There is excellent agreement between the LAMMPS profiling data and that obtained with MAP. MAP provides much more data and the ability to investigate performance in great details down to individual lines in the source code.
+The pair, neigh and comm sections dominate the calculation. There is excellent agreement between the LAMMPS profiling data and that obtained with MAP. MAP provides much more data and the ability to investigate performance in great details down to individual lines in the source code.
 
 Allinea MAP can be used to investigate the performance of the code with respect to CPU usage, threading behavior, I/O, memory and MPI communication. One can identify the hotspots in the code which could be improved on by a developer. Because LAMMPS is well written the profiling data is mostly uninteresting. However, if you modify the source code this may change.
 
