@@ -426,7 +426,7 @@ export OMP_NUM_THREADS=$SLURM_CPUS_PER_TASK
 srun $HOME/.local/bin/lmp_traverse -sf gpu -in in.melt.gpu
 ```
 
-Users will need to find the optimal values for `nodes`, `ntasks`, `cpus-per-task`, `threads-per-core` and `gres`. Each node of Traverse has 2 CPUs. Each CPU has 16 physical cores. Each physical core has 4 floating point units. A setting of `--threads-per-core=4` turns on IBM's simultaneous multithreading (SMT). A setting of `--threads-per-core=1` turns it off.
+Users will need to find the optimal values for `nodes`, `ntasks`, `cpus-per-task`, `threads-per-core` and `gres`. Each node of Traverse has 2 CPUs. Each CPU has 16 physical cores. Each physical core has 4 floating point units. A setting of `--threads-per-core=4` turns on IBM's simultaneous multithreading (SMT). A setting of `--threads-per-core=1` turns it off. Note that the cudatoolkit module does not need to be loaded in the Slurm script since the only CUDA library that the LAMMPS executable depends on is /usr/lib64/libcuda.so.
 
 Below is a sample LAMMPS script called `in.melt.gpu`:
 
