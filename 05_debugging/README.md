@@ -2,7 +2,7 @@
 
 For a general guide to debugging, see these [slides](https://w3.pppl.gov/~ethier/PICSCIE/DEBUGGING/Parallel_debugging_2019.pdf) by Stephane Ethier of PPPL.
 
-In preparation for debugging, the first step is to compile and link the code with the `-g` debug flag. This causes source-level information to be retained in the resulting executable. Compiler optimizations should not be used or even set explicitly to `O0`. Note that the code will run slower and the executable will be larger.
+In preparation for debugging, the first step is to compile and link the code with the `-g` debug flag. This causes source-level information to be included in the resulting executable. Compiler optimizations should not be used or even set explicitly to `O0`. Note that the code will run slower and the executable will be larger.
 
 Here is an example of how to build LAMMPS for debugging:
 
