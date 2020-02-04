@@ -63,4 +63,12 @@ If you see the message `A debugger disconnected prematurely: the client is shutt
 
 There is much more that can be done with DDT. If you are new to DDT then you will have to spend some time learning how it works. However, once you know how to use it you can find bugs very quickly.
 
+## GDB
+
+To use the command line debugger GDB, for example:
+
+```
+gdb --args lmp_serial -sf intel -in in.peptide
+```
+
 If you encounter any difficulties while working with LAMMPS then please send an email to <a href="mailto:cses@princeton.edu">cses@princeton.edu</a> or attend a [help session](https://researchcomputing.princeton.edu/education/help-sessions).
