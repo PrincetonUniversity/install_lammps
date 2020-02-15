@@ -29,13 +29,14 @@ This cluster is composed of 80 nodes with 28 CPU-cores per node and 4 NVIDIA P10
 
 module load intel intel-mpi cudatoolkit
 
-# copy and paste the next 6 lines into the terminal
+# copy and paste the next 7 lines into the terminal
 cmake3 -D CMAKE_INSTALL_PREFIX=$HOME/.local -D CMAKE_BUILD_TYPE=Release -D LAMMPS_MACHINE=tigerGpu \
 -D ENABLE_TESTING=yes -D BUILD_MPI=yes -D BUILD_OMP=yes -D CMAKE_C_COMPILER=icc \
 -D CMAKE_CXX_COMPILER=icpc -D CMAKE_CXX_FLAGS_RELEASE="-Ofast -mtune=broadwell -DNDEBUG" \
--D PKG_USER-OMP=yes -D FFT=MKL -D FFT_SINGLE=yes -D PKG_MOLECULE=yes -D PKG_RIGID=yes \
--D PKG_KSPACE=yes -D PKG_GPU=yes -D GPU_API=cuda -D GPU_PREC=mixed -D GPU_ARCH=sm_60 \
--D CUDPP_OPT=yes -D PKG_USER-INTEL=yes -D INTEL_ARCH=cpu -D INTEL_LRT_MODE=threads ../cmake
+-D PKG_USER-OMP=yes -D PKG_MOLECULE=yes -D PKG_RIGID=yes \
+-D PKG_KSPACE=yes -D FFT=MKL -D FFT_SINGLE=yes \ 
+-D PKG_GPU=yes -D GPU_API=cuda -D GPU_PREC=mixed -D GPU_ARCH=sm_60 -D CUDPP_OPT=yes \ 
+-D PKG_USER-INTEL=yes -D INTEL_ARCH=cpu -D INTEL_LRT_MODE=threads ../cmake
 
 make -j 10
 make test
@@ -71,11 +72,12 @@ The user should vary the various quantities in the Slurm script to find the opti
 
 module load intel intel-mpi cudatoolkit
 
-# copy and paste the next 5 lines into the terminal
+# copy and paste the next 6 lines into the terminal
 cmake3 -D CMAKE_INSTALL_PREFIX=$HOME/.local -D CMAKE_BUILD_TYPE=Release -D LAMMPS_MACHINE=tigerGpuD \
 -D ENABLE_TESTING=yes -D BUILD_MPI=yes -D BUILD_OMP=yes -D CMAKE_C_COMPILER=icc \
 -D CMAKE_CXX_COMPILER=icpc -D CMAKE_CXX_FLAGS_RELEASE="-Ofast -xHost -mtune=broadwell -DNDEBUG" \
--D PKG_USER-OMP=yes -D FFT=MKL -D PKG_MOLECULE=yes -D PKG_RIGID=yes -D PKG_KSPACE=yes \
+-D PKG_USER-OMP=yes -D PKG_MOLECULE=yes -D PKG_RIGID=yes \
+-D PKG_KSPACE=yes -D FFT=MKL -D FFT_SINGLE=no \
 -D PKG_GPU=yes -D GPU_API=cuda -D GPU_PREC=double -D GPU_ARCH=sm_60 -D CUDPP_OPT=yes ../cmake
 
 make -j 10
@@ -152,8 +154,9 @@ module load intel intel-mpi
 # copy and paste the next 4 lines into the terminal
 cmake3 -D CMAKE_INSTALL_PREFIX=$HOME/.local -D LAMMPS_MACHINE=tigerCpu -D ENABLE_TESTING=yes \
 -D BUILD_MPI=yes -D BUILD_OMP=yes -D CMAKE_CXX_COMPILER=icpc -D CMAKE_BUILD_TYPE=Release \
--D CMAKE_CXX_FLAGS_RELEASE="-Ofast -mtune=skylake-avx512 -DNDEBUG" -D PKG_USER-OMP=yes \
--D PKG_MOLECULE=yes -D PKG_USER-INTEL=yes -D INTEL_ARCH=cpu -D INTEL_LRT_MODE=threads ../cmake
+-D CMAKE_CXX_FLAGS_RELEASE="-Ofast -mtune=skylake-avx512 -DNDEBUG" \
+-D PKG_USER-OMP=yes -D PKG_MOLECULE=yes \
+-D PKG_USER-INTEL=yes -D INTEL_ARCH=cpu -D INTEL_LRT_MODE=threads ../cmake
 
 make -j 10
 make test
@@ -191,8 +194,8 @@ module load intel intel-mpi
 # copy and paste the next 4 lines into the terminal
 cmake3 -D CMAKE_INSTALL_PREFIX=$HOME/.local -D LAMMPS_MACHINE=tigerCpuD -D ENABLE_TESTING=yes \
 -D BUILD_MPI=yes -D BUILD_OMP=yes -D CMAKE_CXX_COMPILER=icpc -D CMAKE_BUILD_TYPE=Release \
--D CMAKE_CXX_FLAGS_RELEASE="-Ofast -xHost -mtune=skylake-avx512 -DNDEBUG" -D PKG_USER-OMP=yes \
--D PKG_MOLECULE=yes ../cmake
+-D CMAKE_CXX_FLAGS_RELEASE="-Ofast -xHost -mtune=skylake-avx512 -DNDEBUG" \
+-D PKG_USER-OMP=yes -D PKG_MOLECULE=yes ../cmake
 
 make -j 10
 make test
@@ -264,8 +267,8 @@ module load intel intel-mpi
 cmake3 -D CMAKE_INSTALL_PREFIX=$HOME/.local -D LAMMPS_MACHINE=della -D ENABLE_TESTING=yes \
 -D BUILD_MPI=yes -D BUILD_OMP=yes -D CMAKE_CXX_COMPILER=icpc -D CMAKE_BUILD_TYPE=Release \
 -D CMAKE_CXX_FLAGS_RELEASE="-Ofast -axCORE-AVX512 -DNDEBUG" \
--D PKG_USER-OMP=yes -D PKG_MOLECULE=yes -D PKG_USER-INTEL=yes -D INTEL_ARCH=cpu \
--D INTEL_LRT_MODE=threads ../cmake
+-D PKG_USER-OMP=yes -D PKG_MOLECULE=yes \
+-D PKG_USER-INTEL=yes -D INTEL_ARCH=cpu -D INTEL_LRT_MODE=threads ../cmake
 
 make -j 10
 make test
@@ -372,8 +375,8 @@ module load openmpi/gcc/3.1.4/64 cudatoolkit/10.1
 cmake3 -D CMAKE_INSTALL_PREFIX=$HOME/.local -D CMAKE_BUILD_TYPE=Release -D LAMMPS_MACHINE=traverse \
 -D ENABLE_TESTING=yes -D BUILD_MPI=yes -D BUILD_OMP=yes -D CMAKE_C_COMPILER=xlc \
 -D CMAKE_CXX_COMPILER=xlC -D CMAKE_CXX_FLAGS_RELEASE="-Ofast -qarch=pwr9 -qtune=pwr9 -mvsx" \
--D PKG_USER-OMP=yes -D PKG_MOLECULE=yes -D PKG_GPU=yes -D GPU_API=cuda -D GPU_PREC=mixed \
--D GPU_ARCH=sm_70 -D CUDPP_OPT=yes ../cmake
+-D PKG_USER-OMP=yes -D PKG_MOLECULE=yes \
+-D PKG_GPU=yes -D GPU_API=cuda -D GPU_PREC=mixed -D GPU_ARCH=sm_70 -D CUDPP_OPT=yes ../cmake
 
 make -j 10
 make test
@@ -399,8 +402,8 @@ module load cudatoolkit/10.2
 cmake3 -D CMAKE_INSTALL_PREFIX=$HOME/.local -D CMAKE_BUILD_TYPE=Release -D LAMMPS_MACHINE=traverse \
 -D ENABLE_TESTING=yes -D BUILD_MPI=yes -D BUILD_OMP=yes -D CMAKE_C_COMPILER=xlc \
 -D CMAKE_CXX_COMPILER=xlC -D CMAKE_CXX_FLAGS_RELEASE="-Ofast -qarch=pwr9 -qtune=pwr9 -mvsx" \
--D PKG_USER-OMP=yes -D PKG_MOLECULE=yes -D PKG_GPU=yes -D GPU_API=cuda -D GPU_PREC=mixed \
--D GPU_ARCH=sm_70 -D CUDPP_OPT=yes ../cmake
+-D PKG_USER-OMP=yes -D PKG_MOLECULE=yes \
+-D PKG_GPU=yes -D GPU_API=cuda -D GPU_PREC=mixed -D GPU_ARCH=sm_70 -D CUDPP_OPT=yes ../cmake
 
 make -j 10
 make test
@@ -477,8 +480,9 @@ module load intel intel-mpi
 # copy and paste the next 4 lines into the terminal
 cmake3 -D CMAKE_INSTALL_PREFIX=$HOME/.local -D LAMMPS_MACHINE=adroit -D ENABLE_TESTING=yes \
 -D BUILD_MPI=yes -D BUILD_OMP=yes -D CMAKE_CXX_COMPILER=icpc -D CMAKE_BUILD_TYPE=Release \
--D CMAKE_CXX_FLAGS_RELEASE="-Ofast -DNDEBUG" -D PKG_USER-OMP=yes -D FFT=MKL \
--D FFT_SINGLE=yes -D PKG_MOLECULE=yes -D PKG_RIGID=yes -D PKG_KSPACE=yes ../cmake
+-D CMAKE_CXX_FLAGS_RELEASE="-Ofast -DNDEBUG" -D PKG_USER-OMP=yes \
+-D PKG_KSPACE=yes -D FFT=MKL -D FFT_SINGLE=yes \
+-D PKG_MOLECULE=yes -D PKG_RIGID=yes  ../cmake
 
 make -j 10
 make test
@@ -509,12 +513,13 @@ srun $HOME/.local/bin/lmp_adroit -sf omp -in in.melt
 ```
 module load cudatoolkit/10.1 intel/19.0/64/19.0.3.199 intel-mpi/intel/2018.3/64
 
-# copy and paste the next 7 lines into the terminal
+# copy and paste the next 8 lines into the terminal
 cmake3 -D CMAKE_INSTALL_PREFIX=$HOME/.local -D CMAKE_BUILD_TYPE=Release \
 -D LAMMPS_MACHINE=adroitGPU -D ENABLE_TESTING=yes -D BUILD_MPI=yes -D BUILD_OMP=yes \
 -D CMAKE_C_COMPILER=icc -D CMAKE_CXX_COMPILER=icpc \
 -D CMAKE_CXX_FLAGS_RELEASE="-Ofast -mtune=skylake -DNDEBUG" -D PKG_USER-OMP=yes \
--D FFT=MKL -D FFT_SINGLE=yes -D PKG_MOLECULE=yes -D PKG_RIGID=yes -D PKG_KSPACE=yes \
+-D PKG_MOLECULE=yes -D PKG_RIGID=yes \
+-D PKG_KSPACE=yes -D FFT=MKL -D FFT_SINGLE=yes \
 -D PKG_GPU=yes -D GPU_API=cuda -D GPU_PREC=mixed -D GPU_ARCH=sm_70 -D CUDPP_OPT=yes \
 -D PKG_USER-INTEL=yes -D INTEL_ARCH=cpu -D INTEL_LRT_MODE=threads ../cmake
 ```
