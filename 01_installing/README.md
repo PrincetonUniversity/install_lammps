@@ -4,6 +4,16 @@ Below are a set of directions for building CPU and GPU versions of the code on t
 
 The performance of the LAMMPS executable can be greatly improved by including the USER-OMP and USER-INTEL acceleration packages. The [USER-INTEL](https://lammps.sandia.gov/doc/Build_extras.html#user-intel) package takes advantage of our Intel hardware and software. The acceleration arises from mixed-precision arithmetic and vectorization. If mixed-precision arithmetic is valid for your work then we recommend the mixed-precision version of LAMMPS. If not then follow the directions for the double-precision version. Note that one can do [test runs](https://github.com/PrincetonUniversity/install_lammps/tree/master/07_mixed_versus_double) using both versions to see if the results differ substantially.
 
+IMPORTANT: If you are doing biomolecular simulations involving PPPM and the various bond, angle and dihedral potentials, to use the USER-INTEL package you may need these substitutions for the lines in the build procedure below:
+
+```bash
+wget https://github.com/lammps/lammps/archive/patch_4Feb2020.tar.gz
+module load intel/18.0/64/18.0.3.222
+module load intel-mpi/intel/2018.3/64
+```
+
+In short, the patched version of the latest release is needed and the Intel 2018 compiler should be used instead of 2019.
+
 ## Obtaining the code and starting the build
 
 The first step is to download the source code and make a build directory:
