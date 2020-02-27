@@ -5,6 +5,7 @@ tar -zxvf patch_4Feb2020.tar.gz
 cd lammps-patch_4Feb2020
 mkdir build && cd build
 
+module purge
 module load intel/18.0/64/18.0.3.222
 module load intel-mpi/intel/2018.3/64
 
