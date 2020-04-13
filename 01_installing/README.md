@@ -16,7 +16,7 @@ That is, the patched version of the latest release is needed and the Intel 2018 
 
 ## Obtaining the code and starting the build
 
-The first step is to download the source code and make a build directory:
+The first step is to download the source code and make a build directory (make sure you get the [latest stable release](https://github.com/lammps/lammps/releases)):
 
 ```
 wget https://github.com/lammps/lammps/archive/stable_3Mar2020.tar.gz
