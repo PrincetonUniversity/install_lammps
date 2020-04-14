@@ -12,7 +12,7 @@ module load intel/18.0/64/18.0.3.222
 module load intel-mpi/intel/2018.3/64
 ```
 
-That is, the patched version of the latest release is needed and the Intel 2018 compiler should be used instead of 2019.
+That is, the patched version of the latest release is needed and the Intel 2018 compiler should be used instead of 2019. For more see [this post](https://lammps.sandia.gov/threads/msg85269.html) on the LAMMPS mailing list.
 
 ## Obtaining the code and starting the build
 
