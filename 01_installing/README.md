@@ -20,7 +20,7 @@ The first step is to download the source code and make a build directory (make s
 
 ```
 wget https://github.com/lammps/lammps/archive/stable_3Mar2020.tar.gz
-tar -zxvf stable_7Aug2019.tar.gz
+tar zxvf stable_7Aug2019.tar.gz
 cd lammps-stable_7Aug2019
 mkdir build
 cd build
