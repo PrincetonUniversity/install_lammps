@@ -31,7 +31,7 @@ The general directions for using MAP on the HPC clusters are [here](https://rese
 
 Below are directions specific to LAMMPS:
 
-1. Connect to a cluster (e.g., perseus) with X11 forwarding enabled: `ssh -X <NetID>@perseus.princeton.edu`
+1. Connect to a cluster (e.g., perseus) with X11 forwarding enabled: `ssh -X <YourNetID>@perseus.princeton.edu`
 
 2. Build the application with optimization and debugging flags:
 
