@@ -23,10 +23,9 @@ These are the areas that developers should focus on since that is where the bigg
 gains in performance can be won.
 
 If you are modifying the LAMMPS source code then you may be interested in monitoring the
-performance of the resulting code. This can be done using a profiling tool such as the
-Intel Advisor.
+performance of the resulting code. This can be done using a profiling tool such as Arm MAP.
 
-## Profiling with Allinea MAP
+## Profiling with Arm MAP
 
 The general directions for using MAP on the HPC clusters are [here](https://researchcomputing.princeton.edu/faq/profiling-with-allinea-ma).
 
