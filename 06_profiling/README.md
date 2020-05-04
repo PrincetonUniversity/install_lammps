@@ -1,6 +1,6 @@
 # Profiling LAMMPS on the HPC Clusters
 
-LAMMPS does a far better job than most at providing the user with performance information.
+LAMMPS does a far better job than most applications at providing the user with performance information.
 After running the simple Lennard-Jones melt example one is presented with the following
 output:
 
