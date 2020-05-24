@@ -299,6 +299,7 @@ The following Slurm script can be used to run the job on Della:
 #SBATCH --time=00:05:00                          # total run time limit (HH:MM:SS)
 #SBATCH --constraint=haswell|broadwell|skylake|cascade   # exclude ivy nodes
 
+module purge
 module load intel/19.0/64/19.0.5.281 intel-mpi/intel/2018.3/64
 export OMP_NUM_THREADS=$SLURM_CPUS_PER_TASK
 
@@ -337,6 +338,7 @@ The following Slurm script can be used to run the job on Della:
 #SBATCH --time=00:05:00                          # total run time limit (HH:MM:SS)
 #SBATCH --constraint=haswell|broadwell|skylake|cascade   # exclude ivy nodes
 
+module purge
 module load intel/19.0/64/19.0.5.281 intel-mpi/intel/2018.3/64
 export OMP_NUM_THREADS=$SLURM_CPUS_PER_TASK
 
