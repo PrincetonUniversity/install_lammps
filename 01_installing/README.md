@@ -37,7 +37,7 @@ This cluster is composed of 80 nodes with 28 CPU-cores per node and 4 NVIDIA P10
 ```
 # make sure you are on tigergpu.princeton.edu
 
-module load intel intel-mpi cudatoolkit
+module load intel/19.0/64/19.0.5.281 intel-mpi/intel/2019.3/64 cudatoolkit/10.2
 
 # copy and paste the next 7 lines into the terminal
 cmake3 -D CMAKE_INSTALL_PREFIX=$HOME/.local -D CMAKE_BUILD_TYPE=Release -D LAMMPS_MACHINE=tigerGpu \
@@ -67,7 +67,7 @@ The following Slurm script can be used to run the job on the TigerGPU cluster:
 #SBATCH --gres=gpu:1             # number of gpus per node
 #SBATCH --time=00:01:00          # total run time limit (HH:MM:SS)
 
-module load intel intel-mpi
+module load intel/19.0/64/19.0.5.281 intel-mpi/intel/2019.3/64
 export OMP_NUM_THREADS=$SLURM_CPUS_PER_TASK
  
 srun $HOME/.local/bin/lmp_tigerGpu -sf gpu -sf intel -sf omp -in in.melt.gpu
@@ -80,7 +80,7 @@ The user should vary the various quantities in the Slurm script to find the opti
 ```
 # make sure you are on tigergpu.princeton.edu
 
-module load intel intel-mpi cudatoolkit
+module load intel/19.0/64/19.0.5.281 intel-mpi/intel/2019.3/64 cudatoolkit/10.2
 
 # copy and paste the next 6 lines into the terminal
 cmake3 -D CMAKE_INSTALL_PREFIX=$HOME/.local -D CMAKE_BUILD_TYPE=Release -D LAMMPS_MACHINE=tigerGpuD \
@@ -109,7 +109,7 @@ The following Slurm script can be used to run the job on the TigerGPU cluster:
 #SBATCH --gres=gpu:1             # number of gpus per node
 #SBATCH --time=00:01:00          # total run time limit (HH:MM:SS)
 
-module load intel intel-mpi
+module load intel/19.0/64/19.0.5.281 intel-mpi/intel/2019.3/64
 export OMP_NUM_THREADS=$SLURM_CPUS_PER_TASK
  
 srun $HOME/.local/bin/lmp_tigerGpuD -sf gpu -sf omp -in in.melt.gpu
@@ -159,7 +159,7 @@ This cluster is composed of 408 nodes with 40 CPU-cores per node. TigerCPU shoul
 ```
 # make sure you are on tigercpu.princeton.edu
 
-module load intel intel-mpi
+module load intel/19.0/64/19.0.5.281 intel-mpi/intel/2019.3/64
 
 # copy and paste the next 4 lines into the terminal
 cmake3 -D CMAKE_INSTALL_PREFIX=$HOME/.local -D LAMMPS_MACHINE=tigerCpu -D ENABLE_TESTING=yes \
@@ -186,7 +186,7 @@ Below is a sample Slurm script:
 #SBATCH --mem-per-cpu=4G         # memory per cpu-core (4G is default)
 #SBATCH --time=00:05:00          # total run time limit (HH:MM:SS)
 
-module load intel-mpi intel
+module load intel/19.0/64/19.0.5.281 intel-mpi/intel/2019.3/64
 export OMP_NUM_THREADS=$SLURM_CPUS_PER_TASK
 
 srun $HOME/.local/bin/lmp_tigerCpu -sf omp -sf intel -in in.melt
@@ -199,7 +199,7 @@ The user should vary the various quantities in the Slurm script to find the opti
 ```
 # make sure you are on tigercpu.princeton.edu
 
-module load intel intel-mpi
+module load intel/19.0/64/19.0.5.281 intel-mpi/intel/2019.3/64
 
 # copy and paste the next 4 lines into the terminal
 cmake3 -D CMAKE_INSTALL_PREFIX=$HOME/.local -D LAMMPS_MACHINE=tigerCpuD -D ENABLE_TESTING=yes \
@@ -225,7 +225,7 @@ Below is a sample Slurm script:
 #SBATCH --mem-per-cpu=4G         # memory per cpu-core (4G is default)
 #SBATCH --time=00:05:00          # total run time limit (HH:MM:SS)
 
-module load intel-mpi intel
+module load intel/19.0/64/19.0.5.281 intel-mpi/intel/2019.3/64
 export OMP_NUM_THREADS=$SLURM_CPUS_PER_TASK
 
 srun $HOME/.local/bin/lmp_tigerCpuD -sf omp -in in.melt
