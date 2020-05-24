@@ -467,7 +467,7 @@ Adroit is a heterogeneous cluster with nodes having different microarchitectures
 #### Double-precision CPU version
 
 ```
-module load intel intel-mpi
+module load intel/19.0/64/19.0.5.281 intel-mpi/intel/2018.3/64
 
 # copy and paste the next 4 lines into the terminal
 cmake3 -D CMAKE_INSTALL_PREFIX=$HOME/.local -D LAMMPS_MACHINE=adroit -D ENABLE_TESTING=yes \
@@ -494,7 +494,7 @@ Below is a sample Slurm script:
 #SBATCH --mem-per-cpu=1G         # memory per cpu-core (4G is default)
 #SBATCH --time=00:05:00          # total run time limit (HH:MM:SS)
 
-module load intel intel-mpi
+module load intel/19.0/64/19.0.5.281 intel-mpi/intel/2018.3/64
 export OMP_NUM_THREADS=$SLURM_CPUS_PER_TASK
 
 srun $HOME/.local/bin/lmp_adroit -sf omp -in in.melt
@@ -503,7 +503,8 @@ srun $HOME/.local/bin/lmp_adroit -sf omp -in in.melt
 #### Mixed-precision V100 GPU version
 
 ```
-module load cudatoolkit/10.1 intel/19.0/64/19.0.3.199 intel-mpi/intel/2018.3/64
+module load intel/19.0/64/19.0.5.281 intel-mpi/intel/2018.3/64
+module load cudatoolkit/10.1
 
 # copy and paste the next 8 lines into the terminal
 cmake3 -D CMAKE_INSTALL_PREFIX=$HOME/.local -D CMAKE_BUILD_TYPE=Release \
@@ -528,7 +529,7 @@ Below is a sample Slurm script:
 #SBATCH --gres=gpu:tesla_v100:2  # number of V100 GPUs
 #SBATCH --time=00:05:00          # total run time limit (HH:MM:SS)
 
-module intel/19.0/64/19.0.3.199 intel-mpi/intel/2018.3/64
+module load intel/19.0/64/19.0.5.281 intel-mpi/intel/2018.3/64
 export OMP_NUM_THREADS=$SLURM_CPUS_PER_TASK
 
 srun $HOME/.local/bin/lmp_adroitGPU -sf omp -sf gpu -pk gpu 2 -in in.melt.gpu
