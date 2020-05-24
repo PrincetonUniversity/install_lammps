@@ -453,7 +453,12 @@ To use 2 GPUs, replace `package gpu 1` with `package gpu 2` and `-sf gpu` with `
 
 ## Perseus
 
-This cluster is similar to TigerCPU except the CPUs are one generation behind. The directions are exactly the same except for Perseus replace `-mtune=skylake-avx512` with `-mtune=broadwell` and `LAMMPS_MACHINE=tigerCpu` with `LAMMPS_MACHINE=perseus`.
+This cluster is similar to TigerCPU except the CPUs are one generation behind. The directions are exactly the same except for Perseus replace `-mtune=skylake-avx512` with `-mtune=broadwell` and `LAMMPS_MACHINE=tigerCpu` with `LAMMPS_MACHINE=perseus` and use these modules:
+
+```
+module load intel/19.0/64/19.0.5.281
+module load intel-mpi/intel/2018.3/64
+```
 
 ## Adroit
 
