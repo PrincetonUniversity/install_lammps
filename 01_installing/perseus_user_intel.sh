@@ -6,7 +6,7 @@ cd lammps-patch_4Feb2020
 mkdir build && cd build
 
 module purge
-module load intel/19.0/64/19.0.5.281
+module load intel/18.0/64/18.0.3.222
 module load intel-mpi/intel/2018.3/64
 
 # below the resulting executable is set to be lmp_perseus (you may want to rename it)
