@@ -537,10 +537,9 @@ srun $HOME/.local/bin/lmp_adroitGPU -sf omp -sf gpu -pk gpu 2 -in in.melt.gpu
 
 ## VMD Plugins
 
-Below is a procedure for using the `dump` command with the `molfle` style (be sure to replace `<YourNetID>` twice): 
+Below is a procedure for using the `dump` command with the `molfile` style (be sure to replace `<YourNetID>` twice): 
 
 ```
-#ssh perseus
 mkdir -p software/vmd_precompiled
 cd software/vmd_precompiled
 wget --no-check-certificate https://www.ks.uiuc.edu/Research/vmd/vmd-1.9.3/files/final/vmd-1.9.3.bin.LINUXAMD64-CUDA8-OptiX4-OSPRay111p1.opengl.tar.gz
