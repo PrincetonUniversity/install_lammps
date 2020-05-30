@@ -537,7 +537,7 @@ srun $HOME/.local/bin/lmp_adroitGPU -sf omp -sf gpu -pk gpu 2 -in in.melt.gpu
 
 ## VMD Plugins
 
-Below is a procedure for using the `dump` command with the `molfle` style (be sure to replace <YourNetID>): 
+Below is a procedure for using the `dump` command with the `molfle` style (be sure to replace `<YourNetID>` twice): 
 
 ```
 #ssh perseus
