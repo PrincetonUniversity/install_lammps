@@ -37,6 +37,7 @@ This cluster is composed of 80 nodes with 28 CPU-cores per node and 4 NVIDIA P10
 ```
 # make sure you are on tigergpu.princeton.edu
 
+module purge
 module load intel/19.0/64/19.0.5.281 intel-mpi/intel/2019.3/64 cudatoolkit/10.2
 
 # copy and paste the next 7 lines into the terminal
@@ -67,6 +68,7 @@ The following Slurm script can be used to run the job on the TigerGPU cluster:
 #SBATCH --gres=gpu:1             # number of gpus per node
 #SBATCH --time=00:01:00          # total run time limit (HH:MM:SS)
 
+module purge
 module load intel/19.0/64/19.0.5.281 intel-mpi/intel/2019.3/64
 export OMP_NUM_THREADS=$SLURM_CPUS_PER_TASK
  
@@ -80,6 +82,7 @@ The user should vary the various quantities in the Slurm script to find the opti
 ```
 # make sure you are on tigergpu.princeton.edu
 
+module purge
 module load intel/19.0/64/19.0.5.281 intel-mpi/intel/2019.3/64 cudatoolkit/10.2
 
 # copy and paste the next 6 lines into the terminal
@@ -109,6 +112,7 @@ The following Slurm script can be used to run the job on the TigerGPU cluster:
 #SBATCH --gres=gpu:1             # number of gpus per node
 #SBATCH --time=00:01:00          # total run time limit (HH:MM:SS)
 
+module purge
 module load intel/19.0/64/19.0.5.281 intel-mpi/intel/2019.3/64
 export OMP_NUM_THREADS=$SLURM_CPUS_PER_TASK
  
@@ -159,6 +163,7 @@ This cluster is composed of 408 nodes with 40 CPU-cores per node. TigerCPU shoul
 ```
 # make sure you are on tigercpu.princeton.edu
 
+module purge
 module load intel/19.0/64/19.0.5.281 intel-mpi/intel/2019.3/64
 
 # copy and paste the next 4 lines into the terminal
@@ -186,6 +191,7 @@ Below is a sample Slurm script:
 #SBATCH --mem-per-cpu=4G         # memory per cpu-core (4G is default)
 #SBATCH --time=00:05:00          # total run time limit (HH:MM:SS)
 
+module purge
 module load intel/19.0/64/19.0.5.281 intel-mpi/intel/2019.3/64
 export OMP_NUM_THREADS=$SLURM_CPUS_PER_TASK
 
@@ -199,6 +205,7 @@ The user should vary the various quantities in the Slurm script to find the opti
 ```
 # make sure you are on tigercpu.princeton.edu
 
+module purge
 module load intel/19.0/64/19.0.5.281 intel-mpi/intel/2019.3/64
 
 # copy and paste the next 4 lines into the terminal
@@ -225,6 +232,7 @@ Below is a sample Slurm script:
 #SBATCH --mem-per-cpu=4G         # memory per cpu-core (4G is default)
 #SBATCH --time=00:05:00          # total run time limit (HH:MM:SS)
 
+module purge
 module load intel/19.0/64/19.0.5.281 intel-mpi/intel/2019.3/64
 export OMP_NUM_THREADS=$SLURM_CPUS_PER_TASK
 
@@ -271,6 +279,7 @@ The head node features Intel Broadwell CPUs. Here we build an executable that in
 #### Mixed-precision version
 
 ```
+module purge
 module load intel/19.0/64/19.0.5.281 intel-mpi/intel/2018.3/64
 
 # copy and paste the next 5 lines into the terminal
@@ -311,6 +320,7 @@ Users should vary the various quantities in the Slurm script to find the optimal
 #### Double-precision version
 
 ```
+module purge
 module load intel/19.0/64/19.0.5.281 intel-mpi/intel/2018.3/64
 
 # copy and paste the next 4 lines into the terminal
@@ -381,6 +391,7 @@ This cluster is quite different from the others given its IBM POWER9 CPUs. Trave
 Below are the build directions (be patient when it hits the 16% mark):
 
 ```
+module purge
 module load openmpi/gcc/3.1.4/64 cudatoolkit/10.1
 
 # copy and paste the next 5 lines into the terminal
@@ -410,6 +421,7 @@ Below is a sample Slurm script to run a simple Lennard-Jones melt:
 #SBATCH --gres=gpu:1             # number of gpus per node
 #SBATCH --time=00:05:00          # total run time limit (HH:MM:SS)
 
+module purge
 module load openmpi/gcc/3.1.4/64
 export OMP_NUM_THREADS=$SLURM_CPUS_PER_TASK
 
@@ -467,6 +479,7 @@ Adroit is a heterogeneous cluster with nodes having different microarchitectures
 #### Double-precision CPU version
 
 ```
+module purge
 module load intel/19.0/64/19.0.5.281 intel-mpi/intel/2018.3/64
 
 # copy and paste the next 4 lines into the terminal
@@ -494,6 +507,7 @@ Below is a sample Slurm script:
 #SBATCH --mem-per-cpu=1G         # memory per cpu-core (4G is default)
 #SBATCH --time=00:05:00          # total run time limit (HH:MM:SS)
 
+module purge
 module load intel/19.0/64/19.0.5.281 intel-mpi/intel/2018.3/64
 export OMP_NUM_THREADS=$SLURM_CPUS_PER_TASK
 
@@ -503,6 +517,7 @@ srun $HOME/.local/bin/lmp_adroit -sf omp -in in.melt
 #### Mixed-precision V100 GPU version
 
 ```
+module purge
 module load intel/19.0/64/19.0.5.281 intel-mpi/intel/2018.3/64
 module load cudatoolkit/10.1
 
@@ -529,6 +544,7 @@ Below is a sample Slurm script:
 #SBATCH --gres=gpu:tesla_v100:2  # number of V100 GPUs
 #SBATCH --time=00:05:00          # total run time limit (HH:MM:SS)
 
+module purge
 module load intel/19.0/64/19.0.5.281 intel-mpi/intel/2018.3/64
 export OMP_NUM_THREADS=$SLURM_CPUS_PER_TASK
 
