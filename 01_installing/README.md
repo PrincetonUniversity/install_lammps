@@ -280,7 +280,7 @@ The head node features Intel Broadwell CPUs. Here we build an executable that in
 
 ```
 module purge
-module load intel/19.0/64/19.0.5.281 intel-mpi/intel/2018.3/64
+module load intel/19.0/64/19.0.1.144 intel-mpi/intel/2018.3/64
 
 # copy and paste the next 5 lines into the terminal
 cmake3 -D CMAKE_INSTALL_PREFIX=$HOME/.local -D LAMMPS_MACHINE=della -D ENABLE_TESTING=yes \
@@ -321,7 +321,7 @@ Users should vary the various quantities in the Slurm script to find the optimal
 
 ```
 module purge
-module load intel/19.0/64/19.0.5.281 intel-mpi/intel/2018.3/64
+module load intel/19.0/64/19.0.1.144 intel-mpi/intel/2018.3/64
 
 # copy and paste the next 4 lines into the terminal
 cmake3 -D CMAKE_INSTALL_PREFIX=$HOME/.local -D LAMMPS_MACHINE=dellaD -D ENABLE_TESTING=yes \
