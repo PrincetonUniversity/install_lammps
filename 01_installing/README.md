@@ -553,7 +553,7 @@ srun $HOME/.local/bin/lmp_adroitGPU -sf omp -sf gpu -pk gpu 2 -in in.melt.gpu
 
 ## Using make
 
-The procedure below can be used to build LAMMPS with USER-INTEL using make instead cmake. This provides more control over the build.
+The procedure below can be used to build LAMMPS with USER-INTEL using make instead cmake. This provides more control over the build. It makes an executable with AVX512 instructions and is not specific to Cascade Lake processors.
 
 ```
 wget https://github.com/lammps/lammps/archive/stable_3Mar2020.tar.gz
@@ -570,7 +570,7 @@ make yes-misc
 module load intel/19.1/64/19.1.1.217 intel-mpi/intel/2019.7/64
 mkdir -p MAKE/MINE
 cd MAKE/MINE
-wget
+wget https://raw.githubusercontent.com/PrincetonUniversity/install_lammps/master/01_installing/Makefile.cascade
 cd ../..
 make cascade
 ```
