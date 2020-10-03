@@ -388,7 +388,7 @@ run             10000
 
 This cluster is quite different from the others given its IBM POWER9 CPUs. Traverse is composed of 46 nodes with 32 physical CPU cores per node and 4 NVIDIA V100 GPUs per node. Users should only be using this cluster if their LAMMPS simulations can use GPUs. The USER-INTEL package cannot be used on Traverse because the CPUs are made by IBM and not Intel.
 
-See the traverse.sh file in this repo. Write to cses@princeton.edu for directions on editing the GPU.make file.
+See the `traverse.sh` file in this repo. Write to cses@princeton.edu for directions on editing the `GPU.make` file.
 
 Below is a sample Slurm script to run a simple Lennard-Jones melt:
 
