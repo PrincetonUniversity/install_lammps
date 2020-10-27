@@ -272,26 +272,17 @@ run             10000
 
 ## Della
 
-Della is a heterogeneous cluster composed of more than 200 Intel nodes. The microarchitectures of the nodes are Cascade Lake, SkyLake, Broadwell and Haswell. Della can be used to run a variety of jobs from single-core to parallel, multi-node.
-
-The head node features Intel Broadwell CPUs. Here we build an executable that includes the vector instructions for Broadwell, Skylake and Cascade Lake.
+Della is a heterogeneous cluster composed of more than 250 Intel nodes. The microarchitectures of the nodes are Cascade Lake, SkyLake, Broadwell, Haswell, Ivybridge. Della can be used to run a variety of jobs from single-core to parallel, multi-node. The head node features Intel Broadwell CPUs.
 
 #### Mixed-precision version
 
+Run the commands below to build LAMMPS in mixed precision for Della:
+
 ```
-module purge
-module load intel/19.0/64/19.0.5.281 intel-mpi/intel/2018.3/64 rh/devtoolset/8
-
-# copy and paste the next 5 lines into the terminal
-cmake3 -D CMAKE_INSTALL_PREFIX=$HOME/.local -D LAMMPS_MACHINE=della -D ENABLE_TESTING=yes \
--D BUILD_MPI=yes -D BUILD_OMP=yes -D CMAKE_CXX_COMPILER=icpc -D CMAKE_BUILD_TYPE=Release \
--D CMAKE_CXX_FLAGS_RELEASE="-Ofast -axCORE-AVX512 -DNDEBUG" \
--D PKG_USER-OMP=yes -D PKG_MOLECULE=yes \
--D PKG_USER-INTEL=yes -D INTEL_ARCH=cpu -D INTEL_LRT_MODE=threads ../cmake
-
-make -j 10
-make test
-make install
+$ ssh <YourNetID>@della.princeton.edu
+$ cd software  # or another directory
+$ wget https://raw.githubusercontent.com/PrincetonUniversity/install_lammps/master/01_installing/lammps_mixed_prec_della.sh
+$ bash lammps_mixed_prec_della.sh | tee lammps_mixed.log
 ```
 
 The LAMMPS build system will add `-qopenmp`,  `-restrict` and `-xHost` to the CXX_FLAGS. It is normal to see a large number of messages containing the phrase "has been targeted for automatic cpu dispatch".
@@ -306,10 +297,10 @@ The following Slurm script can be used to run the job on Della:
 #SBATCH --cpus-per-task=1                        # cpu-cores per task (>1 if multi-threaded tasks)
 #SBATCH --mem-per-cpu=4G                         # memory per cpu-core (4G is default)
 #SBATCH --time=00:05:00                          # total run time limit (HH:MM:SS)
-#SBATCH --constraint=haswell|broadwell|skylake|cascade   # exclude ivy nodes
+#SBATCH --constraint=haswell                     # exclude ivy nodes
 
 module purge
-module load intel/19.0/64/19.0.5.281 intel-mpi/intel/2018.3/64
+module load intel/18.0/64/18.0.3.222 intel-mpi/intel/2018.3/64
 export OMP_NUM_THREADS=$SLURM_CPUS_PER_TASK
 
 srun $HOME/.local/bin/lmp_della -sf omp -sf intel -in in.melt
