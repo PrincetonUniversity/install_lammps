@@ -319,10 +319,12 @@ Users should vary the various quantities in the Slurm script to find the optimal
 
 #### Double-precision version
 
+Run the commands below to build LAMMPS in double precision for Della:
+
 ```
 $ ssh <YourNetID>@della.princeton.edu
 $ cd software  # or another directory
-$ wget 
+$ wget https://raw.githubusercontent.com/PrincetonUniversity/install_lammps/master/01_installing/lammps_double_prec_della.sh
 $ bash lammps_double_prec_della.sh | tee lammps_double.log
 ```
 
@@ -347,7 +349,7 @@ export OMP_NUM_THREADS=$SLURM_CPUS_PER_TASK
 srun $HOME/.local/bin/lmp_della_double -sf omp -in in.melt
 ```
 
-Here is a sample LAMMPS script called `in.melt`:
+Below is a sample LAMMPS script called `in.melt`:
 
 ```
 units           lj
