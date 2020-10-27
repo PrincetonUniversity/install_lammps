@@ -352,7 +352,7 @@ module purge
 module load intel/19.0/64/19.0.5.281 intel-mpi/intel/2018.3/64
 export OMP_NUM_THREADS=$SLURM_CPUS_PER_TASK
 
-srun $HOME/.local/bin/lmp_dellaD -sf omp -in in.melt
+srun $HOME/.local/bin/lmp_della_double -sf omp -in in.melt
 ```
 
 Here is a sample LAMMPS script called `in.melt`:
