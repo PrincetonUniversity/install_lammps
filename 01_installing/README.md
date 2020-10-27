@@ -320,18 +320,10 @@ Users should vary the various quantities in the Slurm script to find the optimal
 #### Double-precision version
 
 ```
-module purge
-module load intel/19.0/64/19.0.5.281 intel-mpi/intel/2018.3/64 rh/devtoolset/8
-
-# copy and paste the next 4 lines into the terminal
-cmake3 -D CMAKE_INSTALL_PREFIX=$HOME/.local -D LAMMPS_MACHINE=dellaD -D ENABLE_TESTING=yes \
--D BUILD_MPI=yes -D BUILD_OMP=yes -D CMAKE_CXX_COMPILER=icpc -D CMAKE_BUILD_TYPE=Release \
--D CMAKE_CXX_FLAGS_RELEASE="-Ofast -xCORE-AVX2 -axCORE-AVX512 -DNDEBUG" \
--D PKG_USER-OMP=yes -D PKG_MOLECULE=yes ../cmake
-
-make -j 10
-make test
-make install
+$ ssh <YourNetID>@della.princeton.edu
+$ cd software  # or another directory
+$ wget 
+$ bash lammps_double_prec_della.sh | tee lammps_double.log
 ```
 
 The LAMMPS build system will add `-qopenmp` and  `-restrict` to the CXX_FLAGS. It is normal to see a large number of messages containing the phrase "has been targeted for automatic cpu dispatch".
@@ -346,7 +338,7 @@ The following Slurm script can be used to run the job on Della:
 #SBATCH --cpus-per-task=1                        # cpu-cores per task (>1 if multi-threaded tasks)
 #SBATCH --mem-per-cpu=4G                         # memory per cpu-core
 #SBATCH --time=00:05:00                          # total run time limit (HH:MM:SS)
-#SBATCH --constraint=haswell|broadwell|skylake|cascade   # exclude ivy nodes
+#SBATCH --constraint=haswell                     # exclude ivy nodes
 
 module purge
 module load intel/19.0/64/19.0.5.281 intel-mpi/intel/2018.3/64
