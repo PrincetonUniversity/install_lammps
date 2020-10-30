@@ -531,7 +531,7 @@ $ bash lammps_mixed_prec_python_della.sh | tee lammps_mixed_python.log
 
 To run a parallel job on Della with the Python interface:
 
-```
+```bash
 #!/bin/bash
 #SBATCH --job-name=lj-melt                       # create a short name for your job
 #SBATCH --nodes=1                                # node count
@@ -586,7 +586,7 @@ run             10000
 
 Here are the contents of `myscript.py`:
 
-```
+```python
 from mpi4py import MPI
 from lammps import lammps
 lmp = lammps()
@@ -601,7 +601,7 @@ See the [package](https://lammps.sandia.gov/doc/package.html) command for more.
 
 To run a parallel job on Della without the Python interface:
 
-```
+```bash
 #!/bin/bash
 #SBATCH --job-name=lj-melt                       # create a short name for your job
 #SBATCH --nodes=1                                # node count
