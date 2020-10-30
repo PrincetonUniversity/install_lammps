@@ -552,7 +552,7 @@ conda activate lammps-env
 srun python myscript.py
 ```
 
-Since the command-line switch "-sf intel" cannot be used, one must explicitly turn on the intel package and suffix:
+Since the command-line switch "-sf intel" cannot be used, one must explicitly turn on the intel package and suffix in `in.lj`:
 
 ```
 units           lj
@@ -582,6 +582,19 @@ timestep        0.005
 
 thermo          5000
 run             10000
+```
+
+Here are the contents of `myscript.py`:
+
+```
+from mpi4py import MPI
+from lammps import lammps
+lmp = lammps()
+lmp.file("in.lj")
+me = MPI.COMM_WORLD.Get_rank()
+nprocs = MPI.COMM_WORLD.Get_size()
+print("Proc %d out of %d procs has" % (me,nprocs),lmp)
+MPI.Finalize()
 ```
 
 See the [package](https://lammps.sandia.gov/doc/package.html) command for more.
