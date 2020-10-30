@@ -606,6 +606,13 @@ export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$HOME/.local/lib64:$HOME/.conda/envs/lam
 srun $HOME/.local/bin/lmp_della -sf intel -in in.melt
 ```
 
+Here are some timings for the system above with and without the user-intel package on the cascade lake nodes of Della with 4 MPI processes:
+
+| time (s) | user-intel |
+|:------:|:------:|
+| 120 | with |
+| 190 | without |
+
 ## Using make
 
 The procedure below can be used to build LAMMPS with USER-INTEL using make instead cmake. This provides more control over the build. It makes an executable with AVX512 instructions and is not specific to Cascade Lake processors.
