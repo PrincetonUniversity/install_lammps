@@ -19,7 +19,7 @@ That is, the patched version of the latest release is needed and the Intel 2018 
 The first step is to download the source code and make a build directory (make sure you get the [latest stable release](https://lammps.sandia.gov/download.html)):
 
 ```
-wget https://github.com/lammps/lammps/archive/stable_3Mar2020.tar.gz
+wget https://github.com/lammps/lammps/archive/stable_29Oct2020.tar.gz
 tar zxf stable_3Mar2020.tar.gz
 cd lammps-stable_3Mar2020
 mkdir build
