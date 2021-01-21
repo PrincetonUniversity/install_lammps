@@ -297,7 +297,7 @@ The following Slurm script can be used to run the job on Della:
 #SBATCH --cpus-per-task=1                        # cpu-cores per task (>1 if multi-threaded tasks)
 #SBATCH --mem-per-cpu=4G                         # memory per cpu-core (4G is default)
 #SBATCH --time=00:05:00                          # total run time limit (HH:MM:SS)
-#SBATCH --constraint=haswell,broadwell           # exclude ivy nodes
+#SBATCH --constraint=haswell                     # exclude ivy nodes
 
 module purge
 module load intel/18.0/64/18.0.3.222 intel-mpi/intel/2018.3/64
@@ -331,7 +331,7 @@ The following Slurm script can be used to run the job on Della:
 #SBATCH --cpus-per-task=1                        # cpu-cores per task (>1 if multi-threaded tasks)
 #SBATCH --mem-per-cpu=4G                         # memory per cpu-core
 #SBATCH --time=00:05:00                          # total run time limit (HH:MM:SS)
-#SBATCH --constraint=haswell,broadwell           # exclude ivy nodes
+#SBATCH --constraint=haswell                     # exclude ivy nodes
 
 module purge
 module load intel/19.0/64/19.0.5.281 intel-mpi/intel/2018.3/64
