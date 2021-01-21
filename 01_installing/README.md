@@ -20,8 +20,8 @@ The first step is to download the source code and make a build directory (make s
 
 ```
 wget https://github.com/lammps/lammps/archive/stable_29Oct2020.tar.gz
-tar zxf stable_3Mar2020.tar.gz
-cd lammps-stable_3Mar2020
+tar zxf stable_29Oct2020.tar.gz
+cd lammps-stable_29Oct2020
 mkdir build
 cd build
 ```
