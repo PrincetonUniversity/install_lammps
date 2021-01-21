@@ -2,7 +2,7 @@
 
 # build a double precision version of lammps for della
 
-VERSION=3Mar2020
+VERSION=29Oct2020
 wget https://github.com/lammps/lammps/archive/stable_${VERSION}.tar.gz
 tar zxf stable_${VERSION}.tar.gz
 cd lammps-stable_${VERSION}
