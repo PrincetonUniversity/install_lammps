@@ -6,8 +6,8 @@ cd lammps-patch_4Feb2020
 mkdir build && cd build
 
 module purge
-module load intel/19.0/64/19.0.5.281
-module load intel-mpi/intel/2019.3/64
+module load intel/18.0/64/18.0.3.222
+module load intel-mpi/intel/2018.3/64
 module load cudatoolkit/10.2
 
 # copy and paste the next 7 lines into the terminal
