@@ -52,26 +52,13 @@ This cluster is composed of 80 nodes with 28 CPU-cores per node and 4 NVIDIA P10
 #### Mixed-precision version
 
 ```
-# make sure you are on tigergpu.princeton.edu
-
-module purge
-module load intel/19.0/64/19.0.5.281 intel-mpi/intel/2019.3/64 cudatoolkit/10.2
-
-# copy and paste the next 7 lines into the terminal
-cmake3 -D CMAKE_INSTALL_PREFIX=$HOME/.local -D CMAKE_BUILD_TYPE=Release -D LAMMPS_MACHINE=tigerGpu \
--D ENABLE_TESTING=yes -D BUILD_MPI=yes -D BUILD_OMP=yes -D CMAKE_C_COMPILER=icc \
--D CMAKE_CXX_COMPILER=icpc -D CMAKE_CXX_FLAGS_RELEASE="-Ofast -mtune=broadwell -DNDEBUG" \
--D PKG_USER-OMP=yes -D PKG_MOLECULE=yes -D PKG_RIGID=yes \
--D PKG_KSPACE=yes -D FFT=MKL -D FFT_SINGLE=yes \
--D PKG_GPU=yes -D GPU_API=cuda -D GPU_PREC=mixed -D GPU_ARCH=sm_60 -D CUDPP_OPT=yes \
--D PKG_USER-INTEL=yes -D INTEL_ARCH=cpu -D INTEL_LRT_MODE=threads ../cmake
-
-make -j 10
-make test
-make install
+$ ssh <YourNetID>@tigergpu.princeton.edu
+$ cd software  # or another directory
+$ wget https://raw.githubusercontent.com/PrincetonUniversity/install_lammps/master/01_installing/tigerGpu_user_intel.sh
+$ bash tigerGpu_user_intel.sh | tee lammps_mixed.log
 ```
 
-The LAMMPS build system will add `-qopenmp`, `-restrict` and `-xHost` to the CXX_FLAGS. Note that the build above includes the MOLECULE, RIGID and KSPACE packages. If you do not need these for your simulations then you should remove them.
+The LAMMPS build system will add `-qopenmp`, `-restrict` and `-xHost` to the CXX_FLAGS. Note that the build above includes the MOLECULE, RIGID and KSPACE packages. If you do not need these for your simulations then you should remove them from the .sh file after running `wget`.
 
 The following Slurm script can be used to run the job on the TigerGPU cluster:
 
@@ -455,7 +442,7 @@ To use 2 GPUs, replace `package gpu 1` with `package gpu 2` and `-sf gpu` with `
 $ ssh <YourNetID>@perseus.princeton.edu
 $ cd software  # or another directory
 $ wget https://raw.githubusercontent.com/PrincetonUniversity/install_lammps/master/01_installing/perseus_user_intel.sh
-$ bash lammps_mixed_prec_della.sh | tee lammps_mixed.log
+$ bash perseus_user_intel.sh | tee lammps_mixed.log
 ```
 
 Note that the LAMMPS build system will add `-qopenmp`, `-restrict` and `-xHost` to the CXX_FLAGS.
