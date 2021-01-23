@@ -47,7 +47,7 @@ The next set of directions vary by cluster. Follow the directions below for the 
 
 ## TigerGPU
 
-This cluster is composed of 80 nodes with 28 CPU-cores per node and 4 NVIDIA P100 GPUs per node. TigerGPU should only be used for multi-node jobs that take advantage of GPUs. Connect with: `ssh <NetID>@tigergpu.princeton.edu`.
+This cluster is composed of 80 nodes with 28 CPU-cores per node and 4 NVIDIA P100 GPUs per node. TigerGPU should only be used for multi-node jobs that take advantage of GPUs.
 
 #### Mixed-precision version
 
@@ -82,6 +82,8 @@ srun $HOME/.local/bin/lmp_tigerGpu -sf gpu -sf intel -sf omp -in in.melt.gpu
 The user should vary the various quantities in the Slurm script to find the optimal values.
 
 #### Double-precision version
+
+Connect with: `ssh <YourNetID>@tigergpu.princeton.edu`.
 
 ```
 # make sure you are on tigergpu.princeton.edu
