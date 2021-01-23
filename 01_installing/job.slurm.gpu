@@ -10,4 +10,4 @@ module purge
 module load intel/18.0/64/18.0.3.222 intel-mpi/intel/2018.3/64
 export OMP_NUM_THREADS=$SLURM_CPUS_PER_TASK
  
-srun $HOME/.local/bin/lmp_gpu -sf gpu -sf omp -in in.melt.gpu
+srun $HOME/.local/bin/lmp_gpu -sf gpu -in in.melt.gpu
