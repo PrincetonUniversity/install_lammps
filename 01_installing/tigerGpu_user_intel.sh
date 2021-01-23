@@ -10,7 +10,6 @@ module load intel/18.0/64/18.0.3.222
 module load intel-mpi/intel/2018.3/64
 module load cudatoolkit/10.2
 
-# copy and paste the next 7 lines into the terminal
 cmake3 -D CMAKE_INSTALL_PREFIX=$HOME/.local -D CMAKE_BUILD_TYPE=Release -D LAMMPS_MACHINE=tigerGpu \
 -D ENABLE_TESTING=yes -D BUILD_MPI=yes -D BUILD_OMP=yes -D CMAKE_C_COMPILER=icc \
 -D CMAKE_CXX_COMPILER=icpc -D CMAKE_CXX_FLAGS_RELEASE="-Ofast -mtune=broadwell -DNDEBUG" \
