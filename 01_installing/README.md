@@ -14,6 +14,23 @@ module load intel-mpi/intel/2018.3/64
 
 That is, the patched version of the latest release is needed and the Intel 2018 compiler should be used instead of 2019. For more see [this post](https://lammps.sandia.gov/threads/msg85269.html) on the LAMMPS mailing list.
 
+#### Issue with version 29Oct2020
+
+You may encounter the following error:
+
+```
+Fatal Error: File 'mpi.mod' opened at (1) is not a GNU Fortran module file
+```
+
+The solution is to explicitly specify the Fortran compiler in the .sh build script:
+
+```
+-D CMAKE_Fortran_COMPILER=/opt/intel/compilers_and_libraries_2019.5.281/linux/bin/intel64/ifort \
+```
+
+The path above corresponds to the module `intel/19.0/64/19.0.5.281`. Use `module show <module name>` to find the path for a different module.
+
+
 ## Obtaining the code and starting the build
 
 The first step is to download the source code and make a build directory (make sure you get the [latest stable release](https://lammps.sandia.gov/download.html)):
