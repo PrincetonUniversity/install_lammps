@@ -73,7 +73,7 @@ The following Slurm script can be used to run the job on the TigerGPU cluster:
 #SBATCH --time=00:01:00          # total run time limit (HH:MM:SS)
 
 module purge
-module load intel/19.0/64/19.0.5.281 intel-mpi/intel/2019.3/64
+module load intel/18.0/64/18.0.3.222 intel-mpi/intel/2018.3/64
 export OMP_NUM_THREADS=$SLURM_CPUS_PER_TASK
  
 srun $HOME/.local/bin/lmp_tigerGpu -sf gpu -sf intel -sf omp -in in.melt.gpu
