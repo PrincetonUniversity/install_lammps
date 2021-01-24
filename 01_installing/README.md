@@ -124,7 +124,7 @@ module purge
 module load intel/19.0/64/19.0.5.281 intel-mpi/intel/2019.3/64
 export OMP_NUM_THREADS=$SLURM_CPUS_PER_TASK
  
-srun $HOME/.local/bin/lmp_tigerGpuD -sf gpu -sf omp -in in.melt.gpu
+srun $HOME/.local/bin/lmp_tigerGpuD -sf gpu -in in.melt.gpu
 ```
 
 The user should vary the various quantities in the Slurm script to find the optimal values.
@@ -546,7 +546,7 @@ module purge
 module load intel/19.0/64/19.0.5.281 intel-mpi/intel/2018.3/64
 export OMP_NUM_THREADS=$SLURM_CPUS_PER_TASK
 
-srun $HOME/.local/bin/lmp_adroitGPU -sf omp -sf gpu -pk gpu 2 -in in.melt.gpu
+srun $HOME/.local/bin/lmp_adroitGPU -sf gpu -pk gpu 2 -in in.melt.gpu
 ```
 
 ## LAMMPS with Python Interface
