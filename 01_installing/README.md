@@ -43,6 +43,8 @@ mkdir build
 cd build
 ```
 
+Note that you find that the tests associated with version 29Oct2020 fail. In this case you should either write to the mailing list or use the previous stable release (wget https://github.com/lammps/lammps/archive/stable_3Mar2020.tar.gz).
+
 The next set of directions vary by cluster. Follow the directions below for the cluster of interest.
 
 ## TigerGPU
