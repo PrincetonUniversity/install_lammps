@@ -13,6 +13,7 @@ module purge
 module load intel/19.0/64/19.0.5.281 intel-mpi/intel/2018.3/64
 
 cmake3 -D CMAKE_INSTALL_PREFIX=$HOME/.local -D LAMMPS_MACHINE=della_double -D ENABLE_TESTING=yes \
+-D CMAKE_Fortran_COMPILER=/opt/intel/compilers_and_libraries_2019.5.281/linux/bin/intel64/ifort \
 -D BUILD_MPI=yes -D BUILD_OMP=yes -D CMAKE_CXX_COMPILER=icpc -D CMAKE_BUILD_TYPE=Release \
 -D CMAKE_CXX_FLAGS_RELEASE="-Ofast -xCORE-AVX2 -axCORE-AVX512 -DNDEBUG" \
 -D PKG_USER-OMP=yes -D PKG_MOLECULE=yes -D PKG_RIGID=yes \
