@@ -370,7 +370,14 @@ run             10000
 
 This cluster is quite different from the others given its IBM POWER9 CPUs. Traverse is composed of 46 nodes with 32 physical CPU cores per node and 4 NVIDIA V100 GPUs per node. Users should only be using this cluster if their LAMMPS simulations can use GPUs. The USER-INTEL package cannot be used on Traverse because the CPUs are made by IBM and not Intel.
 
-See the `traverse.sh` file in this repo. Write to cses@princeton.edu for directions on editing the `GPU.make` file.
+See the `traverse.sh` file in this repo to install:
+
+```bash
+$ ssh <YourNetID>@traverse.princeton.edu
+$ cd software  # or another location
+$ wget https://raw.githubusercontent.com/PrincetonUniversity/install_lammps/master/01_installing/traverse.sh
+$ bash traverse.sh | tee build_lammps.log
+```
 
 Below is a sample Slurm script to run a simple Lennard-Jones melt:
 
@@ -380,19 +387,19 @@ Below is a sample Slurm script to run a simple Lennard-Jones melt:
 #SBATCH --nodes=1                # node count
 #SBATCH --ntasks=16              # total number of tasks across all nodes
 #SBATCH --cpus-per-task=1        # cpu-cores per task (>1 if multi-threaded tasks)
-#SBATCH --threads-per-core=1     # setting to 1 turns off SMT (max value is 4)
+#SBATCH --ntasks-per-core=1      # setting to 1 turns off SMT (max value is 4)
 #SBATCH --mem=4G                 # total memory per node (4G is default per cpu-core)
 #SBATCH --gres=gpu:1             # number of gpus per node
 #SBATCH --time=00:05:00          # total run time limit (HH:MM:SS)
 
 module purge
-module load openmpi/gcc/3.1.4/64
+module load openmpi/gcc/4.0.4/64 cudatoolkit/11.2
 export OMP_NUM_THREADS=$SLURM_CPUS_PER_TASK
 
 srun $HOME/.local/bin/lmp_traverse -sf gpu -in in.melt.gpu
 ```
 
-Users will need to find the optimal values for `nodes`, `ntasks`, `cpus-per-task`, `threads-per-core` and `gres`. Each node of Traverse has 2 CPUs. Each CPU has 16 physical cores. Each physical core has 4 floating point units. A setting of `--threads-per-core=4` turns on IBM's simultaneous multithreading (SMT). A setting of `--threads-per-core=1` turns it off. Note that the cudatoolkit module does not need to be loaded in the Slurm script since the only CUDA library that the LAMMPS executable depends on is /usr/lib64/libcuda.so, which relates to the driver.
+Users will need to find the optimal values for `nodes`, `ntasks`, `cpus-per-task`, `ntasks-per-core` and `gres`. Each node of Traverse has 2 CPUs. Each CPU has 16 physical cores. Each physical core has 4 floating point units. A setting of `--ntasks-per-core=4` turns on IBM's simultaneous multithreading (SMT). A setting of `--ntasks-per-core=1` turns it off. Note that the cudatoolkit module does not need to be loaded in the Slurm script since the only CUDA library that the LAMMPS executable depends on is /usr/lib64/libcuda.so, which relates to the driver.
 
 Below is a sample LAMMPS script called `in.melt.gpu`:
 
