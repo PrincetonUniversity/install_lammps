@@ -370,7 +370,7 @@ run             10000
 
 This cluster is quite different from the others given its IBM POWER9 CPUs. Traverse is composed of 46 nodes with 32 physical CPU cores per node and 4 NVIDIA V100 GPUs per node. Users should only be using this cluster if their LAMMPS simulations can use GPUs. The USER-INTEL package cannot be used on Traverse because the CPUs are made by IBM and not Intel.
 
-Run these commands to install LAMMPS on traverse:
+Run these commands to install LAMMPS on Traverse:
 
 ```bash
 $ ssh <YourNetID>@traverse.princeton.edu
@@ -389,7 +389,7 @@ Below is a sample Slurm script to run a simple Lennard-Jones melt:
 #SBATCH --ntasks=16              # total number of tasks across all nodes
 #SBATCH --cpus-per-task=1        # cpu-cores per task (>1 if multi-threaded tasks)
 #SBATCH --ntasks-per-core=1      # setting to 1 turns off SMT (max value is 4)
-#SBATCH --mem=4G                 # total memory per node (4G is default per cpu-core)
+#SBATCH --mem=8G                 # total memory per node (4G is default per cpu-core)
 #SBATCH --gres=gpu:1             # number of gpus per node
 #SBATCH --time=00:05:00          # total run time limit (HH:MM:SS)
 
