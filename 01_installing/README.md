@@ -370,12 +370,13 @@ run             10000
 
 This cluster is quite different from the others given its IBM POWER9 CPUs. Traverse is composed of 46 nodes with 32 physical CPU cores per node and 4 NVIDIA V100 GPUs per node. Users should only be using this cluster if their LAMMPS simulations can use GPUs. The USER-INTEL package cannot be used on Traverse because the CPUs are made by IBM and not Intel.
 
-See the `traverse.sh` file in this repo to install:
+Run these commands to install LAMMPS on traverse:
 
 ```bash
 $ ssh <YourNetID>@traverse.princeton.edu
 $ cd software  # or another location
 $ wget https://raw.githubusercontent.com/PrincetonUniversity/install_lammps/master/01_installing/traverse.sh
+# look at traverse.sh and make modifications if necessary (e.g., add LAMMPS packages)
 $ bash traverse.sh | tee build_lammps.log
 ```
 
