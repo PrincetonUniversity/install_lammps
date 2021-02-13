@@ -3,10 +3,10 @@
 # This bash script will build and install a double precision version of lammps
 # in your home directoy on stellar-intel. Most simulations do not need double
 # precision and you should build the code with the user-intel package instead
-# which using a mix of single and double precision for increased performance.
+# which uses a mix of single and double precision for increased performance.
 
 VERSION=29Oct2020
-#wget https://github.com/lammps/lammps/archive/stable_${VERSION}.tar.gz
+wget https://github.com/lammps/lammps/archive/stable_${VERSION}.tar.gz
 tar zxf stable_${VERSION}.tar.gz
 cd lammps-stable_${VERSION}
 mkdir build
