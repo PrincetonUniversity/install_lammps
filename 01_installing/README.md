@@ -47,6 +47,10 @@ Note that you may find that some of the tests associated with version 29Oct2020 
 
 The next set of directions vary by cluster. Follow the directions below for the cluster of interest.
 
+## Stellar
+
+See the stellar_intel directory at the top of this page.
+
 ## TigerGPU
 
 This cluster is composed of 80 nodes with 28 CPU-cores per node and 4 NVIDIA P100 GPUs per node. TigerGPU should only be used for multi-node jobs that take advantage of GPUs.
