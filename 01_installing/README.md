@@ -49,7 +49,7 @@ The next set of directions vary by cluster. Follow the directions below for the 
 
 ## Stellar
 
-See the stellar_intel directory at the top of this page.
+See the stellar-intel directory at the top of this page.
 
 ## TigerGPU
 
