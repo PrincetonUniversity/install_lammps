@@ -127,7 +127,7 @@ For the second job step and beyond our Slurm script is the same except we add a 
 #SBATCH --time=00:05:00
 #SBATCH --mem-per-cpu=4G
 
-module load intel intel-mpi
+module load intel/19.1/64/19.1.1.217 intel-mpi/intel/2019.7/64
 export OMP_NUM_THREADS=$SLURM_CPUS_PER_TASK
  
 srun $HOME/.local/bin/lmp_mpi -in in.melt.nth_step
