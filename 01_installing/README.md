@@ -47,6 +47,10 @@ Note that you may find that some of the tests associated with version 29Oct2020 
 
 The next set of directions vary by cluster. Follow the directions below for the cluster of interest.
 
+## Della-GPU
+
+See the della-gpu directory at the top of this page.
+
 ## Stellar
 
 See the stellar-intel directory at the top of this page.
