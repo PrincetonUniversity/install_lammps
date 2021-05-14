@@ -3,6 +3,7 @@
 # this will produce a double precision build
 # adding -Ofast or -march=native will cause tests to fail
 # do not include the cmake module in your Slurm script
+# using FFT_SINGLE=yes with libfftw3f.so will cause tests to fail
 
 VERSION=29Oct2020
 wget https://github.com/lammps/lammps/archive/stable_${VERSION}.tar.gz
