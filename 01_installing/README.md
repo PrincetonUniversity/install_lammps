@@ -49,7 +49,14 @@ The next set of directions vary by cluster. Follow the directions below for the 
 
 ## Della-GPU
 
-See the della-gpu directory at the top of this page.
+```
+$ ssh <YourNetID>@della-gpu.princeton.edu
+$ cd software
+$ wget https://raw.githubusercontent.com/PrincetonUniversity/install_lammps/master/01_installing/della-gpu/della_gpu_lammps_double_gcc.sh
+$ bash della_gpu_lammps_double_gcc.sh | tee lammps.log
+```
+
+Be sure include the environments modules in the Bash script in your Slurm script (except cmake). You should find that all the tests pass when installing. The procedure above does everything in double precision which probably unnecessary. Attempts to use single precision FFTs and GPU kernels led to tests failing because of very slight differences in calculated values. The processors on the GPU nodes of Della are AMD.
 
 ## Stellar
 
