@@ -51,7 +51,7 @@ The next set of directions vary by cluster. Follow the directions below for the 
 
 ```
 $ ssh <YourNetID>@della-gpu.princeton.edu
-$ cd software
+$ cd software  # or another directory
 $ wget https://raw.githubusercontent.com/PrincetonUniversity/install_lammps/master/01_installing/della-gpu/della_gpu_lammps_double_gcc.sh
 $ bash della_gpu_lammps_double_gcc.sh | tee lammps.log
 ```
