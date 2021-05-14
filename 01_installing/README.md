@@ -58,6 +58,8 @@ $ bash della_gpu_lammps_double_gcc.sh | tee lammps.log
 
 Be sure include the environments modules in the Bash script in your Slurm script (except cmake). You should find that all the tests pass when installing. The procedure above does everything in double precision which probably unnecessary. Attempts to use single precision FFTs and GPU kernels led to tests failing because of very slight differences in calculated values. The processors on the GPU nodes of Della are AMD.
 
+As an alternative to the Bash script above, you may consider using the [NVIDIA container](https://ngc.nvidia.com/catalog/containers/hpc:lammps) for LAMMPS.
+
 ## Stellar
 
 See the stellar-intel directory at the top of this page.
