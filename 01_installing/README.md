@@ -108,8 +108,6 @@ mpirun -n ${gpu_count} lmp -k on g ${gpu_count} -sf kk -pk kokkos cuda/aware on 
 
 #### Build from Source
 
-
-
 ```
 $ ssh <YourNetID>@della-gpu.princeton.edu
 $ cd software  # or another directory
@@ -117,7 +115,7 @@ $ wget https://raw.githubusercontent.com/PrincetonUniversity/install_lammps/mast
 $ bash della_gpu_lammps_double_gcc.sh | tee lammps.log
 ```
 
-Be sure include the environments modules in the Bash script in your Slurm script (except cmake). You should find that all the tests pass when installing. The procedure above does everything in double precision which is probably unnecessary for your work. Attempts to use single precision FFTs and GPU kernels led to tests failing because of very slight differences in calculated versus expected values. The processors on the GPU nodes of Della are AMD.
+Be sure include the environments modules in the Bash script in your Slurm script (except cmake). You should find that all the tests pass when installing. The procedure above does everything in double precision which is probably unnecessary for your work. Attempts to use single precision FFTs and GPU kernels led to tests failing because of very slight differences in calculated versus expected values. The processors on the GPU nodes of Della are AMD. The user-intel can be used (even though processors are AMD) but it produces failed unit tests. Write to cses@princeton.edu to find the best way to use LAMMPS on della-gpu.
 
 ## Stellar
 
