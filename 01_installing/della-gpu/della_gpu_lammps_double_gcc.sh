@@ -1,6 +1,7 @@
 #!/bin/bash
 
 # This script will produce a double precision build which is probably not what you want.
+# Additionally, the performance is not very good.
 # Adding -Ofast or -march=native will cause tests to fail.
 # Do not include the cmake module in your Slurm script.
 # Using FFT_SINGLE=yes with libfftw3f.so will cause tests to fail.
