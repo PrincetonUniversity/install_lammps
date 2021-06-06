@@ -1,9 +1,11 @@
 #!/bin/bash
 
-# this will produce a double precision build
-# adding -Ofast or -march=native will cause tests to fail
-# do not include the cmake module in your Slurm script
-# using FFT_SINGLE=yes with libfftw3f.so will cause tests to fail
+# This script will produce a double precision build which is probably not what you want.
+# Adding -Ofast or -march=native will cause tests to fail.
+# Do not include the cmake module in your Slurm script.
+# Using FFT_SINGLE=yes with libfftw3f.so will cause tests to fail.
+# There are several issues to work out. Write to cses@princeton.edu if you want to
+# try to achieve optimal performance with LAMMPS on della-gpu.
 
 VERSION=29Oct2020
 wget https://github.com/lammps/lammps/archive/stable_${VERSION}.tar.gz
