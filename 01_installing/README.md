@@ -597,19 +597,10 @@ srun $HOME/.local/bin/lmp_adroit -sf omp -in in.melt
 #### Mixed-precision V100 GPU version
 
 ```
-module purge
-module load intel/19.0/64/19.0.5.281 intel-mpi/intel/2018.3/64
-module load cudatoolkit/10.1
-
-# copy and paste the next 8 lines into the terminal
-cmake3 -D CMAKE_INSTALL_PREFIX=$HOME/.local -D CMAKE_BUILD_TYPE=Release \
--D LAMMPS_MACHINE=adroitGPU -D ENABLE_TESTING=yes -D BUILD_MPI=yes -D BUILD_OMP=yes \
--D CMAKE_C_COMPILER=icc -D CMAKE_CXX_COMPILER=icpc \
--D CMAKE_CXX_FLAGS_RELEASE="-Ofast -mtune=skylake -DNDEBUG" -D PKG_USER-OMP=yes \
--D PKG_MOLECULE=yes -D PKG_RIGID=yes \
--D PKG_KSPACE=yes -D FFT=MKL -D FFT_SINGLE=yes \
--D PKG_GPU=yes -D GPU_API=cuda -D GPU_PREC=mixed -D GPU_ARCH=sm_70 -D CUDPP_OPT=yes \
--D PKG_USER-INTEL=yes -D INTEL_ARCH=cpu -D INTEL_LRT_MODE=threads ../cmake
+$ ssh <YourNetID>@adroit.princeton.edu
+$ cd software  # or another directory
+$ wget https://raw.githubusercontent.com/PrincetonUniversity/install_lammps/master/01_installing/lammps_mixed_prec_adroit_gpu_v100.sh
+$ bash lammps_mixed_prec_adroit_gpu_v100.sh | tee lammps_mixed.log
 ```
 
 Below is a sample Slurm script:
