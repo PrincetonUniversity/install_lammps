@@ -621,14 +621,14 @@ Below is a sample Slurm script:
 #SBATCH --ntasks=14              # total number of tasks across all nodes
 #SBATCH --cpus-per-task=1        # cpu-cores per task (>1 if multi-threaded tasks)
 #SBATCH --mem-per-cpu=4G         # memory per cpu-core (4G is default)
-#SBATCH --gres=gpu:tesla_v100:2  # number of V100 GPUs
+#SBATCH --gres=gpu:1             # number of GPUs per node
 #SBATCH --time=00:05:00          # total run time limit (HH:MM:SS)
 
 module purge
 module load intel/19.0/64/19.0.5.281 intel-mpi/intel/2018.3/64
 export OMP_NUM_THREADS=$SLURM_CPUS_PER_TASK
 
-srun $HOME/.local/bin/lmp_adroitGPU -sf gpu -pk gpu 2 -in in.melt.gpu
+srun $HOME/.local/bin/lmp_adroitGPU -sf gpu -pk gpu 1 -in in.melt.gpu
 ```
 
 ## LAMMPS with Python Interface
