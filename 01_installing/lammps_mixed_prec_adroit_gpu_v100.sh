@@ -3,7 +3,7 @@
 # build mixed-precision version with user-intel with V100 GPU acceleration
 
 VERSION=29Oct2020
-#wget https://github.com/lammps/lammps/archive/stable_${VERSION}.tar.gz
+wget https://github.com/lammps/lammps/archive/stable_${VERSION}.tar.gz
 tar zxf stable_${VERSION}.tar.gz
 cd lammps-stable_${VERSION}
 mkdir build && cd build
