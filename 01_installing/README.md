@@ -62,6 +62,9 @@ ASPHERE KOKKOS KSPACE MANYBODY MISC MOLECULE MPIIO REPLICA RIGID SNAP USER-REAXC
 Obtain the image:
 
 ```
+$ ssh <YourNetID>@della-gpu.princeton.edu
+$ mkdir -p software/lammps_container
+$ cd software/lammps_container
 $ singularity pull docker://nvcr.io/hpc/lammps:10Feb2021
 ```
 
@@ -88,16 +91,24 @@ module purge
 #module load openmpi/gcc/4.1.0
 export OMP_NUM_THREADS=$SLURM_CPUS_PER_TASK
 
-singularity run --nv -B $PWD:/host_pwd --pwd /host_pwd lammps_10Feb2021.sif ./run_lammps.sh
+singularity run --nv -B $PWD:/host_pwd --pwd /host_pwd $HOME/software/lammps_container/lammps_10Feb2021.sif ./run_lammps.sh
 
 #srun --mpi=pmi2 \
 #singularity run --nv -B $PWD:/host_pwd --pwd /host_pwd lammps_10Feb2021.sif \
 #lmp -k on g ${gpu_count} -sf kk -pk kokkos cuda/aware on neigh full comm device binsize 2.8 -in in.melt
 ```
 
+Make `run_lammps.sh` executable:
+
+```
+$ chmod u+x run_lammps.sh
+```
+
 Below is the contents of run_lammps.sh:
 
 ```
+$ cat run_lammps.sh
+
 #!/bin/bash
 set -euf -o pipefail
 readonly gpu_count=${1:-$(nvidia-smi --list-gpus | wc -l)}
