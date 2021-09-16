@@ -605,13 +605,13 @@ export OMP_NUM_THREADS=$SLURM_CPUS_PER_TASK
 srun $HOME/.local/bin/lmp_adroit -sf omp -in in.melt
 ```
 
-#### Mixed-precision V100 GPU version
+#### Mixed-precision A100 GPU version
 
 ```
 $ ssh <YourNetID>@adroit.princeton.edu
 $ cd software  # or another directory
-$ wget https://raw.githubusercontent.com/PrincetonUniversity/install_lammps/master/01_installing/lammps_mixed_prec_adroit_gpu_v100.sh
-$ bash lammps_mixed_prec_adroit_gpu_v100.sh | tee lammps_mixed.log
+$ wget https://raw.githubusercontent.com/PrincetonUniversity/install_lammps/master/01_installing/lammps_mixed_prec_adroit_gpu_a100.sh
+$ bash lammps_mixed_prec_adroit_gpu_a100.sh | tee lammps_mixed.log
 ```
 
 Below is a sample Slurm script:
@@ -625,9 +625,11 @@ Below is a sample Slurm script:
 #SBATCH --mem-per-cpu=4G         # memory per cpu-core (4G is default)
 #SBATCH --gres=gpu:1             # number of GPUs per node
 #SBATCH --time=00:05:00          # total run time limit (HH:MM:SS)
+#SBATCH --constraint=a100
 
 module purge
-module load intel/19.0/64/19.0.5.281 intel-mpi/intel/2018.3/64
+module load intel/19.1.1.217 intel-mpi/intel/2019.7
+module load cudatoolkit/11.4
 export OMP_NUM_THREADS=$SLURM_CPUS_PER_TASK
 
 srun $HOME/.local/bin/lmp_adroitGPU -sf gpu -pk gpu 1 -in in.melt.gpu
