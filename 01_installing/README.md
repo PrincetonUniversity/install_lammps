@@ -534,8 +534,8 @@ module load intel/19.1.1.217 intel-mpi/intel/2019.7
 cmake3 -D CMAKE_INSTALL_PREFIX=$HOME/.local -D LAMMPS_MACHINE=adroit -D ENABLE_TESTING=yes \
 -D BUILD_MPI=yes -D BUILD_OMP=yes -D CMAKE_CXX_COMPILER=icpc -D CMAKE_BUILD_TYPE=Release \
 -D CMAKE_Fortran_COMPILER=/opt/intel/compilers_and_libraries_2020.1.217/linux/bin/intel64/ifort \
--D CMAKE_CXX_FLAGS_RELEASE="-Ofast -DNDEBUG" -D PKG_USER-OMP=yes \
--D PKG_KSPACE=yes -D FFT=MKL -D FFT_SINGLE=yes \
+-D CMAKE_CXX_FLAGS_RELEASE="-Ofast -xHost -DNDEBUG" -D PKG_USER-OMP=yes \
+-D PKG_KSPACE=yes -D FFT=MKL -D FFT_SINGLE=no \
 -D PKG_MOLECULE=yes -D PKG_RIGID=yes  ../cmake
 
 make -j 10
