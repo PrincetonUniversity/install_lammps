@@ -528,7 +528,8 @@ Adroit is a heterogeneous cluster with nodes having different microarchitectures
 
 ```
 module purge
-module load intel/19.0/64/19.0.5.281 intel-mpi/intel/2018.3/64
+module load intel/19.1.1.217 intel-mpi/intel/2019.7
+module load cudatoolkit/11.4
 
 # copy and paste the next 4 lines into the terminal
 cmake3 -D CMAKE_INSTALL_PREFIX=$HOME/.local -D LAMMPS_MACHINE=adroit -D ENABLE_TESTING=yes \
