@@ -529,7 +529,6 @@ Adroit is a heterogeneous cluster with nodes having different microarchitectures
 ```
 module purge
 module load intel/19.1.1.217 intel-mpi/intel/2019.7
-module load cudatoolkit/11.4
 
 # copy and paste the next 4 lines into the terminal
 cmake3 -D CMAKE_INSTALL_PREFIX=$HOME/.local -D LAMMPS_MACHINE=adroit -D ENABLE_TESTING=yes \
@@ -559,7 +558,6 @@ Below is a sample Slurm script:
 
 module purge
 module load intel/19.1.1.217 intel-mpi/intel/2019.7
-module load cudatoolkit/11.4
 export OMP_NUM_THREADS=$SLURM_CPUS_PER_TASK
 
 srun $HOME/.local/bin/lmp_adroit -sf omp -in in.melt
