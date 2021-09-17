@@ -558,7 +558,8 @@ Below is a sample Slurm script:
 #SBATCH --time=00:05:00          # total run time limit (HH:MM:SS)
 
 module purge
-module load intel/19.0/64/19.0.5.281 intel-mpi/intel/2018.3/64
+module load intel/19.1.1.217 intel-mpi/intel/2019.7
+module load cudatoolkit/11.4
 export OMP_NUM_THREADS=$SLURM_CPUS_PER_TASK
 
 srun $HOME/.local/bin/lmp_adroit -sf omp -in in.melt
