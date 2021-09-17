@@ -534,6 +534,7 @@ module load cudatoolkit/11.4
 # copy and paste the next 4 lines into the terminal
 cmake3 -D CMAKE_INSTALL_PREFIX=$HOME/.local -D LAMMPS_MACHINE=adroit -D ENABLE_TESTING=yes \
 -D BUILD_MPI=yes -D BUILD_OMP=yes -D CMAKE_CXX_COMPILER=icpc -D CMAKE_BUILD_TYPE=Release \
+-D CMAKE_Fortran_COMPILER=/opt/intel/compilers_and_libraries_2020.1.217/linux/bin/intel64/ifort \
 -D CMAKE_CXX_FLAGS_RELEASE="-Ofast -DNDEBUG" -D PKG_USER-OMP=yes \
 -D PKG_KSPACE=yes -D FFT=MKL -D FFT_SINGLE=yes \
 -D PKG_MOLECULE=yes -D PKG_RIGID=yes  ../cmake
