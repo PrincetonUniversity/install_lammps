@@ -526,21 +526,13 @@ Adroit is a heterogeneous cluster with nodes having different microarchitectures
 
 #### Double-precision CPU version
 
+If for some reason you don't want to use the GPU nodes then the following directions will produce a parallel version of LAMMPS for the CPU nodes of Adroit:
+
 ```
-module purge
-module load intel/19.1.1.217 intel-mpi/intel/2019.7
-
-# copy and paste the next 4 lines into the terminal
-cmake3 -D CMAKE_INSTALL_PREFIX=$HOME/.local -D LAMMPS_MACHINE=adroit -D ENABLE_TESTING=yes \
--D BUILD_MPI=yes -D BUILD_OMP=yes -D CMAKE_CXX_COMPILER=icpc -D CMAKE_BUILD_TYPE=Release \
--D CMAKE_Fortran_COMPILER=/opt/intel/compilers_and_libraries_2020.1.217/linux/bin/intel64/ifort \
--D CMAKE_CXX_FLAGS_RELEASE="-Ofast -xHost -DNDEBUG" -D PKG_USER-OMP=yes \
--D PKG_KSPACE=yes -D FFT=MKL -D FFT_SINGLE=no \
--D PKG_MOLECULE=yes -D PKG_RIGID=yes  ../cmake
-
-make -j 10
-make test
-make install
+$ ssh <YourNetID>@adroit.princeton.edu
+$ cd software  # or another directory
+$ https://raw.githubusercontent.com/PrincetonUniversity/install_lammps/master/01_installing/adroit/lammps_double_prec_adroit_cpu.sh
+$ bash lammps_double_prec_adroit_cpu.sh | tee lammps_adroit_cpu.log
 ```
 
 The LAMMPS build system will add `-qopenmp` and `-restrict` to the CXX_FLAGS.
@@ -555,12 +547,15 @@ Below is a sample Slurm script:
 #SBATCH --cpus-per-task=1        # cpu-cores per task (>1 if multi-threaded tasks)
 #SBATCH --mem-per-cpu=1G         # memory per cpu-core (4G is default)
 #SBATCH --time=00:05:00          # total run time limit (HH:MM:SS)
+#SBATCH --mail-type=begin        # send email when job begins
+#SBATCH --mail-type=end          # send email when job ends
+#SBATCH --mail-user=<YourNetID>@princeton.edu
 
 module purge
 module load intel/19.1.1.217 intel-mpi/intel/2019.7
 export OMP_NUM_THREADS=$SLURM_CPUS_PER_TASK
 
-srun $HOME/.local/bin/lmp_adroit -sf omp -in in.melt
+srun $HOME/.local/bin/lmp_adroit -in in.melt
 ```
 
 #### Mixed-precision A100 GPU version
