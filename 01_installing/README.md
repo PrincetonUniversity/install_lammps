@@ -563,7 +563,7 @@ srun $HOME/.local/bin/lmp_adroit -in in.melt
 ```
 $ ssh <YourNetID>@adroit.princeton.edu
 $ cd software  # or another directory
-$ wget https://raw.githubusercontent.com/PrincetonUniversity/install_lammps/master/01_installing/lammps_mixed_prec_adroit_gpu_a100.sh
+$ wget https://raw.githubusercontent.com/PrincetonUniversity/install_lammps/master/01_installing/adroit/lammps_mixed_prec_adroit_gpu_a100.sh
 $ bash lammps_mixed_prec_adroit_gpu_a100.sh | tee lammps_mixed.log
 ```
 
