@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# double-precision build for multinode CPU jobs
+# double-precision build for single- and multi-node CPU jobs
 
 VERSION=31Aug2021
 wget https://github.com/lammps/lammps/archive/refs/tags/patch_${VERSION}.tar.gz
@@ -8,6 +8,7 @@ tar zvxf patch_${VERSION}.tar.gz
 cd lammps-patch_${VERSION}
 mkdir build && cd build
 
+# include the modules below in your Slurm scipt
 module purge
 module load intel/19.1.1.217 intel-mpi/intel/2019.7
 
