@@ -20,5 +20,5 @@ cmake3 -D CMAKE_INSTALL_PREFIX=$HOME/.local \
 -D PKG_OPENMP=yes -D PKG_MOLECULE=yes -D PKG_RIGID=yes ../cmake
 
 make -j 8
-#make test # test will fails with compiler optimizations turned on
+#make test # tests fail with compiler optimizations turned on (as they should)
 make install
