@@ -1,6 +1,6 @@
 # Adroit
 
-#### Mixed-precision A100 GPU version
+### Mixed-precision A100 GPU version
 
 Run the commands below to build a version of LAMMPS for the A100 GPUs:
 
