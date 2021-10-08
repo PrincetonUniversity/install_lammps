@@ -1,6 +1,6 @@
 # Adroit
 
-## Mixed-precision A100 GPU version
+#### Mixed-precision A100 GPU version
 
 Run the commands below to build a version of LAMMPS for the A100 GPUs:
 
@@ -37,7 +37,7 @@ srun $HOME/.local/bin/lmp_adroitGPU -sf gpu -pk gpu 1 -in in.melt.gpu
 
 A CPU version of LAMMPS on Adroit can be built as follows:
 
-## Double-precision CPU version
+### Double-precision CPU version
 
 If for some reason you don't want to use the GPU nodes then the following directions will produce a parallel version of LAMMPS for the CPU nodes of Adroit:
 
