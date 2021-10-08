@@ -479,6 +479,9 @@ Below is a sample Slurm script to run a simple Lennard-Jones melt:
 #SBATCH --mem=8G                 # total memory per node (4G is default per cpu-core)
 #SBATCH --gres=gpu:1             # number of gpus per node
 #SBATCH --time=00:05:00          # total run time limit (HH:MM:SS)
+#SBATCH --mail-type=begin        # send email when job begins
+#SBATCH --mail-type=end          # send email when job ends
+#SBATCH --mail-user=<YourNetID>@princeton.edu
 
 module purge
 module load openmpi/gcc/4.1.1/64
