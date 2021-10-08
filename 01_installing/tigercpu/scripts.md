@@ -2,7 +2,7 @@
 
 This cluster is composed of 408 nodes with 40 CPU-cores per node. TigerCPU should be used for running multi-node parallel jobs. Single-node jobs should be run on Della.
 
-#### Mixed-precision version
+### Mixed-precision version
 
 ```
 $ ssh <YourNetID>@tigercpu.princeton.edu
@@ -33,7 +33,7 @@ srun $HOME/.local/bin/lmp_tigerCpu -sf intel -in in.melt
 
 The user should vary the various quantities in the Slurm script to find the optimal values.
 
-#### Double-precision version
+### Double-precision version
 
 ```
 # make sure you are on tigercpu.princeton.edu
