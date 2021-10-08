@@ -1,6 +1,6 @@
-# TigerCPU
+# LAMMPS on TigerCPU
 
-This cluster is composed of 408 nodes with 40 CPU-cores per node. TigerCPU should be used for running multi-node parallel jobs. Single-node jobs should be run on Della. Connect with: `ssh <NetID>@tigercpu.princeton.edu`.
+This cluster is composed of 408 nodes with 40 CPU-cores per node. TigerCPU should be used for running multi-node parallel jobs. Single-node jobs should be run on Della.
 
 #### Mixed-precision version
 
