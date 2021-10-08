@@ -51,10 +51,6 @@ Note that you may find that some of the tests associated with version 29Oct2020 
 
 The next set of directions vary by cluster. Follow the directions below for the cluster of interest.
 
-## Della-GPU
-
-See [this page](della-gpu/scripts.md).
-
 ## Stellar
 
 See the stellar-intel directory at the top of this page. Most users should choose the user-intel version as below:
@@ -86,18 +82,6 @@ export OMP_NUM_THREADS=$SLURM_CPUS_PER_TASK
 
 srun $HOME/.local/bin/lmp_user_intel -sf intel -in in.melt
 ```
-
-## TigerGPU
-
-See [this page](tigergpu/scripts.md).
-
-## TigerCPU
-
-See [this page](tigercpu/scripts.md).
-
-## Della (CPU)
-
-See [this page](della/scripts.md).
 
 ## Traverse
 
@@ -173,10 +157,25 @@ run             10000
 
 To use 2 GPUs, replace `package gpu 1` with `package gpu 2` and `-sf gpu` with `-sf gpu -pk gpu 2` and `#SBATCH --gres=gpu:1` with `#SBATCH --gres=gpu:2`.
 
+## TigerGPU
+
+See [this page](tigergpu/scripts.md).
+
+## TigerCPU
+
+See [this page](tigercpu/scripts.md).
+
+## Della-GPU
+
+See [this page](della-gpu/scripts.md).
+
+## Della (CPU)
+
+See [this page](della/scripts.md).
+
 ## Adroit
 
 See build scripts [here](adroit/scripts.md).
-
 
 ## LAMMPS with Python Interface
 
