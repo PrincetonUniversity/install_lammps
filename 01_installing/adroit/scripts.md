@@ -8,6 +8,7 @@ Run the commands below to build a version of LAMMPS for the A100 GPUs with [USER
 $ ssh <YourNetID>@adroit.princeton.edu
 $ cd software  # or another directory
 $ wget https://raw.githubusercontent.com/PrincetonUniversity/install_lammps/master/01_installing/adroit/lammps_mixed_prec_adroit_gpu_a100.sh
+# use a text editor to inspect lammps_mixed_prec_adroit_gpu_a100.sh and make modifications if necessary (e.g., add/remove LAMMPS packages)
 $ bash lammps_mixed_prec_adroit_gpu_a100.sh | tee install_lammps.log
 ```
 
@@ -50,6 +51,7 @@ If for some reason you don't want to use the GPU nodes then the following direct
 $ ssh <YourNetID>@adroit.princeton.edu
 $ cd software  # or another directory
 $ https://raw.githubusercontent.com/PrincetonUniversity/install_lammps/master/01_installing/adroit/lammps_double_prec_adroit_cpu.sh
+# use a text editor to inspect lammps_double_prec_adroit_cpu.sh and make modifications if necessary (e.g., add/remove LAMMPS packages)
 $ bash lammps_double_prec_adroit_cpu.sh | tee install_lammps_cpu.log
 ```
 
