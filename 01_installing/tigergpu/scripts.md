@@ -29,7 +29,8 @@ The following Slurm script can be used to run the job on the TigerGPU cluster:
 #SBATCH --mail-user=<YourNetID>@princeton.edu
 
 module purge
-module load intel/18.0/64/18.0.3.222 intel-mpi/intel/2018.3/64
+module load intel/18.0/64/18.0.3.222
+module load intel-mpi/intel/2018.3/64
 export OMP_NUM_THREADS=$SLURM_CPUS_PER_TASK
 
 srun $HOME/.local/bin/lmp_tigerGpu -sf gpu -in in.melt
