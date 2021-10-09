@@ -31,3 +31,8 @@ The path above corresponds to the module `intel/19.0/64/19.0.5.281`. Use `module
 #### make test
 
 The "make test" command in many of the install scripts is commented out. This is due to way that LAMMPS handles running unit tests ([read more](https://sourceforge.net/p/lammps/mailman/message/37352519/)). In short, multiple tests typically fail when compiler optimizations (e.g., -O2) are turned on. You may consider doing a test install with "-O0" and then if all tests pass do the actual install with something like "-Ofast".
+
+Some questions to think about are:
+* do you need to add LAMMPS packages to the script?
+* can you use the mixed-precision version of the code versus double precision?
+* should you use the latest stable release version or a recent patch version?
