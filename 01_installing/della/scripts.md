@@ -1,4 +1,4 @@
-# Della
+# Della (CPU)
 
 Della is a heterogeneous cluster composed of more than 250 Intel nodes. The microarchitectures of the nodes are Cascade Lake, SkyLake, Broadwell, Haswell, Ivybridge. Della can be used to run a variety of jobs from single-core to parallel, multi-node. The head node features Intel Broadwell CPUs.
 
