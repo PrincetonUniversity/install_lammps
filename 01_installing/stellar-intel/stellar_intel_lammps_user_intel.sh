@@ -1,6 +1,11 @@
 #!/bin/bash
 
 VERSION=29Oct2020
+
+#############################################################
+# you probably do not need to change anything below this line
+#############################################################
+
 wget https://github.com/lammps/lammps/archive/stable_${VERSION}.tar.gz
 tar zxf stable_${VERSION}.tar.gz
 cd lammps-stable_${VERSION}
@@ -24,5 +29,5 @@ cmake3 -D CMAKE_INSTALL_PREFIX=$HOME/.local \
 -D PKG_KSPACE=yes -D FFT=MKL -D FFT_SINGLE=yes \
 -D PKG_USER-INTEL=yes -D INTEL_ARCH=cpu -D INTEL_LRT_MODE=threads ../cmake
 
-make -j 32
+make -j 16
 make install
