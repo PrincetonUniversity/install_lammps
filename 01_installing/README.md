@@ -1,8 +1,6 @@
 # Installing and Running LAMMPS on the HPC Clusters
 
-Below are a set of directions for building CPU and GPU versions of the code on the HPC clusters. LAMMPS can be built in many different ways. You may need to include additional packages when building the executable for your work. The build procedures below are just samples.
-
-The next set of directions vary by cluster. Follow the directions below for the cluster of interest.
+This repo provides sample install scripts for LAMMPS. Most users will be able to use these scripts without making changes. You many need to modify a script to include additional LAMMPS packages or to use a different version.
 
 ## Choose a cluster
 
