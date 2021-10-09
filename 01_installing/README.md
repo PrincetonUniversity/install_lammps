@@ -1,6 +1,6 @@
 # Installing and Running LAMMPS on the HPC Clusters
 
-This repo provides sample install scripts for LAMMPS. Most users will be able to use these scripts without making changes. You many need to modify a script to include additional LAMMPS packages or to use a different version.
+This repo provides sample install scripts for LAMMPS. Most users will be able to use these scripts without making changes. Changes are needed when you need to include additional LAMMPS packages or to install a different version of the software. See the [notes](misc/notes.md) page for more.
 
 ## Choose a cluster
 
