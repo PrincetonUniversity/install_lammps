@@ -35,4 +35,4 @@ export OMP_NUM_THREADS=$SLURM_CPUS_PER_TASK
 srun $HOME/.local/bin/lmp_user_intel -sf intel -in in.melt
 ```
 
-Users will need to find the optimal values for `nodes`, `ntasks` and `cpus-per-task`. This can be done by conducting a [scaling analysis](https://researchcomputing.princeton.edu/support/knowledge-base/scaling-analysis). All users for follow the [Stellar guidelines](https://researchcomputing.princeton.edu/systems/stellar#guidelines).
+Users will need to find the optimal values for `nodes`, `ntasks` and `cpus-per-task`. This can be done by conducting a [scaling analysis](https://researchcomputing.princeton.edu/support/knowledge-base/scaling-analysis). All users should follow the [Stellar guidelines](https://researchcomputing.princeton.edu/systems/stellar#guidelines).
