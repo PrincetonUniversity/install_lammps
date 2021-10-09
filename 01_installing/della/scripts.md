@@ -10,6 +10,7 @@ Run the commands below to build LAMMPS in mixed precision for Della:
 $ ssh <YourNetID>@della.princeton.edu
 $ cd software  # or another directory
 $ wget https://raw.githubusercontent.com/PrincetonUniversity/install_lammps/master/01_installing/della/lammps_mixed_prec_della.sh
+# use a text editor to inspect lammps_mixed_prec_della.sh and make modifications if necessary (e.g., add/remove LAMMPS packages)
 $ bash lammps_mixed_prec_della.sh | tee lammps_mixed.log
 ```
 
@@ -43,6 +44,7 @@ Run the commands below to build LAMMPS in double precision for Della:
 $ ssh <YourNetID>@della.princeton.edu
 $ cd software  # or another directory
 $ wget https://raw.githubusercontent.com/PrincetonUniversity/install_lammps/master/01_installing/della/lammps_double_prec_della.sh
+# use a text editor to inspect lammps_double_prec_della.sh and make modifications if necessary (e.g., add/remove LAMMPS packages)
 $ bash lammps_double_prec_della.sh | tee lammps_double.log
 ```
 
