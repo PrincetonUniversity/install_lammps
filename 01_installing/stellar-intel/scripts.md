@@ -29,7 +29,8 @@ The following Slurm script can be used on stellar-intel with the user-intel vers
 #SBATCH --mail-user=<YourNetID>@princeton.edu
 
 module purge
-module load intel/19.1.1.217 intel-mpi/intel/2019.7
+module load intel/19.1.1.217
+module load intel-mpi/intel/2019.7
 export OMP_NUM_THREADS=$SLURM_CPUS_PER_TASK
 
 srun $HOME/.local/bin/lmp_user_intel -sf intel -in in.melt
