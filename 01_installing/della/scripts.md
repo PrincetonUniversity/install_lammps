@@ -14,7 +14,13 @@ $ wget https://raw.githubusercontent.com/PrincetonUniversity/install_lammps/mast
 $ bash lammps_mixed_prec_della.sh | tee lammps_mixed.log
 ```
 
-The LAMMPS build system will add `-qopenmp`,  `-restrict` and `-xHost` to the CXX_FLAGS. It is normal to see a large number of messages containing the phrase "has been targeted for automatic cpu dispatch".
+It is normal to see the following line when compiling:
+
+```
+remark #15009: _ZN9LAMMPS_NS7ArgInfoC1ERKSsi has been targeted for automatic cpu dispatch
+```
+
+The above arises because the code is being built to run on multiple Intel CPU generations.
 
 The following Slurm script can be used to run the job on Della:
 
