@@ -38,7 +38,7 @@ export OMP_NUM_THREADS=$SLURM_CPUS_PER_TASK
 srun $HOME/.local/bin/lmp_adroitGPU -sf gpu -pk gpu 1 -in in.melt.gpu
 ```
 
-See `in.melt.gpu` [here](../misc/in.melt.gpu). Users will need to find the optimal values for `nodes`, `ntasks`, `cpus-per-task` and `gres`. This can be done by conducting a [scaling analysis](https://researchcomputing.princeton.edu/support/knowledge-base/scaling-analysis).
+View the [in.melt.gpu](../misc/in.melt.gpu) file. Users will need to find the optimal values for `nodes`, `ntasks`, `cpus-per-task` and `gres`. This can be done by conducting a [scaling analysis](https://researchcomputing.princeton.edu/support/knowledge-base/scaling-analysis).
 
 # Adroit (CPU)
 
@@ -77,7 +77,7 @@ export OMP_NUM_THREADS=$SLURM_CPUS_PER_TASK
 srun $HOME/.local/bin/lmp_adroit -in in.melt
 ```
 
-Users will need to find the optimal values for `nodes`, `ntasks` and `cpus-per-task`. This can be done by conducting a [scaling analysis](https://researchcomputing.princeton.edu/support/knowledge-base/scaling-analysis).
+View the [in.melt](../misc/in.melt) file. Users will need to find the optimal values for `nodes`, `ntasks` and `cpus-per-task`. This can be done by conducting a [scaling analysis](https://researchcomputing.princeton.edu/support/knowledge-base/scaling-analysis).
 
 ## Getting Help
 
