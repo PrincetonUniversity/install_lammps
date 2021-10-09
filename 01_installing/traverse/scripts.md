@@ -8,11 +8,14 @@ Run these commands to install LAMMPS on Traverse:
 $ ssh <YourNetID>@traverse.princeton.edu
 $ cd software  # or another location
 $ wget https://raw.githubusercontent.com/PrincetonUniversity/install_lammps/master/01_installing/traverse/traverse.sh
-# look at traverse.sh and make modifications if necessary (e.g., add/remove LAMMPS packages)
+# use a text editor to inspect traverse.sh and make modifications if necessary (e.g., add/remove LAMMPS packages)
 $ bash traverse.sh | tee install_lammps.log
 ```
 
-Below is a sample Slurm script to run a simple Lennard-Jones melt:
+The executable will be installed into `~/.local/bin` which is included in your `PATH` by default.
+
+
+Below is a sample Slurm script to run a simple Lennard-Jones fluid simulation:
 
 ```bash
 #!/bin/bash
