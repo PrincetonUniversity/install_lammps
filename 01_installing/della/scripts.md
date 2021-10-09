@@ -136,8 +136,9 @@ mpirun -n ${gpu_count} lmp -k on g ${gpu_count} -sf kk -pk kokkos cuda/aware on 
 ```
 $ ssh <YourNetID>@della-gpu.princeton.edu
 $ cd software  # or another directory
-$ wget https://raw.githubusercontent.com/PrincetonUniversity/install_lammps/master/01_installing/della/della_gpu_lammps_double_gcc.sh
-$ bash della_gpu_lammps_double_gcc.sh | tee lammps.log
+$ wget https://raw.githubusercontent.com/PrincetonUniversity/install_lammps/master/01_installing/della/della_gpu_lammps_gcc.sh
+# use a text editor to inspect ldella_gpu_lammps_gcc.sh and make modifications if necessary (e.g., add/remove LAMMPS packages)
+$ bash della_gpu_lammps_gcc.sh | tee install_lammps.log
 ```
 
 ```
