@@ -1,4 +1,4 @@
-# LAMMPS on TigerGPU
+# TigerGPU
 
 This cluster is composed of 80 nodes with 28 CPU-cores per node and 4 NVIDIA P100 GPUs per node. TigerGPU should only be used for multi-node jobs that take advantage of GPUs.
 
