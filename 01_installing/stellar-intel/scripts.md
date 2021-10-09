@@ -1,8 +1,8 @@
 # Stellar
 
-The Intel portion of Stellar is composed of 296 nodes with 96 CPU-cores per node.
+The Intel portion of [Stellar](https://researchcomputing.princeton.edu/systems/stellar) is composed of 296 nodes with 96 CPU-cores per node.
 
-See the stellar-intel directory at the top of this page. Most users should choose the user-intel version as below:
+Run these commands to install LAMMPS with the [Intel-USER](../misc/notes.md#USER-INTEL) package on Stellar:
 
 ```
 $ ssh <YourNetID>@stellar-intel.princeton.edu
@@ -12,7 +12,7 @@ $ wget https://raw.githubusercontent.com/PrincetonUniversity/install_lammps/mast
 $ bash stellar_intel_lammps_user_intel.sh | tee install_lammps.log
 ```
 
-The executable will be installed into `~/.local/bin` which is included in your `PATH` by default.
+The executable will be installed into `~/.local/bin` which is included in your `PATH` by default. See the stellar-intel directory in this repo for alternative builds.
 
 The following Slurm script can be used on stellar-intel with the user-intel version:
 
