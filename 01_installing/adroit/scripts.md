@@ -1,4 +1,4 @@
-# Adroit
+# Adroit (GPU)
 
 ### Mixed-precision A100 GPU version
 
@@ -36,6 +36,8 @@ srun $HOME/.local/bin/lmp_adroitGPU -sf gpu -pk gpu 1 -in in.melt.gpu
 ```
 
 A CPU version of LAMMPS on Adroit can be built as follows:
+
+# Adroit (CPU)
 
 ### Double-precision CPU version
 
