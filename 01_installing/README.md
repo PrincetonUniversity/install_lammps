@@ -4,9 +4,9 @@ This repo provides sample install scripts for LAMMPS. Most users will be able to
 
 ## Choose a cluster
 
-* [Adroit (CPU)](adroit/scripts.md)
-* [Adroit (GPU)](adroit/scripts.md)
-* [Della-GPU](della-gpu/scripts.md)
+* [Adroit (GPU)](adroit/scripts.md#adroit-gpu)
+* [Adroit (CPU)](adroit/scripts.md#adroit-cpu)
+* [Della-GPU](della/scripts.md)
 * [Della CPU](della/scripts.md)
 * [Stellar](stellar-intel/scripts.md)
 * [TigerGPU](tigergpu/scripts.md)
