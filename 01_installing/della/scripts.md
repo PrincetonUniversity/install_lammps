@@ -55,7 +55,7 @@ $ wget https://raw.githubusercontent.com/PrincetonUniversity/install_lammps/mast
 ```
 
 ```
-srun $HOME/.local/bin/lmp_della_double -sf omp -in in.melt
+srun $HOME/.local/bin/lmp_della_double -in in.melt
 ```
 
 # Della-GPU
