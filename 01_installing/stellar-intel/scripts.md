@@ -8,7 +8,7 @@ Run these commands to install LAMMPS with the [Intel-USER](../misc/notes.md#USER
 $ ssh <YourNetID>@stellar-intel.princeton.edu
 $ cd software  # or another directory
 $ wget https://raw.githubusercontent.com/PrincetonUniversity/install_lammps/master/01_installing/stellar-intel/stellar_intel_lammps_user_intel.sh
-# use a text editor to inspect traverse.sh and make modifications if necessary (e.g., add/remove LAMMPS packages)
+# use a text editor to inspect stellar_intel_lammps_user_intel.sh and make modifications if necessary (e.g., add/remove LAMMPS packages)
 $ bash stellar_intel_lammps_user_intel.sh | tee install_lammps.log
 ```
 
