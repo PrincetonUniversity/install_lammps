@@ -60,9 +60,9 @@ srun $HOME/.local/bin/lmp_della_double -in in.melt
 
 # Della-GPU
 
-It is proving difficult to find a procedure to build LAMMPS that performs optimally on della-gpu. Right now it appears the best approach is to use the [NGC container](https://ngc.nvidia.com/catalog/containers/hpc:lammps) with 1 CPU-core and 1 GPU.
-
 ### NGC Container
+
+Right now it appears the best approach is to use the [NGC container](https://ngc.nvidia.com/catalog/containers/hpc:lammps) with 1 CPU-core and 1 GPU.
 
 The [NGC container](https://ngc.nvidia.com/catalog/containers/hpc:lammps) provides the following packages:
 
