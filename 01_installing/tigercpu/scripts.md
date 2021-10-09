@@ -4,14 +4,15 @@ This cluster is composed of 408 nodes with 40 CPU-cores per node. TigerCPU shoul
 
 ### Mixed-precision version
 
+Run the commands below to build a version of LAMMPS for tigercpu with [USER-INTEL](../misc/notes.md#USER-INTEL):
+
 ```
 $ ssh <YourNetID>@tigercpu.princeton.edu
 $ cd software  # or another directory
 $ wget https://raw.githubusercontent.com/PrincetonUniversity/install_lammps/master/01_installing/tigercpu/tigerCpu_user_intel.sh
 $ bash tigerCpu_user_intel.sh | tee install_lammps.log
 ```
-
-Note that the LAMMPS build system will add `-qopenmp`, `-restrict` and `-xHost` to the CXX_FLAGS.
+The executable will be installed into `~/.local/bin` which is included in your `PATH` by default.
 
 Below is a sample Slurm script:
 
@@ -35,7 +36,7 @@ export OMP_NUM_THREADS=$SLURM_CPUS_PER_TASK
 srun $HOME/.local/bin/lmp_tigerCpu -sf intel -in in.melt
 ```
 
-The user should vary the various quantities in the Slurm script to find the optimal values.
+View the [in.melt](../misc/in.melt) file. Users will need to find the optimal values for `nodes`, `ntasks` and `cpus-per-task`. This can be done by conducting a [scaling analysis](https://researchcomputing.princeton.edu/support/knowledge-base/scaling-analysis).
 
 ### Double-precision version
 
