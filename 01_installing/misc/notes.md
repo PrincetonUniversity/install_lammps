@@ -12,6 +12,14 @@ module load intel/18.0/64/18.0.3.222
 module load intel-mpi/intel/2018.3/64
 ```
 
+```
+VERSION=4Feb2020
+wget https://github.com/lammps/lammps/archive/patch_${VERSION}.tar.gz
+tar zxf patch_${VERSION}.tar.gz
+cd lammps-patch_${VERSION}
+mkdir build && cd build
+```
+
 That is, the patched version of the latest release is needed and the Intel 2018 compiler should be used instead of 2019. For more see [this post](https://lammps.sandia.gov/threads/msg85269.html) on the LAMMPS mailing list.
 
 ## Issue with version 29Oct2020
