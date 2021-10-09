@@ -6,7 +6,7 @@ Della is a heterogeneous cluster composed of more than 250 Intel nodes. The micr
 
 Run the commands below to build LAMMPS in mixed precision for Della:
 
-```
+```bash
 $ ssh <YourNetID>@della.princeton.edu
 $ cd software  # or another directory
 $ wget https://raw.githubusercontent.com/PrincetonUniversity/install_lammps/master/01_installing/della/lammps_mixed_prec_della.sh
@@ -24,7 +24,7 @@ The above arises because the code is being built to run on multiple Intel CPU ge
 
 The following Slurm script can be used to run the job on Della:
 
-```
+```bash
 #!/bin/bash
 #SBATCH --job-name=lj-melt                       # create a short name for your job
 #SBATCH --nodes=1                                # node count
