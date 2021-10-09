@@ -14,7 +14,6 @@ $ bash traverse.sh | tee install_lammps.log
 
 The executable will be installed into `~/.local/bin` which is included in your `PATH` by default.
 
-
 Below is a sample Slurm script to run a simple Lennard-Jones fluid simulation:
 
 ```bash
