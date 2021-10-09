@@ -1,11 +1,6 @@
 #!/bin/bash
 
 VERSION=29Oct2020
-
-#############################################################
-# you probably do not need to change anything below this line
-#############################################################
-
 wget https://github.com/lammps/lammps/archive/stable_${VERSION}.tar.gz
 tar zxf stable_${VERSION}.tar.gz
 cd lammps-stable_${VERSION}
