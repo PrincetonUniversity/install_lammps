@@ -35,4 +35,4 @@ The user should vary the various quantities in the Slurm script to find the opti
 
 ### Double-precision version
 
-The code could also be built without [USER-INTEL](../misc/notes.md#USER-INTEL).
+The code could also be built without [USER-INTEL](../misc/notes.md#user-intel).
