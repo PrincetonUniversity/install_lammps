@@ -2,7 +2,7 @@
 
 ### Mixed-precision A100 GPU version
 
-Run the commands below to build a version of LAMMPS for the A100 GPUs:
+Run the commands below to build a version of LAMMPS for the A100 GPUs with [USER-INTEL](../misc/notes.md#USER-INTEL):
 
 ```
 $ ssh <YourNetID>@adroit.princeton.edu
@@ -10,6 +10,8 @@ $ cd software  # or another directory
 $ wget https://raw.githubusercontent.com/PrincetonUniversity/install_lammps/master/01_installing/adroit/lammps_mixed_prec_adroit_gpu_a100.sh
 $ bash lammps_mixed_prec_adroit_gpu_a100.sh | tee install_lammps.log
 ```
+
+The executable will be installed into `~/.local/bin` which is included in your `PATH` by default.
 
 Below is a sample Slurm script:
 
@@ -36,9 +38,7 @@ export OMP_NUM_THREADS=$SLURM_CPUS_PER_TASK
 srun $HOME/.local/bin/lmp_adroitGPU -sf gpu -pk gpu 1 -in in.melt.gpu
 ```
 
-See `in.melt.gpu` [here](../misc/in.melt.gpu).
-
-A CPU version of LAMMPS on Adroit can be built as follows:
+See `in.melt.gpu` [here](../misc/in.melt.gpu). Users will need to find the optimal values for `nodes`, `ntasks`, `cpus-per-task` and `gres`. This can be done by conducting a [scaling analysis](https://researchcomputing.princeton.edu/support/knowledge-base/scaling-analysis).
 
 # Adroit (CPU)
 
@@ -50,7 +50,7 @@ If for some reason you don't want to use the GPU nodes then the following direct
 $ ssh <YourNetID>@adroit.princeton.edu
 $ cd software  # or another directory
 $ https://raw.githubusercontent.com/PrincetonUniversity/install_lammps/master/01_installing/adroit/lammps_double_prec_adroit_cpu.sh
-$ bash lammps_double_prec_adroit_cpu.sh | tee lammps_adroit_cpu.log
+$ bash lammps_double_prec_adroit_cpu.sh | tee install_lammps_cpu.log
 ```
 
 The LAMMPS build system will add `-qopenmp` and `-restrict` to the CXX_FLAGS.
@@ -70,8 +70,15 @@ Below is a sample Slurm script:
 #SBATCH --mail-user=<YourNetID>@princeton.edu
 
 module purge
-module load intel/19.1.1.217 intel-mpi/intel/2019.7
+module load intel/19.1.1.217
+module load intel-mpi/intel/2019.7
 export OMP_NUM_THREADS=$SLURM_CPUS_PER_TASK
 
 srun $HOME/.local/bin/lmp_adroit -in in.melt
 ```
+
+Users will need to find the optimal values for `nodes`, `ntasks` and `cpus-per-task`. This can be done by conducting a [scaling analysis](https://researchcomputing.princeton.edu/support/knowledge-base/scaling-analysis).
+
+## Getting Help
+
+If you encounter any difficulties while working with LAMMPS then please send an email to <a href="mailto:cses@princeton.edu">cses@princeton.edu</a> or attend a [help session](https://researchcomputing.princeton.edu/support/help-sessions).
