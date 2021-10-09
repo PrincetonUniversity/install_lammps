@@ -5,4 +5,6 @@ This guide explains how to install and run optimized versions of the software on
 
 This guide was written by Princeton Research Computing with contributions from Thomas E. Gartner III of the Chemistry Department and Daniel Kozuch formerly of the Chemical and Biological Engineering Department. If you have an improvement to any of the contents then please submit a pull request or write to <a href="mailto:cses@princeton.edu">cses@princeton.edu</a>.
 
+### Getting Help
+
 If you encounter any difficulties with LAMMPS on our HPC clusters then please send an email to <a href="mailto:cses@princeton.edu">cses@princeton.edu</a> or attend a <a href="https://researchcomputing.princeton.edu/support/help-sessions">help session</a>.
