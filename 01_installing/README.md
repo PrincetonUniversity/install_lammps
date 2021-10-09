@@ -125,6 +125,11 @@ run             10000
 
 To use 2 GPUs, replace `package gpu 1` with `package gpu 2` and `-sf gpu` with `-sf gpu -pk gpu 2` and `#SBATCH --gres=gpu:1` with `#SBATCH --gres=gpu:2`.
 
+## Stellar
+
+See [this page](stellar-intel/scripts.md).
+
+
 ## TigerGPU
 
 See [this page](tigergpu/scripts.md).
