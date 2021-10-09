@@ -13,6 +13,10 @@ This repo provides sample install scripts for LAMMPS. Most users will be able to
 * [TigerCPU](tigercpu/scripts.md)
 * [Traverse](traverse/scripts.md)
 
+## Other
+* [Building LAMMPS with a Python Interace](misc/python_interface.md)
+* [VMD](misc/vmd.md)
+
 ## Getting Help
 
 If you encounter any difficulties while working with LAMMPS then please send an email to <a href="mailto:cses@princeton.edu">cses@princeton.edu</a> or attend a [help session](https://researchcomputing.princeton.edu/education/help-sessions).
