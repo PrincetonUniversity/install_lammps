@@ -2,10 +2,10 @@
 
 # build a mixed-precision version of lammps for della (cpu) using the user-intel package
 
-version=29Sep2021
-wget https://github.com/lammps/lammps/archive/stable_${version}.tar.gz
-tar zxvf stable_${version}.tar.gz
-cd lammps-stable_${version}
+VERSION=29Sep2021
+wget https://github.com/lammps/lammps/archive/stable_${VERSION}.tar.gz
+tar zxvf stable_${VERSION}.tar.gz
+cd lammps-stable_${VERSION}
 mkdir build && cd build
 
 module purge
