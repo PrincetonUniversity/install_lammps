@@ -36,7 +36,7 @@ export OMP_NUM_THREADS=$SLURM_CPUS_PER_TASK
 srun $HOME/.local/bin/lmp_adroitGPU -sf gpu -pk gpu 1 -in in.melt.gpu
 ```
 
-See `in.melt.gpu` [here](../mics/in.melt.gpu).
+See `in.melt.gpu` [here](../misc/in.melt.gpu).
 
 A CPU version of LAMMPS on Adroit can be built as follows:
 
