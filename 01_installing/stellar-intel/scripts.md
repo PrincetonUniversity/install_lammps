@@ -2,7 +2,7 @@
 
 The Intel portion of [Stellar](https://researchcomputing.princeton.edu/systems/stellar) is composed of 296 nodes with 96 CPU-cores per node.
 
-Run these commands to install LAMMPS with the [Intel-USER](../misc/notes.md#USER-INTEL) package on Stellar:
+Run these commands to install LAMMPS with the [INTEL-USER](../misc/notes.md#USER-INTEL) package on Stellar:
 
 ```
 $ ssh <YourNetID>@stellar-intel.princeton.edu
@@ -36,3 +36,7 @@ srun $HOME/.local/bin/lmp_user_intel -sf intel -in in.melt
 ```
 
 Users will need to find the optimal values for `nodes`, `ntasks` and `cpus-per-task`. This can be done by conducting a [scaling analysis](https://researchcomputing.princeton.edu/support/knowledge-base/scaling-analysis). All users should follow the [Stellar guidelines](https://researchcomputing.princeton.edu/systems/stellar#guidelines).
+
+## Getting Help
+
+If you encounter any difficulties while working with LAMMPS then please send an email to <a href="mailto:cses@princeton.edu">cses@princeton.edu</a> or attend a [help session](https://researchcomputing.princeton.edu/support/help-sessions).
