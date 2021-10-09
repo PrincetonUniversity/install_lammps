@@ -1,10 +1,10 @@
 # Della (CPU)
 
-Della is a heterogeneous cluster composed of more than 250 Intel nodes. The microarchitectures of the nodes are Cascade Lake, SkyLake and Broadwell. Della can be used to run a variety of jobs from single-core to parallel, multi-node jobs.
+[Della](https://researchcomputing.princeton.edu/systems/della) is a heterogeneous cluster. Della can be used to run a variety of jobs from serial to parallel, multinode.
 
 ### Mixed-precision version (recommended)
 
-Run the commands below to build LAMMPS in mixed precision for Della:
+Run the commands below to build LAMMPS in mixed precision for Della with [USER-INTEL](../misc/notes.md#USER-INTEL):
 
 ```bash
 $ ssh <YourNetID>@della.princeton.edu
