@@ -7,12 +7,12 @@ Run these commands to install LAMMPS with the [INTEL-USER](../misc/notes.md#USER
 ```
 $ ssh <YourNetID>@stellar-intel.princeton.edu
 $ cd software  # or another directory
-$ wget https://raw.githubusercontent.com/PrincetonUniversity/install_lammps/master/01_installing/stellar-intel/stellar_intel_lammps_user_intel.sh
+$ wget https://raw.githubusercontent.com/PrincetonUniversity/install_lammps/master/01_installing/stellar/stellar_intel_lammps_user_intel.sh
 # use a text editor to inspect stellar_intel_lammps_user_intel.sh and make modifications if necessary (e.g., add/remove LAMMPS packages)
 $ bash stellar_intel_lammps_user_intel.sh | tee install_lammps.log
 ```
 
-The executable will be installed into `~/.local/bin` which is included in your `PATH` by default. See the stellar-intel directory in this repo for alternative builds.
+The executable will be installed into `~/.local/bin` which is included in your `PATH` by default. See the 01_installing/stellar directory in this repo for alternative builds.
 
 The following Slurm script can be used on stellar-intel with the user-intel version:
 
