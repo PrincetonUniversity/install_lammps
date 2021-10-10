@@ -1,6 +1,6 @@
 # Mixed versus Double Precision
 
-By default LAMMPS stores the main variables in double precision. The USER-INTEL package uses single precision for most variables but double in certain situations such as accumulators. If you are worried that using a mixed precision code is causing problems then do a test against the double precision version. This was done for the standard Lennard-Jones fluid with the following results:
+By default LAMMPS stores the main variables in double precision. The USER-INTEL/INTEL package uses single precision for most variables but double in certain situations such as accumulators. If you are worried that using a mixed precision code is causing problems then do a test against the double precision version. This was done for the standard Lennard-Jones fluid with the following results:
 
 ![](p.png)
 ![](msd.png)
