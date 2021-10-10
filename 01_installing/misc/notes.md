@@ -4,7 +4,7 @@
 
 The performance of the LAMMPS executable can be greatly improved by including the USER-INTEL/INTEL package. The [USER-INTEL/INTEL](https://docs.lammps.org/Build_extras.html#intel) package takes advantage of our Intel hardware and software. The acceleration arises from mixed-precision arithmetic and vectorization. If mixed-precision arithmetic is valid for your work then we recommend the mixed-precision version of LAMMPS. If not then build a double-precision version. Note that one can do [test runs](https://github.com/PrincetonUniversity/install_lammps/tree/master/07_mixed_versus_double) using both versions to see if the results differ substantially.
 
-## Unit Testing
+## Unit testing
 
 The "make test" command in many of the install scripts is omitted. This is due to way that LAMMPS handles running unit tests ([read more](https://sourceforge.net/p/lammps/mailman/message/37352519/)). In short, multiple tests typically fail when compiler optimizations (e.g., -O2) are turned on. You may consider doing a test install with "-O0" and then if all the tests pass do the production install with something like "-Ofast".
 
