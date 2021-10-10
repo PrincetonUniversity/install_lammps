@@ -162,3 +162,7 @@ export OMP_NUM_THREADS=$SLURM_CPUS_PER_TASK
 
 srun $HOME/.local/bin/lmp_della_gpu_gcc -sf gpu -pk gpu 1 -in in.melt.gpu
 ```
+
+## Getting Help
+
+If you encounter any difficulties while working with LAMMPS then please send an email to <a href="mailto:cses@princeton.edu">cses@princeton.edu</a> or attend a [help session](https://researchcomputing.princeton.edu/support/help-sessions).
