@@ -15,7 +15,7 @@ cd build
 module purge
 module load intel/2021.1.2 intel-mpi/intel/2021.1.1
 
-cmake3 -D CMAKE_INSTALL_PREFIX=$HOME/.local -D LAMMPS_MACHINE=double -D ENABLE_TESTING=yes \
+cmake3 -D CMAKE_INSTALL_PREFIX=$HOME/.local -D LAMMPS_MACHINE=double -D ENABLE_TESTING=no \
 -D CMAKE_Fortran_COMPILER=/opt/intel/oneapi/compiler/2021.1.2/linux/bin/intel64/ifort \
 -D BUILD_MPI=yes -D BUILD_OMP=yes -D CMAKE_CXX_COMPILER=icpc -D CMAKE_BUILD_TYPE=Release \
 -D CMAKE_CXX_FLAGS_RELEASE="-Ofast -xHost -DNDEBUG" \
@@ -23,5 +23,4 @@ cmake3 -D CMAKE_INSTALL_PREFIX=$HOME/.local -D LAMMPS_MACHINE=double -D ENABLE_T
 -D PKG_KSPACE=yes -D FFT=MKL -D FFT_SINGLE=no ../cmake
 
 make -j 10
-make test
 make install
