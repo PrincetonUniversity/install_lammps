@@ -36,4 +36,4 @@ cd lammps-patch_${VERSION}
 mkdir build && cd build
 ```
 
-If you have encountering errors when doing biomolecular simulations then see [this post](https://lammps.sandia.gov/threads/msg85269.html) on the LAMMPS mailing list.
+If you encounter errors when doing biomolecular simulations then see [this post](https://lammps.sandia.gov/threads/msg85269.html) on the LAMMPS mailing list.
