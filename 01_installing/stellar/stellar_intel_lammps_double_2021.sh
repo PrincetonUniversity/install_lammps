@@ -13,7 +13,8 @@ mkdir build
 cd build
 
 module purge
-module load intel/2021.1.2 intel-mpi/intel/2021.1.1
+module load intel/2021.1.2
+module load intel-mpi/intel/2021.1.1
 
 cmake3 -D CMAKE_INSTALL_PREFIX=$HOME/.local -D LAMMPS_MACHINE=double -D ENABLE_TESTING=no \
 -D CMAKE_Fortran_COMPILER=/opt/intel/oneapi/compiler/2021.1.2/linux/bin/intel64/ifort \
