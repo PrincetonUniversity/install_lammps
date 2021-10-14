@@ -23,7 +23,7 @@ cmake3 -D CMAKE_INSTALL_PREFIX=$HOME/.local \
 -D PKG_MOLECULE=yes \
 -D PKG_RIGID=yes \
 -D PKG_KSPACE=yes -D FFT=MKL -D FFT_SINGLE=yes \
--D PKG_USER-INTEL=yes -D INTEL_ARCH=cpu -D INTEL_LRT_MODE=threads ../cmake
+-D PKG_INTEL=yes -D INTEL_ARCH=cpu -D INTEL_LRT_MODE=threads ../cmake
 
 make -j 10
 make install
