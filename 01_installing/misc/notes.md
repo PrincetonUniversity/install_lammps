@@ -8,6 +8,10 @@ The performance of the LAMMPS executable can be greatly improved by including th
 
 The "make test" command in many of the install scripts is omitted. This is due to way that LAMMPS handles running unit tests ([read more](https://sourceforge.net/p/lammps/mailman/message/37352519/)). In short, multiple tests typically fail when compiler optimizations (e.g., -O2) are turned on. You may consider doing a test install with "-O0" and then if all the tests pass do the production install with something like "-Ofast".
 
+## Issue with version 29Sept2021
+
+The USER-INTEL package has been renamed to INTEL in the 29Sept2021 stable release. This means that cmake is expecting `-D PKG_INTEL=yes` instead of `-D PKG_USER-INTEL=yes`.
+
 ## Issue with version 29Oct2020
 
 You may encounter the following error when building the code:
