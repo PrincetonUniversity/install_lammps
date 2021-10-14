@@ -23,14 +23,4 @@ cmake3 -D CMAKE_INSTALL_PREFIX=$HOME/.local -D CMAKE_BUILD_TYPE=Release \
 -D PKG_USER-INTEL=yes -D INTEL_ARCH=cpu -D INTEL_LRT_MODE=threads ../cmake
 
 make -j 4
-#make test
 make install
-
-# if you uncomment "make test" you will find:
-# 63% tests passed, 125 tests failed out of 340
-
-# looking at lammps-stable_29Oct2020/build/Testing/Temporary/LastTest.log
-# one can see that the failures seem to arise because the tests do not
-# account for the single precision calculations of user-intel
-
-# one could write to the lammps mailing list to be sure
