@@ -14,5 +14,5 @@ This repo provides sample install scripts for LAMMPS. Most users will be able to
 * [Traverse](ins/traverse/scripts.md)
 
 ## Other
-* [Building LAMMPS with a Python Interface](misc/python_interface.md)
-* [VMD](misc/vmd.md)
+* [Building LAMMPS with a Python Interface](ins/misc/python_interface.md)
+* [VMD](ins/misc/vmd.md)
