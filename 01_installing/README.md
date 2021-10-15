@@ -15,4 +15,4 @@ This repo provides sample install scripts for LAMMPS. Most users will be able to
 
 ## Other
 * [Building LAMMPS with a Python Interface](ins/misc/python_interface.md)
-* [VMD](ins/misc/vmd.md)
+* [VMD Plugins](ins/misc/vmd.md)
