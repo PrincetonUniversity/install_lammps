@@ -5,7 +5,7 @@ LAMMPS can be built with a Python interface as [described here](https://lammps.s
 ```
 $ ssh <YourNetID>@della.princeton.edu
 $ cd software  # or another directory
-$ wget https://raw.githubusercontent.com/PrincetonUniversity/install_lammps/master/01_installing/lammps_mixed_prec_python_della.sh
+$ wget https://raw.githubusercontent.com/PrincetonUniversity/install_lammps/master/01_installing/ins/misc/python_interface.md
 $ bash lammps_mixed_prec_python_della.sh | tee lammps_mixed_python.log
 ```
 

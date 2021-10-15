@@ -7,7 +7,7 @@
 ```bash
 $ ssh <YourNetID>@tigergpu.princeton.edu
 $ cd software  # or another directory
-$ wget https://raw.githubusercontent.com/PrincetonUniversity/install_lammps/master/01_installing/tigergpu/tigerGpu_user_intel.sh
+$ wget https://raw.githubusercontent.com/PrincetonUniversity/install_lammps/master/01_installing/ins/tigergpu/tigerGpu_user_intel.sh
 # use a text editor to inspect tigerGpu_user_intel.sh and make modifications if necessary (e.g., add/remove LAMMPS packages)
 $ bash tigerGpu_user_intel.sh | tee install_lammps.log
 ```

@@ -7,7 +7,7 @@ Run these commands to install LAMMPS on Traverse:
 ```bash
 $ ssh <YourNetID>@traverse.princeton.edu
 $ cd software  # or another location
-$ wget https://raw.githubusercontent.com/PrincetonUniversity/install_lammps/master/01_installing/traverse/traverse.sh
+$ wget https://raw.githubusercontent.com/PrincetonUniversity/install_lammps/master/01_installing/ins/traverse/traverse.sh
 # use a text editor to inspect traverse.sh and make modifications if necessary (e.g., add/remove LAMMPS packages)
 $ bash traverse.sh | tee install_lammps.log
 ```

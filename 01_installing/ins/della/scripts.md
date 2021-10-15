@@ -9,7 +9,7 @@ Run the commands below to build LAMMPS in mixed precision for Della with [USER-I
 ```bash
 $ ssh <YourNetID>@della.princeton.edu
 $ cd software  # or another directory
-$ wget https://raw.githubusercontent.com/PrincetonUniversity/install_lammps/master/01_installing/della/lammps_mixed_prec_della.sh
+$ wget https://raw.githubusercontent.com/PrincetonUniversity/install_lammps/master/01_installing/ins/della/lammps_mixed_prec_della.sh
 # use a text editor to inspect lammps_mixed_prec_della.sh and make modifications if necessary (e.g., add/remove LAMMPS packages)
 $ bash lammps_mixed_prec_della.sh | tee lammps_mixed.log
 ```
@@ -51,7 +51,7 @@ View the [in.melt](../misc/in.melt) file. Users will need to find the optimal va
 Make these changes for the double-precision version:
 
 ```
-$ wget https://raw.githubusercontent.com/PrincetonUniversity/install_lammps/master/01_installing/della/lammps_double_prec_della.sh
+$ wget https://raw.githubusercontent.com/PrincetonUniversity/install_lammps/master/01_installing/ins/della/lammps_double_prec_della.sh
 ```
 
 ```
@@ -136,7 +136,7 @@ mpirun -n ${gpu_count} lmp -k on g ${gpu_count} -sf kk -pk kokkos cuda/aware on 
 ```
 $ ssh <YourNetID>@della-gpu.princeton.edu
 $ cd software  # or another directory
-$ wget https://raw.githubusercontent.com/PrincetonUniversity/install_lammps/master/01_installing/della/della_gpu_lammps_gcc.sh
+$ wget https://raw.githubusercontent.com/PrincetonUniversity/install_lammps/master/01_installing/ins/della/della_gpu_lammps_gcc.sh
 # use a text editor to inspect ldella_gpu_lammps_gcc.sh and make modifications if necessary (e.g., add/remove LAMMPS packages)
 $ bash della_gpu_lammps_gcc.sh | tee install_lammps.log
 ```
