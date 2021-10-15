@@ -29,8 +29,8 @@ Below is a sample Slurm script:
 #SBATCH --mail-user=<YourNetID>@princeton.edu
 
 module purge
-module load intel/18.0/64/18.0.3.222
-module load intel-mpi/intel/2018.3/64
+module load intel/19.1/64/19.1.1.217
+module load intel-mpi/intel/2019.7/64
 export OMP_NUM_THREADS=$SLURM_CPUS_PER_TASK
 
 srun $HOME/.local/bin/lmp_tigerCpu -sf intel -in in.melt
