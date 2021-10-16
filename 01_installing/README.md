@@ -16,4 +16,4 @@ This repo provides sample install scripts for LAMMPS. Most users will be able to
 ## Other
 * [Building LAMMPS with a Python Interface](ins/misc/python_interface.md)
 * [VMD Plugins](ins/misc/vmd.md)
-* [LAMMPS container of NVIDIA GPU Cloud](https://ngc.nvidia.com/catalog/containers/hpc:lammps) and [Singularity](https://researchcomputing.princeton.edu/support/knowledge-base/singularity)
+* [LAMMPS container on NVIDIA GPU Cloud](https://ngc.nvidia.com/catalog/containers/hpc:lammps) and [Singularity](https://researchcomputing.princeton.edu/support/knowledge-base/singularity)
