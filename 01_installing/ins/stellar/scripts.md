@@ -1,6 +1,6 @@
 # Stellar
 
-The Intel portion of [Stellar](https://researchcomputing.princeton.edu/systems/stellar) is composed of 296 nodes with 96 CPU-cores per node. Stellar is designed for multinode jobs. If your jobs uses less than 47 cores then it will land in the `serial` QoS which has the lowest priority.
+The Intel portion of [Stellar](https://researchcomputing.princeton.edu/systems/stellar) is composed of 296 nodes with 96 CPU-cores per node. Stellar is designed for multinode jobs. If your job requests 47 CPU-cores or fewer then it will land in the `serial` QoS which has the lowest priority.
 
 Run these commands to install LAMMPS with the [INTEL-USER](../misc/notes.md#USER-INTEL) package on Stellar:
 
