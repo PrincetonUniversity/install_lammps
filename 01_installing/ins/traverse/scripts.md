@@ -1,6 +1,6 @@
 # Traverse
 
-[Traverse](https://researchcomputing.princeton.edu/systems/traverse) is composed of 46 nodes with 32 physical CPU cores per node (IBM POWER9) and 4 NVIDIA V100 GPUs per node. Each CPU-core can run up to 4 hardware threads.
+[Traverse](https://researchcomputing.princeton.edu/systems/traverse) is composed of 46 nodes with 32 physical CPU-cores per node (IBM POWER9) and 4 NVIDIA V100 GPUs per node. Each CPU-core can run up to 4 hardware threads.
 
 Run these commands to install LAMMPS on Traverse:
 
