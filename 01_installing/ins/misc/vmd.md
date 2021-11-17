@@ -9,10 +9,9 @@ $ wget --no-check-certificate https://www.ks.uiuc.edu/Research/vmd/vmd-1.9.3/fil
 $ tar zxf vmd-1.9.3.bin.LINUXAMD64-CUDA8-OptiX4-OSPRay111p1.opengl.tar.gz
 ```
 
-Next build LAMMPS:
+Next, build LAMMPS:
 
-```
-VERSION=29Sep2021
+<pre>VERSION=29Sep2021
 wget https://github.com/lammps/lammps/archive/stable_${VERSION}.tar.gz
 tar zxvf stable_${VERSION}.tar.gz
 cd lammps-stable_${VERSION}
@@ -33,12 +32,11 @@ cmake3 -D CMAKE_INSTALL_PREFIX=$HOME/.local \
 -D PKG_MOLECULE=yes \
 -D PKG_RIGID=yes \
 -D PKG_KSPACE=yes -D FFT=MKL -D FFT_SINGLE=yes \
--D MOLFILE_INCLUDE_DIR=/home/<YourNetID>/software/vmd_precompiled/vmd-1.9.3/plugins/include -D PKG_MOLFILE=yes \
+<b>-D MOLFILE_INCLUDE_DIR=/home/<YourNetID>/software/vmd_precompiled/vmd-1.9.3/plugins/include -D PKG_MOLFILE=yes \</b>
 -D PKG_INTEL=yes -D INTEL_ARCH=cpu -D INTEL_LRT_MODE=threads ../cmake
 
 make -j 10
-make install
-```
+make install</pre>
 
 Finally, run a test:
 
