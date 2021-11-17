@@ -3,37 +3,40 @@
 Below is a procedure for using the `dump` command with the `molfile` style (be sure to replace `<YourNetID>` twice): 
 
 ```
-mkdir -p software/vmd_precompiled
-cd software/vmd_precompiled
-wget --no-check-certificate https://www.ks.uiuc.edu/Research/vmd/vmd-1.9.3/files/final/vmd-1.9.3.bin.LINUXAMD64-CUDA8-OptiX4-OSPRay111p1.opengl.tar.gz
-tar zxf vmd-1.9.3.bin.LINUXAMD64-CUDA8-OptiX4-OSPRay111p1.opengl.tar.gz
+$ mkdir -p software/vmd_precompiled
+$ cd software/vmd_precompiled
+$ wget --no-check-certificate https://www.ks.uiuc.edu/Research/vmd/vmd-1.9.3/files/final/vmd-1.9.3.bin.LINUXAMD64-CUDA8-OptiX4-OSPRay111p1.opengl.tar.gz
+$ tar zxf vmd-1.9.3.bin.LINUXAMD64-CUDA8-OptiX4-OSPRay111p1.opengl.tar.gz
 ```
 
 Next build LAMMPS:
 
 ```
-wget https://github.com/lammps/lammps/archive/patch_4Feb2020.tar.gz
-tar -zxvf patch_4Feb2020.tar.gz 
-cd lammps-patch_4Feb2020
+VERSION=29Sep2021
+wget https://github.com/lammps/lammps/archive/stable_${VERSION}.tar.gz
+tar zxvf stable_${VERSION}.tar.gz
+cd lammps-stable_${VERSION}
 mkdir build && cd build
 
 module purge
-module load intel/18.0/64/18.0.3.222
-module load intel-mpi/intel/2018.3/64
+module load intel/19.1/64/19.1.1.217
+module load intel-mpi/intel/2019.7/64
 
-# below the resulting executable is set to be lmp_perseus (you may want to rename it)
-
-# copy and paste the following into the terminal
-cmake3 -D CMAKE_INSTALL_PREFIX=$HOME/.local -D LAMMPS_MACHINE=perseus -D ENABLE_TESTING=yes \
--D BUILD_MPI=yes -D BUILD_OMP=yes -D CMAKE_CXX_COMPILER=icpc -D CMAKE_BUILD_TYPE=Release \
--D CMAKE_CXX_FLAGS_RELEASE="-Ofast -mtune=broadwell -DNDEBUG" \
--D PKG_USER-OMP=yes -D PKG_MOLECULE=yes -D PKG_RIGID=yes -D PKG_MISC=yes \
+cmake3 -D CMAKE_INSTALL_PREFIX=$HOME/.local \
+-D LAMMPS_MACHINE=della \
+-D ENABLE_TESTING=no \
+-D BUILD_MPI=yes \
+-D BUILD_OMP=yes \
+-D CMAKE_BUILD_TYPE=Release \
+-D CMAKE_CXX_COMPILER=icpc \
+-D CMAKE_CXX_FLAGS_RELEASE="-Ofast -xHost -axCORE-AVX512 -qopenmp -restrict -DNDEBUG" \
+-D PKG_MOLECULE=yes \
+-D PKG_RIGID=yes \
 -D PKG_KSPACE=yes -D FFT=MKL -D FFT_SINGLE=yes \
--D MOLFILE_INCLUDE_DIRS=/home/<YourNetID>/software/vmd_precompiled/vmd-1.9.3/plugins/include -D PKG_USER-MOLFILE=yes \
--D PKG_USER-INTEL=yes -D INTEL_ARCH=cpu -D INTEL_LRT_MODE=threads ../cmake
+-D MOLFILE_INCLUDE_DIR=/home/<YourNetID>/software/vmd_precompiled/vmd-1.9.3/plugins/include -D PKG_MOLFILE=yes \
+-D PKG_INTEL=yes -D INTEL_ARCH=cpu -D INTEL_LRT_MODE=threads ../cmake
 
 make -j 10
-make test
 make install
 ```
 
