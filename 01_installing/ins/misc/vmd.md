@@ -32,7 +32,7 @@ cmake3 -D CMAKE_INSTALL_PREFIX=$HOME/.local \
 -D PKG_MOLECULE=yes \
 -D PKG_RIGID=yes \
 -D PKG_KSPACE=yes -D FFT=MKL -D FFT_SINGLE=yes \
-<b>-D MOLFILE_INCLUDE_DIR=/home/<YourNetID>/software/vmd_precompiled/vmd-1.9.3/plugins/include -D PKG_MOLFILE=yes \</b>
+<b>-D MOLFILE_INCLUDE_DIR=/home/&lt;YourNetID&gt;/software/vmd_precompiled/vmd-1.9.3/plugins/include -D PKG_MOLFILE=yes \</b>
 -D PKG_INTEL=yes -D INTEL_ARCH=cpu -D INTEL_LRT_MODE=threads ../cmake
 
 make -j 10
