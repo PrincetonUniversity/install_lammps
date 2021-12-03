@@ -1,9 +1,9 @@
 #!/bin/bash
 
-version=29Oct2020
-wget https://github.com/lammps/lammps/archive/stable_${version}.tar.gz
-tar zxvf stable_${version}.tar.gz
-cd lammps-stable_${version}
+VERSION=29Sep2021
+wget https://github.com/lammps/lammps/archive/refs/tags/stable_${VERSION}.tar.gz
+tar zxvf stable_${VERSION}.tar.gz
+cd lammps-stable_${VERSION}
 mkdir build && cd build
 
 module purge
@@ -20,12 +20,12 @@ cmake3 -D CMAKE_INSTALL_PREFIX=$HOME/.local \
 -D CMAKE_CXX_COMPILER=g++ \
 -D CMAKE_CXX_FLAGS_RELEASE="-Ofast -mcpu=power9 -mtune=power9" \
 -D ENABLE_TESTING=no \
--D PKG_KSPACE=yes -D FFT=FFTW3 -D FFT_SINGLE=no \
+-D PKG_KSPACE=yes -D FFT=FFTW3 -D FFT_SINGLE=yes \
 -D FFTW3_INCLUDE_DIR=${FFTW3DIR}/include \
--D FFTW3_LIBRARY=${FFTW3DIR}/lib64/libfftw3.so \
+-D FFTW3_LIBRARY=${FFTW3DIR}/lib64/libfftw3f.so \
 -D PKG_MOLECULE=yes \
 -D PKG_RIGID=yes \
--D PKG_GPU=yes -D GPU_API=cuda -D GPU_PREC=mixed -D GPU_ARCH=sm_70 -D CUDPP_OPT=yes ../cmake
+-D PKG_GPU=yes -D GPU_API=cuda -D GPU_PREC=mixed -D GPU_ARCH=sm_70 -D CUDPP_OPT=no ../cmake
 
 make -j 10
 make install
