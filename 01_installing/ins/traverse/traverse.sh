@@ -25,7 +25,7 @@ cmake3 -D CMAKE_INSTALL_PREFIX=$HOME/.local \
 -D FFTW3_LIBRARY=${FFTW3DIR}/lib64/libfftw3f.so \
 -D PKG_MOLECULE=yes \
 -D PKG_RIGID=yes \
--D PKG_GPU=yes -D GPU_API=cuda -D GPU_PREC=mixed -D GPU_ARCH=sm_70 -D CUDPP_OPT=no ../cmake
+-D PKG_GPU=yes -D GPU_API=cuda -D GPU_PREC=mixed -D GPU_ARCH=sm_70 ../cmake
 
 make -j 10
 make install
