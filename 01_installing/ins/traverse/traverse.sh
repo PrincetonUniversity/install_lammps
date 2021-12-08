@@ -1,7 +1,7 @@
 #!/bin/bash
 
 VERSION=29Sep2021
-wget https://github.com/lammps/lammps/archive/refs/tags/stable_${VERSION}.tar.gz
+wget https://github.com/lammps/lammps/archive/stable_${VERSION}.tar.gz
 tar zxvf stable_${VERSION}.tar.gz
 cd lammps-stable_${VERSION}
 mkdir build && cd build
