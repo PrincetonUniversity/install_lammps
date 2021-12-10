@@ -1,6 +1,6 @@
 # Della (CPU)
 
-[Della](https://researchcomputing.princeton.edu/systems/della) is a heterogeneous cluster. Della can be used to run a variety of jobs from serial to parallel, multinode.
+[Della](https://researchcomputing.princeton.edu/systems/della) is a heterogeneous cluster. Della can be used to run a variety of jobs from serial to parallel, multinode. For `della8` try using the modules `intel/19.1.1.217` and `intel-mpi/intel/2019.7`.
 
 ### Mixed-precision version (recommended)
 
