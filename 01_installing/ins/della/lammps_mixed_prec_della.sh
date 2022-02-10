@@ -19,7 +19,7 @@ cmake3 -D CMAKE_INSTALL_PREFIX=$HOME/.local \
 -D BUILD_OMP=yes \
 -D CMAKE_BUILD_TYPE=Release \
 -D CMAKE_CXX_COMPILER=icpc \
--D CMAKE_CXX_FLAGS_RELEASE="-Ofast -xHost -axCORE-AVX512 -qopenmp -restrict -DNDEBUG" \
+-D CMAKE_CXX_FLAGS_RELEASE="-Ofast -xHost -qopenmp -restrict -DNDEBUG" \
 -D PKG_MOLECULE=yes \
 -D PKG_RIGID=yes \
 -D PKG_KSPACE=yes -D FFT=MKL -D FFT_SINGLE=yes \
