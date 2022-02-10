@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# build a mixed-precision version of lammps for della (cpu) using the user-intel package
+# build a mixed-precision version of lammps for della (cpu) using the intel package
 
 VERSION=29Sep2021
 wget https://github.com/lammps/lammps/archive/stable_${VERSION}.tar.gz
