@@ -1,6 +1,6 @@
 # Della (CPU)
 
-[Della](https://researchcomputing.princeton.edu/systems/della) is a heterogeneous cluster. Della can be used to run a variety of jobs from serial to parallel, multinode. For `della8` try using the modules `intel/19.1.1.217` and `intel-mpi/intel/2019.7`.
+[Della](https://researchcomputing.princeton.edu/systems/della) is a heterogeneous cluster. Della can be used to run a variety of jobs from serial to parallel, multinode.
 
 ### Mixed-precision version (recommended)
 
@@ -13,14 +13,6 @@ $ wget https://raw.githubusercontent.com/PrincetonUniversity/install_lammps/mast
 # use a text editor to inspect lammps_mixed_prec_della.sh and make modifications if necessary (e.g., add/remove LAMMPS packages)
 $ bash lammps_mixed_prec_della.sh | tee lammps_mixed.log
 ```
-
-It is normal to see the following line when compiling:
-
-```
-remark #15009: _ZN9LAMMPS_NS7ArgInfoC1ERKSsi has been targeted for automatic cpu dispatch
-```
-
-The above arises because the code is being built to run on multiple Intel CPU generations.
 
 The following Slurm script can be used to run the job on Della:
 
