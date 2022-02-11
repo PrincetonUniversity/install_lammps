@@ -4,7 +4,7 @@
 
 ### Mixed-precision version (recommended)
 
-Run the commands below to build LAMMPS in mixed precision for Della with [USER-INTEL](../misc/notes.md#USER-INTEL):
+Run the commands below to build LAMMPS in mixed precision for Della with [INTEL](../misc/notes.md#USER-INTEL):
 
 ```bash
 $ ssh <YourNetID>@della.princeton.edu
