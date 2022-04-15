@@ -39,10 +39,10 @@ Below are directions specific to LAMMPS:
 -D CMAKE_CXX_FLAGS_RELEASE="-O3 -g" \
 ```
 
-3. Load the appropriate modules and set the MPICC environment variable:
+3. Load the appropriate modules:
 
 ```
-$ module load anaconda3/2021.11
+$ module load anaconda3/2021.11  # map looks for python (not python3)
 $ module load openmpi/gcc/4.1.2
 $ module load cudatoolkit/11.6
 $ module load fftw/gcc/3.3.9
