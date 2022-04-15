@@ -84,6 +84,32 @@ The figure below show some of the information that MAP provides. Click on the im
 <img src="map_lammps_april2022.png">
 </p>
 
+The directions above are for interactive use. One can also submit via Slurm:
+
+```
+#!/bin/bash
+#SBATCH --nodes=1
+#SBATCH --ntasks=2
+#SBATCH --cpus-per-task=1
+#SBATCH --time=00:05:00
+#SBATCH --mem-per-cpu=4G
+#SBATCH --gres=gpu:1
+
+module purge
+module load anaconda3/2021.11
+module load fftw/gcc/3.3.9
+module load openmpi/gcc/4.1.2
+module load cudatoolkit/11.6
+module load map/20.0.1
+
+export OMP_NUM_THREADS=$SLURM_CPUS_PER_TASK
+export MPICC=`which mpicc`
+export ALLINEA_MPI_WRAPPER=$HOME/.allinea/wrapper/libmap-sampler-pmpi-della-gpu.princeton.edu.so
+export ALLINEA_DEBUG_SRUN_ARGS="%default% --oversubscribe"
+
+map --profile srun $HOME/.local/bin/lmp_della_gpu_gcc -sf gpu -in in.peptide
+```
+
 ## Profiling with the Intel Trace Analyzer and Collector
 
 The general directions for using ITAC are [here](https://researchcomputing.princeton.edu/faq/using-intel-trace-analyze).
