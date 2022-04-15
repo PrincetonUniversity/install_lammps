@@ -110,6 +110,25 @@ export ALLINEA_DEBUG_SRUN_ARGS="%default% --oversubscribe"
 map --profile srun $HOME/.local/bin/lmp_della_gpu_gcc -sf gpu -in in.peptide
 ```
 
+Note the line:
+
+```
+export ALLINEA_DEBUG_SRUN_ARGS="%default% --oversubscribe"
+```
+
+Without the above line one will encounter:
+
+```
+Arm Forge 20.0.1 - Arm MAP
+
+MAP: This version of Arm MAP is over a year old.
+MAP: Arm only provide support for the most recent version of Arm MAP.
+MAP: Please consider upgrading.
+srun: error: Unable to create step for job 40315609: Requested nodes are busy
+MAP: Arm MAP could not launch the debuggers:
+MAP: srun exited with code 1
+```
+
 ## Profiling with the Intel Trace Analyzer and Collector
 
 The general directions for using ITAC are [here](https://researchcomputing.princeton.edu/faq/using-intel-trace-analyze).
