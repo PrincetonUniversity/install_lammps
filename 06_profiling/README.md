@@ -65,7 +65,7 @@ $ map
 5. Click on "Profile" in the main menu and then input the settings shown below:
 
 <p align="center">
-<img src="run_settings.png">
+<img src="map_lammps_april2022_settings.png">
 </p>
 
 Be sure to set the template file to `slurm-default.qtf` as shown below:
@@ -76,71 +76,6 @@ Be sure to set the template file to `slurm-default.qtf` as shown below:
 
 6. Click "Submit" to submit the job to the queue. After it runs you will be presented with your profiling data in MAP. Note that the profiling data will also be written to a file which you can load at a later time without needing to re-run the job. The file is stored in the gzip compressed data format with a name like lmp_della_gpu_gcc_2p_1n_2022-04-15_10-18.map.
 
-Here is the output of the code:
-
-```
-Submitted batch job 342383
-LAMMPS (5 Jun 2019)
-  using 1 OpenMP thread(s) per MPI task
-Lattice spacing in x,y,z = 1.6796 1.6796 1.6796
-Created orthogonal box = (0 0 0) to (50.3879 50.3879 50.3879)
-  4 by 2 by 5 MPI processor grid
-Created 108000 atoms
-  create_atoms CPU = 0.00245619 secs
-Neighbor list info ...
-  update every 20 steps, delay 0 steps, check no
-  max neighbors/atom: 2000, page size: 100000
-  master list distance cutoff = 2.8
-  ghost atom cutoff = 2.8
-  binsize = 1.4, bins = 36 36 36
-  1 neighbor lists, perpetual/occasional/extra = 1 0 0
-  (1) pair lj/cut, perpetual
-      attributes: half, newton on
-      pair build: half/bin/atomonly/newton
-      stencil: half/bin/3d/newton
-      bin: standard
-Setting up Verlet run ...
-  Unit style    : lj
-  Current step  : 0
-  Time step     : 0.005
-Per MPI rank memory allocation (min/avg/max) = 3.229 | 3.229 | 3.23 Mbytes
-Step Temp E_pair E_mol TotEng Press 
-       0            1   -6.7733681            0   -5.2733819   -5.3911251 
-    2000    1.0038937   -5.3375668            0   -3.8317401    2.5870331 
-    4000   0.99585577   -5.3378618            0    -3.844092    2.5863738 
-    6000   0.99511411   -5.3403821            0   -3.8477247    2.5760252 
-    8000   0.99503755   -5.3438572            0   -3.8513147    2.5573951 
-   10000   0.99995609   -5.3399769            0   -3.8400566    2.5758548 
-   12000   0.99990993   -5.3424671            0   -3.8426161     2.566553 
-   14000    1.0004727   -5.3418776            0   -3.8411825    2.5683336 
-   16000   0.99982864   -5.3421343            0   -3.8424052     2.564338 
-   18000    1.0022825   -5.3366585            0   -3.8332487    2.5914067 
-   20000    1.0059315   -5.3382833            0      -3.8294     2.589934 
-Loop time of 46.5962 on 40 procs for 20000 steps with 108000 atoms
-Performance: 185422.844 tau/day, 429.220 timesteps/s
-97.4% CPU use with 40 MPI tasks x 1 OpenMP threads
-MPI task timing breakdown:
-Section |  min time  |  avg time  |  max time  |%varavg| %total
----------------------------------------------------------------
-Pair    | 30.142     | 31.153     | 31.467     |   5.9 | 66.86
-Neigh   | 3.9385     | 4.1186     | 4.2871     |   4.7 |  8.84
-Comm    | 7.4789     | 7.8568     | 9.1557     |  15.3 | 16.86
-Output  | 0.0024502  | 0.0028641  | 0.0035353  |   0.6 |  0.01
-Modify  | 3.1699     | 3.2907     | 3.481      |   2.9 |  7.06
-Other   |            | 0.1741     |            |       |  0.37
-Nlocal:    2700 ave 2731 max 2665 min
-Histogram: 1 2 4 5 6 6 7 4 3 2
-Nghost:    4719.8 ave 4769 max 4689 min
-Histogram: 5 6 3 8 5 4 6 2 0 1
-Neighs:    101770 ave 104066 max 100013 min
-Histogram: 3 4 3 9 5 7 5 2 0 2
-Total # of neighbors = 4070785
-Ave neighs/atom = 37.6925
-Neighbor list builds = 1000
-Dangerous builds not checked
-Total wall time: 0:00:46
-```
-
 The pair, neigh and comm sections dominate the calculation. There is excellent agreement between the LAMMPS profiling data and that obtained with MAP. MAP provides much more data and the ability to investigate performance in great details down to individual lines in the source code.
 
 Allinea MAP can be used to investigate the performance of the code with respect to CPU usage, threading behavior, I/O, memory and MPI communication. One can identify the hotspots in the code which could be improved on by a developer. Because LAMMPS is well written the profiling data is mostly uninteresting. However, if you modify the source code this may change.
@@ -148,15 +83,7 @@ Allinea MAP can be used to investigate the performance of the code with respect 
 The three figures below show some of the information that MAP provides. Click on an image to make it larger.
 
 <p align="center">
-<img src="map_overview.png">
-</p>
-
-<p align="center">
-<img src="mpi_calls.png">
-</p>
-
-<p align="center">
-<img src="by_function.png">
+<img src="map_lammps_april2022.png">
 </p>
 
 ## Profiling with the Intel Trace Analyzer and Collector
