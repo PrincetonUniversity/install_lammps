@@ -27,28 +27,40 @@ performance of the resulting code. This can be done using a profiling tool such 
 
 ## Profiling with Arm MAP
 
-The general directions for using MAP on the HPC clusters are [here](https://researchcomputing.princeton.edu/faq/profiling-with-allinea-ma).
+The general directions for using MAP on the HPC clusters are [here](https://researchcomputing.princeton.edu/support/knowledge-base/map).
 
 Below are directions specific to LAMMPS:
 
-1. Connect to a cluster (e.g., perseus) with X11 forwarding enabled: `ssh -X <YourNetID>@perseus.princeton.edu`
+1. Connect to a cluster (e.g., della-gpu) with [X11 forwarding](https://researchcomputing.princeton.edu/support/knowledge-base/gui-applications) enabled: `ssh -X <YourNetID>@della-gpu.princeton.edu`
 
-2. Build the application with optimization and debugging flags:
+2. Follow the [build from source](https://github.com/PrincetonUniversity/install_lammps/blob/master/01_installing/ins/della/scripts.md#della-gpu) directions with this modification to the script:
 
 ```
-cmake3 -D CMAKE_INSTALL_PREFIX=$HOME/.local -D LAMMPS_MACHINE=perseus_profilina_map -D ENABLE_TESTING=yes -D BUILD_MPI=yes -D BUILD_OMP=yes -D CMAKE_C_COMPILER=icc -D CMAKE_CXX_COMPILER=icpc -D CMAKE_CXX_FLAGS_RELEASE="-O3 -g" -D PKG_USER-OMP=yes ../cmake
+-D CMAKE_CXX_FLAGS_RELEASE="-O3 -g" \
 ```
-
-Note that there are more optimal ways to build the code than the line above. See the installation directory.
 
 3. Load the appropriate modules and set the MPICC environment variable:
 
 ```
-module load intel intel-mpi
-export MPICC=`which mpicc`
+$ module load anaconda3/2021.11
+$ module load openmpi/gcc/4.1.2
+$ module load cudatoolkit/11.6
+$ module load fftw/gcc/3.3.9
+$ module load map/20.0.1
 ```
 
-4. Launch the MAP profiler: `/usr/licensed/bin/map`
+You may need to create the wrapper script:
+
+```
+$ export MPICC=`which mpicc`
+$ /usr/licensed/ddt/ddt20.0.1/rhel7/x86_64/map/wrapper/build_wrapper
+```
+
+4. Launch the MAP profiler:
+
+```
+$ map
+```
 
 5. Click on "Profile" in the main menu and then input the settings shown below:
 
@@ -62,7 +74,7 @@ Be sure to set the template file to `slurm-default.qtf` as shown below:
 <img src="submission_template_file.png">
 </p>
 
-6. Click "Submit" to submit the job to the queue. After it runs you will be presented with your profiling data in MAP. Note that the profiling data will also be written to a file which you can load at a later time without needing to re-run the job. The file is stored in the gzip compressed data format with a name like lmp_perseus_profilina_map_40p_4n_1t_2019-09-06_09-01.map.
+6. Click "Submit" to submit the job to the queue. After it runs you will be presented with your profiling data in MAP. Note that the profiling data will also be written to a file which you can load at a later time without needing to re-run the job. The file is stored in the gzip compressed data format with a name like lmp_della_gpu_gcc_2p_1n_2022-04-15_10-18.map.
 
 Here is the output of the code:
 
