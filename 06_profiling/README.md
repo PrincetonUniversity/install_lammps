@@ -74,13 +74,11 @@ Be sure to set the template file to `slurm-default.qtf` as shown below:
 <img src="submission_template_file.png">
 </p>
 
-6. Click "Submit" to submit the job to the queue. After it runs you will be presented with your profiling data in MAP. Note that the profiling data will also be written to a file which you can load at a later time without needing to re-run the job. The file is stored in the gzip compressed data format with a name like lmp_della_gpu_gcc_2p_1n_2022-04-15_10-18.map.
+6. Click "Run" to submit the job to the queue. After it runs you will be presented with your profiling data interactively in MAP. Note that the profiling data will also be written to a file which you can load at a later time without needing to re-run the job. The file is stored in the gzip compressed data format with a name like lmp_della_gpu_gcc_2p_1n_2022-04-15_10-18.map.
 
-The pair, neigh and comm sections dominate the calculation. There is excellent agreement between the LAMMPS profiling data and that obtained with MAP. MAP provides much more data and the ability to investigate performance in great details down to individual lines in the source code.
+Allinea MAP can be used to investigate the performance of the code with respect to CPU usage, threading behavior, I/O, memory and MPI communication. One can identify the hotspots in the code which could be improved on by a developer.
 
-Allinea MAP can be used to investigate the performance of the code with respect to CPU usage, threading behavior, I/O, memory and MPI communication. One can identify the hotspots in the code which could be improved on by a developer. Because LAMMPS is well written the profiling data is mostly uninteresting. However, if you modify the source code this may change.
-
-The three figures below show some of the information that MAP provides. Click on an image to make it larger.
+The figure below show some of the information that MAP provides. Click on the image to make it larger.
 
 <p align="center">
 <img src="map_lammps_april2022.png">
