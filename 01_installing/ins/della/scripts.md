@@ -53,6 +53,40 @@ srun $HOME/.local/bin/lmp_della_double -in in.melt
 
 # Della-GPU
 
+### Build from Source
+
+Run the commands to build LAMMPS for Della-GPU
+
+```
+$ ssh <YourNetID>@della-gpu.princeton.edu
+$ cd software  # or another directory
+$ wget https://raw.githubusercontent.com/PrincetonUniversity/install_lammps/master/01_installing/ins/della/della_gpu_lammps_gcc.sh
+# use a text editor to inspect ldella_gpu_lammps_gcc.sh and make modifications if necessary (e.g., add/remove LAMMPS packages)
+$ bash della_gpu_lammps_gcc.sh | tee install_lammps.log
+```
+
+```
+#!/bin/bash
+#SBATCH --job-name=lj-melt       # create a short name for your job
+#SBATCH --nodes=1                # node count
+#SBATCH --ntasks=8               # total number of tasks across all nodes
+#SBATCH --cpus-per-task=1        # cpu-cores per task (>1 if multi-threaded tasks)
+#SBATCH --mem-per-cpu=4G         # memory per cpu-core (4G is default)
+#SBATCH --gres=gpu:1             # number of GPUs per node
+#SBATCH --time=00:05:00          # total run time limit (HH:MM:SS)
+#SBATCH --mail-type=begin        # send email when job begins
+#SBATCH --mail-type=end          # send email when job ends
+#SBATCH --mail-user=<YourNetID>@princeton.edu
+
+module purge
+module load fftw/gcc/3.3.9
+module load openmpi/gcc/4.1.0
+module load cudatoolkit/11.4
+export OMP_NUM_THREADS=$SLURM_CPUS_PER_TASK
+
+srun $HOME/.local/bin/lmp_della_gpu_gcc -sf gpu -pk gpu 1 -in in.melt.gpu
+```
+
 ### NGC Container
 
 Right now it appears the best approach is to use the [NGC container](https://ngc.nvidia.com/catalog/containers/hpc:lammps) with 1 CPU-core and 1 GPU.
@@ -122,38 +156,6 @@ readonly gpu_count=${1:-$(nvidia-smi --list-gpus | wc -l)}
 
 echo "Running Lennard Jones 8x4x8 example on ${gpu_count} GPUS..."
 mpirun -n ${gpu_count} lmp -k on g ${gpu_count} -sf kk -pk kokkos cuda/aware on neigh full comm device binsize 2.8 -in in.melt
-```
-
-### Build from Source
-
-```
-$ ssh <YourNetID>@della-gpu.princeton.edu
-$ cd software  # or another directory
-$ wget https://raw.githubusercontent.com/PrincetonUniversity/install_lammps/master/01_installing/ins/della/della_gpu_lammps_gcc.sh
-# use a text editor to inspect ldella_gpu_lammps_gcc.sh and make modifications if necessary (e.g., add/remove LAMMPS packages)
-$ bash della_gpu_lammps_gcc.sh | tee install_lammps.log
-```
-
-```
-#!/bin/bash
-#SBATCH --job-name=lj-melt       # create a short name for your job
-#SBATCH --nodes=1                # node count
-#SBATCH --ntasks=8               # total number of tasks across all nodes
-#SBATCH --cpus-per-task=1        # cpu-cores per task (>1 if multi-threaded tasks)
-#SBATCH --mem-per-cpu=4G         # memory per cpu-core (4G is default)
-#SBATCH --gres=gpu:1             # number of GPUs per node
-#SBATCH --time=00:05:00          # total run time limit (HH:MM:SS)
-#SBATCH --mail-type=begin        # send email when job begins
-#SBATCH --mail-type=end          # send email when job ends
-#SBATCH --mail-user=<YourNetID>@princeton.edu
-
-module purge
-module load fftw/gcc/3.3.9
-module load openmpi/gcc/4.1.0
-module load cudatoolkit/11.4
-export OMP_NUM_THREADS=$SLURM_CPUS_PER_TASK
-
-srun $HOME/.local/bin/lmp_della_gpu_gcc -sf gpu -pk gpu 1 -in in.melt.gpu
 ```
 
 ## Getting Help
