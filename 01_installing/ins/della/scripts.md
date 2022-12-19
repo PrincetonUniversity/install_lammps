@@ -58,7 +58,7 @@ srun $HOME/.local/bin/lmp_della_double -in in.melt
 Run the commands to build LAMMPS for Della-GPU
 
 ```
-$ ssh <YourNetID>@della-gpu.princeton.edu
+$ ssh <YourNetID>@della-gpu.princeton.edu  # do not use della8 for building GPU codes
 $ cd software  # or another directory
 $ wget https://raw.githubusercontent.com/PrincetonUniversity/install_lammps/master/01_installing/ins/della/della_gpu_lammps_gcc.sh
 # use a text editor to inspect ldella_gpu_lammps_gcc.sh and make modifications if necessary (e.g., add/remove LAMMPS packages)
@@ -87,7 +87,7 @@ export OMP_NUM_THREADS=$SLURM_CPUS_PER_TASK
 srun $HOME/.local/bin/lmp_della_gpu_gcc -sf gpu -pk gpu 1 -in in.melt.gpu
 ```
 
-See the input file: [in.melt.gpu](../ins/misc/in.melt.gpu).
+See the input file: [in.melt.gpu](../misc/in.melt.gpu).
 
 ### NGC Container
 
