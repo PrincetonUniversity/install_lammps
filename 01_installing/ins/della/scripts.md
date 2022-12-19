@@ -81,11 +81,13 @@ $ bash della_gpu_lammps_gcc.sh | tee install_lammps.log
 module purge
 module load fftw/gcc/3.3.9
 module load openmpi/gcc/4.1.0
-module load cudatoolkit/11.4
+module load cudatoolkit/11.7
 export OMP_NUM_THREADS=$SLURM_CPUS_PER_TASK
 
 srun $HOME/.local/bin/lmp_della_gpu_gcc -sf gpu -pk gpu 1 -in in.melt.gpu
 ```
+
+See the input file: [in.melt.gpu](../ins/misc/in.melt.gpu).
 
 ### NGC Container
 
