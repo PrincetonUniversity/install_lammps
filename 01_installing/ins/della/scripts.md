@@ -7,7 +7,7 @@
 Run the commands below to build LAMMPS in mixed precision for Della with the [INTEL](../misc/notes.md#USER-INTEL) package:
 
 ```bash
-$ ssh <YourNetID>@della.princeton.edu
+$ ssh <YourNetID>@della.princeton.edu  # do not use the della-gpu login node for building CPU codes
 $ cd software  # or another directory
 $ wget https://raw.githubusercontent.com/PrincetonUniversity/install_lammps/master/01_installing/ins/della/lammps_mixed_prec_della.sh
 # use a text editor to inspect lammps_mixed_prec_della.sh and make modifications if necessary (e.g., add/remove LAMMPS packages)
