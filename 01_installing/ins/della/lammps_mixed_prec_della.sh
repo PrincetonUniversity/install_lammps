@@ -2,7 +2,7 @@
 
 # build a mixed-precision version of lammps for della (cpu) using the intel package
 
-VERSION=29Sep2021
+VERSION=23Jun2022
 wget https://github.com/lammps/lammps/archive/stable_${VERSION}.tar.gz
 tar zxvf stable_${VERSION}.tar.gz
 cd lammps-stable_${VERSION}
