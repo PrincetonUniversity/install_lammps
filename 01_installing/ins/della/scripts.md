@@ -27,7 +27,7 @@ The following Slurm script can be used to run the job on Della:
 #SBATCH --mail-type=begin        # send email when job begins
 #SBATCH --mail-type=end          # send email when job ends
 #SBATCH --mail-user=<YourNetID>@princeton.edu
-#SBATCH --exclude=della-r4c[1-4]n[1-16]
+#SBATCH --exclude=della-r4c[1-4]n[1-16],della-r1c[3,4]n[1-16]
 
 module purge
 module load intel/2022.2.0
