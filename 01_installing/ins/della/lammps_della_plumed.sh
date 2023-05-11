@@ -24,6 +24,8 @@ cd plumed2-${plumedversion}
 make -j 14
 make install
 
+cd ..
+
 # build a mixed-precision version of lammps for della (cpu) using the user-intel package
 export PKG_CONFIG_PATH="$PKG_CONFIG_PATH:$HOME/.local/lib/pkgconfig/"
 VERSION=29Sep2021 ###Specify your LAMMPS version here (Some package names change after Aug2019 version)
