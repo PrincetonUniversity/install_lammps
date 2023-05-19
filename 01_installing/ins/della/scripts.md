@@ -33,6 +33,7 @@ module purge
 module load intel/2022.2.0
 module load intel-mpi/intel/2021.7.0
 export OMP_NUM_THREADS=$SLURM_CPUS_PER_TASK
+export SRUN_CPUS_PER_TASK=$SLURM_CPUS_PER_TASK
 
 srun $HOME/.local/bin/lmp_della -sf intel -in in.melt
 ```
@@ -83,6 +84,7 @@ module load fftw/gcc/3.3.9
 module load openmpi/gcc/4.1.0
 module load cudatoolkit/11.7
 export OMP_NUM_THREADS=$SLURM_CPUS_PER_TASK
+export SRUN_CPUS_PER_TASK=$SLURM_CPUS_PER_TASK
 
 srun $HOME/.local/bin/lmp_della_gpu_gcc -sf gpu -pk gpu 1 -in in.melt.gpu
 ```
@@ -133,6 +135,7 @@ gpu_count=$(printf ${SLURM_JOB_GPUS} | sed 's/[^0-9]*//g' | wc --chars)
 module purge
 #module load openmpi/gcc/4.1.0
 export OMP_NUM_THREADS=$SLURM_CPUS_PER_TASK
+export SRUN_CPUS_PER_TASK=$SLURM_CPUS_PER_TASK
 
 singularity run --nv -B $PWD:/host_pwd --pwd /host_pwd $HOME/software/lammps_container/lammps_10Feb2021.sif ./run_lammps.sh
 
