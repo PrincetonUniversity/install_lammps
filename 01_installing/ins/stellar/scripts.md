@@ -34,6 +34,7 @@ module purge
 module load intel/19.1.1.217
 module load intel-mpi/intel/2019.7
 export OMP_NUM_THREADS=$SLURM_CPUS_PER_TASK
+export SRUN_CPUS_PER_TASK=$SLURM_CPUS_PER_TASK
 
 srun $HOME/.local/bin/lmp_user_intel -sf intel -in in.melt
 ```
