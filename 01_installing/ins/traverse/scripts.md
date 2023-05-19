@@ -35,6 +35,7 @@ module load openmpi/gcc/4.1.1/64
 module load fftw/gcc/3.3.8
 module load cudatoolkit/11.4
 export OMP_NUM_THREADS=$SLURM_CPUS_PER_TASK
+export SRUN_CPUS_PER_TASK=$SLURM_CPUS_PER_TASK
 
 srun $HOME/.local/bin/lmp_traverse -sf gpu -in in.melt.gpu
 ```
