@@ -35,6 +35,7 @@ module load intel/19.1.1.217
 module load intel-mpi/intel/2019.7
 module load cudatoolkit/11.4
 export OMP_NUM_THREADS=$SLURM_CPUS_PER_TASK
+export SRUN_CPUS_PER_TASK=$SLURM_CPUS_PER_TASK
 
 srun $HOME/.local/bin/lmp_adroitGPU -sf gpu -pk gpu 1 -in in.melt.gpu
 ```
@@ -75,6 +76,7 @@ module purge
 module load intel/19.1.1.217
 module load intel-mpi/intel/2019.7
 export OMP_NUM_THREADS=$SLURM_CPUS_PER_TASK
+export SRUN_CPUS_PER_TASK=$SLURM_CPUS_PER_TASK
 
 srun $HOME/.local/bin/lmp_adroit -in in.melt
 ```
