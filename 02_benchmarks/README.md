@@ -298,6 +298,7 @@ For 2 gpu's use: lmp_tgrgpu -sf gpu -pk gpu 2 -in in.peptide.modified
 
 module load intel intel-mpi
 export OMP_NUM_THREADS=$SLURM_CPUS_PER_TASK
+export SRUN_CPUS_PER_TASK=$SLURM_CPUS_PER_TASK
  
 srun $HOME/.local/bin/lmp_tgrgpu -sf gpu -pk gpu 2 -in ../in.peptide.modified
 ```
