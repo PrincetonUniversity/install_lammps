@@ -177,6 +177,7 @@ export VT_TIMER=CPU
 
 module load intel-tac intel intel-mpi
 export OMP_NUM_THREADS=$SLURM_CPUS_PER_TASK
+export SRUN_CPUS_PER_TASK=$SLURM_CPUS_PER_TASK
 
 cd /scratch/gpfs/jdh4/itac_prof
 
