@@ -40,6 +40,13 @@ Also, modify the Slurm script by adding this line: `--dependency=singleton`
 #SBATCH --time=00:05:00 # a small value for testing
 #SBATCH --dependency=singleton
 
+module purge
+module load intel/2022.2.0
+module load intel-mpi/intel/2021.7.0
+
+export OMP_NUM_THREADS=$SLURM_CPUS_PER_TASK
+export SRUN_CPUS_PER_TASK=$SLURM_CPUS_PER_TASK
+
 srun $HOME/.local/bin/lmp_della -in in.melt
 ```
 
@@ -70,6 +77,13 @@ Run the first job step using the Slurm and LAMMPS scripts below:
 #SBATCH --cpus-per-task=1
 #SBATCH --mem-per-cpu=4G
 #SBATCH --time=00:05:00
+
+module purge
+module load intel/2022.2.0
+module load intel-mpi/intel/2021.7.0
+
+export OMP_NUM_THREADS=$SLURM_CPUS_PER_TASK
+export SRUN_CPUS_PER_TASK=$SLURM_CPUS_PER_TASK
 
 srun $HOME/.local/bin/lmp_mpi -in in.melt.first_step
 ```
@@ -127,8 +141,12 @@ For the second job step and beyond our Slurm script is the same except we add a 
 #SBATCH --time=00:05:00
 #SBATCH --mem-per-cpu=4G
 
-module load intel/19.1/64/19.1.1.217 intel-mpi/intel/2019.7/64
+module purge
+module load intel/2022.2.0
+module load intel-mpi/intel/2021.7.0
+
 export OMP_NUM_THREADS=$SLURM_CPUS_PER_TASK
+export SRUN_CPUS_PER_TASK=$SLURM_CPUS_PER_TASK
  
 srun $HOME/.local/bin/lmp_mpi -in in.melt.nth_step
 
