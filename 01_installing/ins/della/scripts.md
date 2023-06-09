@@ -30,8 +30,8 @@ The following Slurm script can be used to run the job on Della:
 #SBATCH --exclude=della-r4c[1-4]n[1-16],della-r1c[3,4]n[1-16]
 
 module purge
-module load intel/2022.2.0
-module load intel-mpi/intel/2021.7.0
+module load intel/19.1.1.217
+module load intel-mpi/intel/2019.7
 export OMP_NUM_THREADS=$SLURM_CPUS_PER_TASK
 export SRUN_CPUS_PER_TASK=$SLURM_CPUS_PER_TASK
 
