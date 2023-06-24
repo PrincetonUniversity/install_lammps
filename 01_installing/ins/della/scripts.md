@@ -40,6 +40,19 @@ srun $HOME/.local/bin/lmp_della -sf intel -in in.melt
 
 View the [in.melt](../misc/in.melt) file. Users will need to find the optimal values for `nodes`, `ntasks` and `cpus-per-task`. This can be done by conducting a [scaling analysis](https://researchcomputing.princeton.edu/support/knowledge-base/scaling-analysis).
 
+Note that you could also repeat the procedure using newer modules:
+
+```
+module load intel/2022.2.0
+module load intel-mpi/intel/2021.7.0
+```
+
+If you build the code using the newer modules then also use those modules in the Slurm and omit `--exclude` and add this:
+
+```
+#SBATCH --constraint=cascade
+```
+
 ### Double-precision version
 
 Make these changes for the double-precision version:
