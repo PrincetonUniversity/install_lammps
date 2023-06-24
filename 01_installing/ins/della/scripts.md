@@ -47,7 +47,7 @@ module load intel/2022.2.0
 module load intel-mpi/intel/2021.7.0
 ```
 
-If you build the code using the newer modules then also use those modules in the Slurm and omit `--exclude` and add this:
+If you build the code using the newer modules then also use those modules in the Slurm script and omit `--exclude` but add this:
 
 ```
 #SBATCH --constraint=cascade
