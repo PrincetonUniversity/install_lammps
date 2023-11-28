@@ -51,7 +51,7 @@ If for some reason you don't want to use the GPU nodes then the following direct
 ```
 $ ssh <YourNetID>@adroit.princeton.edu
 $ cd software  # or another directory
-$ https://raw.githubusercontent.com/PrincetonUniversity/install_lammps/master/01_installing/ins/adroit/lammps_double_prec_adroit_cpu.sh
+$ wget https://raw.githubusercontent.com/PrincetonUniversity/install_lammps/master/01_installing/ins/adroit/lammps_double_prec_adroit_cpu.sh
 # use a text editor to inspect lammps_double_prec_adroit_cpu.sh and make modifications if necessary (e.g., add/remove LAMMPS packages)
 $ bash lammps_double_prec_adroit_cpu.sh | tee install_lammps_cpu.log
 ```
