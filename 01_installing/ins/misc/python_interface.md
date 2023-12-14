@@ -1,6 +1,6 @@
 # LAMMPS with Python Interface
 
-LAMMPS can be built with a Python interface as [described here](https://lammps.sandia.gov/doc/Python_head.html). Run the commands below (for Della with USER-INTEL) to build the code in this way:
+LAMMPS can be built with a Python interface as [described here](https://docs.lammps.org/Python_head.html). Run the commands below (for Della with USER-INTEL) to build the code in this way:
 
 ```
 $ ssh <YourNetID>@della.princeton.edu
@@ -19,14 +19,15 @@ To run a parallel job on Della with the Python interface:
 #SBATCH --cpus-per-task=1                        # cpu-cores per task (>1 if multi-threaded tasks)
 #SBATCH --mem-per-cpu=4G                         # memory per cpu-core (4G is default)
 #SBATCH --time=00:05:00                          # total run time limit (HH:MM:SS)
-#SBATCH --constraint=haswell|broadwell           # exclude ivy nodes
+#SBATCH --exclude=della-r4c[1-4]n[1-16],della-r1c[3,4]n[1-16]  # exclude old broadwell nodes
 
 module purge
-module load intel/18.0/64/18.0.3.222 intel-mpi/intel/2018.3/64
+module load intel/2022.2
+module load intel-mpi/intel/2021.7.0
 export OMP_NUM_THREADS=$SLURM_CPUS_PER_TASK
-export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$HOME/.local/lib64:$HOME/.conda/envs/lammps-env/lib
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$HOME/software/lammps-stable_2Aug2023/build
 
-module load anaconda3/2020.7
+module load anaconda3/2023.9
 conda activate lammps-env
 
 srun python myscript.py
