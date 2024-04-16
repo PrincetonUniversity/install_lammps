@@ -27,31 +27,21 @@ The following Slurm script can be used to run the job on Della:
 #SBATCH --mail-type=begin        # send email when job begins
 #SBATCH --mail-type=end          # send email when job ends
 #SBATCH --mail-user=<YourNetID>@princeton.edu
-#SBATCH --exclude=della-r4c[1-4]n[1-16],della-r1c[3,4]n[1-16]
+#SBATCH --constraint=cascade
 
 module purge
-module load intel/19.1.1.217
-module load intel-mpi/intel/2019.7
+module load intel/2024.0
+module load intel-mpi/intel/2021.7.0
+module load intel-mkl/2024.0
+
 export OMP_NUM_THREADS=$SLURM_CPUS_PER_TASK
 export SRUN_CPUS_PER_TASK=$SLURM_CPUS_PER_TASK
 
-srun $HOME/.local/bin/lmp_della -sf intel -in in.melt
+srun $HOME/.local/bin/lmp_intel -sf intel -in in.melt
 ```
 
 View the [in.melt](../misc/in.melt) file. Users will need to find the optimal values for `nodes`, `ntasks` and `cpus-per-task`. This can be done by conducting a [scaling analysis](https://researchcomputing.princeton.edu/support/knowledge-base/scaling-analysis).
 
-Note that you could also repeat the procedure using newer modules:
-
-```
-module load intel/2022.2.0
-module load intel-mpi/intel/2021.7.0
-```
-
-If you build the code using the newer modules then also use those modules in the Slurm script and omit `--exclude` but add this:
-
-```
-#SBATCH --constraint=cascade
-```
 
 ### Double-precision version
 
