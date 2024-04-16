@@ -65,7 +65,7 @@ Run the commands to build LAMMPS for Della-GPU
 $ ssh <YourNetID>@della-gpu.princeton.edu  # do not use della8 for building GPU codes
 $ cd software  # or another directory
 $ wget https://raw.githubusercontent.com/PrincetonUniversity/install_lammps/master/01_installing/ins/della/della_gpu_lammps_gcc.sh
-# use a text editor to inspect ldella_gpu_lammps_gcc.sh and make modifications if necessary (e.g., add/remove LAMMPS packages)
+# use a text editor to inspect della_gpu_lammps_gcc.sh and make modifications if necessary (e.g., add/remove LAMMPS packages)
 $ bash della_gpu_lammps_gcc.sh | tee install_lammps.log
 ```
 
