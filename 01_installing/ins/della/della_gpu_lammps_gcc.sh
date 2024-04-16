@@ -1,19 +1,19 @@
 #!/bin/bash
 
-VERSION=23Jun2022
-wget https://github.com/lammps/lammps/archive/stable_${VERSION}.tar.gz
+VERSION=2Aug2023_update3
+#wget https://github.com/lammps/lammps/archive/refs/tags/stable_${VERSION}.tar.gz
 tar zxf stable_${VERSION}.tar.gz
 cd lammps-stable_${VERSION}
 mkdir build && cd build
 
 module purge
 module load fftw/gcc/3.3.9
-module load openmpi/gcc/4.1.0
-module load cudatoolkit/11.7
+module load openmpi/gcc/4.1.2
+module load cudatoolkit/12.4
 
 cmake3 -D CMAKE_INSTALL_PREFIX=$HOME/.local \
 -D CMAKE_BUILD_TYPE=Release \
--D LAMMPS_MACHINE=della_gpu_gcc \
+-D LAMMPS_MACHINE=gpu \
 -D ENABLE_TESTING=no \
 -D BUILD_OMP=yes \
 -D BUILD_MPI=yes \
@@ -27,5 +27,5 @@ cmake3 -D CMAKE_INSTALL_PREFIX=$HOME/.local \
 -D FFTW3F_LIBRARY=${FFTW3DIR}/lib64/libfftw3f.so \
 -D PKG_GPU=yes -D GPU_API=cuda -D GPU_PREC=mixed -D GPU_ARCH=sm_80 -D CUDPP_OPT=no ../cmake
 
-make -j 16
+make -j 4
 make install
