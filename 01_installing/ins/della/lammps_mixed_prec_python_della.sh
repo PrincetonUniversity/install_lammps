@@ -3,7 +3,7 @@
 # build a mixed precision version of lammps for della using the user-intel
 # and python packages
 
-VERSION=2Aug2023
+VERSION=29Aug2024
 wget https://github.com/lammps/lammps/archive/stable_${VERSION}.tar.gz
 #rm -rf lammps-stable_${VERSION}
 tar zxf stable_${VERSION}.tar.gz
