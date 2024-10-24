@@ -31,12 +31,14 @@ The following Slurm script can be used on stellar-intel with the INTEL package:
 #SBATCH --mail-user=<YourNetID>@princeton.edu
 
 module purge
-module load intel/2022.2
-module load intel-mpi/intel/2021.7.0
+module load intel-oneapi/2024.2
+module load intel-mpi/oneapi/2021.13
+module load intel-mkl/2024.2
+
 export OMP_NUM_THREADS=$SLURM_CPUS_PER_TASK
 export SRUN_CPUS_PER_TASK=$SLURM_CPUS_PER_TASK
 
-srun $HOME/.local/bin/lmp_user_intel -sf intel -in in.melt
+srun $HOME/.local/bin/lmp_intel -sf intel -in in.melt
 ```
 
 View the [in.melt](../misc/in.melt) file. Users will need to find the optimal values for `nodes`, `ntasks` and `cpus-per-task`. This can be done by conducting a [scaling analysis](https://researchcomputing.princeton.edu/support/knowledge-base/scaling-analysis). All users should follow the [Stellar guidelines](https://researchcomputing.princeton.edu/systems/stellar#guidelines).
