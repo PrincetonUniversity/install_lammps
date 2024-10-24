@@ -32,8 +32,9 @@ Below is a sample Slurm script:
 #SBATCH --mail-user=<YourNetID>@princeton.edu
 
 module purge
-module load intel/19.1/64/19.1.1.217
-module load intel-mpi/intel/2019.7/64
+module load intel-oneapi/2024.2
+module load intel-mpi/oneapi/2021.13
+module load intel-mkl/2024.2
 export OMP_NUM_THREADS=$SLURM_CPUS_PER_TASK
 
 srun $HOME/.local/bin/lmp_tigerCpu -sf intel -in in.melt
@@ -43,7 +44,7 @@ View the [in.melt](../misc/in.melt) file. Users will need to find the optimal va
 
 ### Double-precision version
 
-The code could also be built without [USER-INTEL](../misc/notes.md#user-intel).
+The code could also be built without [INTEL](../misc/notes.md#intel).
 
 ## GPU
 
