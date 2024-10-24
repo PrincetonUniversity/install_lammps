@@ -9,8 +9,7 @@ This repo provides sample install scripts for LAMMPS. Most users will be able to
 * [Della-GPU](ins/della/scripts.md#della-gpu)
 * [Della (CPU)](ins/della/scripts.md#della-cpu)
 * [Stellar](ins/stellar/scripts.md)
-* [TigerCPU](ins/tigercpu/scripts.md)
-* [Traverse](ins/traverse/scripts.md)
+* [Tiger (CPU)](ins/tigercpu/scripts.md)
 
 ## Other
 * [Building LAMMPS with a Python Interface](ins/misc/python_interface.md)
