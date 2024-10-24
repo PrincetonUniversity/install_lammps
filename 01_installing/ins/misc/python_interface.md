@@ -103,7 +103,7 @@ srun $HOME/.local/bin/lmp_della -sf intel -in in.melt
 
 Here are some timings for the system above with and without the INTEL package on the cascade lake nodes of Della with 4 MPI processes:
 
-| time (s) | user-intel |
+| time (s) | INTEL |
 |:------:|:------:|
 | 120 | with |
 | 190 | without |
