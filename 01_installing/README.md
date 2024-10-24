@@ -13,7 +13,7 @@ This repo provides sample install scripts for LAMMPS. Most users will be able to
 * [Tiger (GPU)](ins/tigergpu/scripts.md)
 
 ## Other
-* [Building LAMMPS with a Python Interface](ins/misc/python_interface.md)
-* [VMD Plugins](ins/misc/vmd.md)
-* [LAMMPS container on NVIDIA GPU Cloud](https://ngc.nvidia.com/catalog/containers/hpc:lammps) and [Apptainer](https://researchcomputing.princeton.edu/support/knowledge-base/apptainer)
-* [LAMMPS with PLUMED](ins/della/lammps_della_plumed.sh)
+* [Building LAMMPS with a Python Interface](ins/misc/python_interface.md)  
+* [VMD Plugins](ins/misc/vmd.md)  
+* [LAMMPS with PLUMED](ins/della/lammps_della_plumed.sh)  
+* [LAMMPS container on NVIDIA GPU Cloud](https://ngc.nvidia.com/catalog/containers/hpc:lammps) and [Apptainer](https://researchcomputing.princeton.edu/support/knowledge-base/apptainer)  
