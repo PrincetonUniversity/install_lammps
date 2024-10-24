@@ -274,6 +274,7 @@ run	        1000
 | lmp_tgrgpu            |   48.9    | tigerGpu      |  1       | 1         | 1     |
 | lmp_tgrgpu            |   15.1    | tigerGpu      |  7       | 1         | 1     |
 | lmp_tgrgpu            |   19.0    | tigerGpu      |  14      | 1         | 1     |
+| lmp_tigerGpu          |   10.9    | tiger3        |  8       | 1         | 1     |
 | lmp_tgrgpu            |   13.8    | tigerGpu      |  7       | 1         | 2     |
 
 For 2 gpu's use: lmp_tgrgpu -sf gpu -pk gpu 2 -in in.peptide.modified
