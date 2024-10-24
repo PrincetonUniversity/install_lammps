@@ -1,20 +1,20 @@
-# TigerGPU
+# Tiger (GPU)
 
-[TigerGPU](https://researchcomputing.princeton.edu/systems/tiger) is composed of 80 nodes with 28 CPU-cores per node and 4 NVIDIA P100 GPUs per node.
+[Tiger (GPU)](https://researchcomputing.princeton.edu/systems/tiger) is composed of 12 nodes with 112 CPU-cores per node and 4 NVIDIA H100 GPUs per node.
 
 ### Mixed-precision version (recommended)
 
 ```bash
-$ ssh <YourNetID>@tigergpu.princeton.edu
+$ ssh <YourNetID>@tiger3.princeton.edu
 $ cd software  # or another directory
 $ wget https://raw.githubusercontent.com/PrincetonUniversity/install_lammps/master/01_installing/ins/tigergpu/tigerGpu_user_intel.sh
 # use a text editor to inspect tigerGpu_user_intel.sh and make modifications if necessary (e.g., add/remove LAMMPS packages)
 $ bash tigerGpu_user_intel.sh | tee install_lammps.log
 ```
 
-The LAMMPS build system will add `-qopenmp`, `-restrict` and `-xHost` to the CXX_FLAGS. Note that the build above includes the MOLECULE, RIGID and KSPACE packages. If you do not need these for your simulations then you should remove them from the .sh file after running `wget`.
+Note that the build above includes the MOLECULE, RIGID and KSPACE packages. If you do not need these for your simulations then you should remove them from the .sh file after running `wget`.
 
-The following Slurm script can be used to run the job on the TigerGPU cluster:
+The following Slurm script can be used to run the job on the Tiger (GPU) cluster:
 
 ```bash
 #!/bin/bash
@@ -30,9 +30,13 @@ The following Slurm script can be used to run the job on the TigerGPU cluster:
 #SBATCH --mail-user=<YourNetID>@princeton.edu
 
 module purge
-module load intel/18.0/64/18.0.3.222
-module load intel-mpi/intel/2018.3/64
+module load intel-oneapi/2024.2
+module load intel-mpi/oneapi/2021.13
+module load intel-mkl/2024.2
+module load cudatoolkit/12.6
+
 export OMP_NUM_THREADS=$SLURM_CPUS_PER_TASK
+export SRUN_CPUS_PER_TASK=$SLURM_CPUS_PER_TASK
 
 srun $HOME/.local/bin/lmp_tigerGpu -sf gpu -in in.melt
 ```
@@ -43,7 +47,7 @@ To use 2 GPUs, replace `package gpu 1` with `package gpu 2` and `-sf gpu` with `
 
 ### Double-precision version
 
-The code could also be built without USER-INTEL.
+The code could also be built without INTEL.
 
 ## Getting Help
 
