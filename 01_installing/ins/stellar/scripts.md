@@ -14,7 +14,7 @@ $ wget https://raw.githubusercontent.com/PrincetonUniversity/install_lammps/mast
 $ bash stellar_intel_lammps_user_intel.sh | tee install_lammps.log
 ```
 
-The executable will be installed into `~/.local/bin` which is included in your `PATH` by default. See the 01_installing/ins/stellar directory in this repo for alternative builds.
+The executable will be installed into `~/.local/bin` which is included in your `PATH` by default. See the `01_installing/ins/stellar` directory in this repo for alternative builds.
 
 The following Slurm script can be used on stellar-intel with the INTEL package:
 
