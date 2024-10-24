@@ -59,7 +59,7 @@ srun $HOME/.local/bin/lmp_della_double -in in.melt
 
 ### Build from Source
 
-Run the commands to build LAMMPS for Della-GPU
+Run the commands below to build LAMMPS for Della-GPU:
 
 ```
 $ ssh <YourNetID>@della-gpu.princeton.edu  # do not use della8 for building GPU codes
