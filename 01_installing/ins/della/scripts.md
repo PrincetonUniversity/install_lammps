@@ -85,7 +85,7 @@ $ bash della_gpu_lammps_gcc.sh | tee install_lammps.log
 module purge
 module load fftw/gcc/3.3.9
 module load openmpi/gcc/4.1.2
-module load cudatoolkit/12.4
+module load cudatoolkit/12.6
 
 export OMP_NUM_THREADS=$SLURM_CPUS_PER_TASK
 export SRUN_CPUS_PER_TASK=$SLURM_CPUS_PER_TASK
