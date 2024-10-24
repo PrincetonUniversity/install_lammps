@@ -1,7 +1,9 @@
 #!/bin/bash
 
-VERSION=2Aug2023_update3
-#wget https://github.com/lammps/lammps/archive/refs/tags/stable_${VERSION}.tar.gz
+# build lammps with MPI for A100 GPUs (sm_80)
+
+VERSION=29Aug2024
+wget https://github.com/lammps/lammps/archive/refs/tags/stable_${VERSION}.tar.gz
 tar zxf stable_${VERSION}.tar.gz
 cd lammps-stable_${VERSION}
 mkdir build && cd build
@@ -9,7 +11,7 @@ mkdir build && cd build
 module purge
 module load fftw/gcc/3.3.9
 module load openmpi/gcc/4.1.2
-module load cudatoolkit/12.4
+module load cudatoolkit/12.6
 
 cmake3 -D CMAKE_INSTALL_PREFIX=$HOME/.local \
 -D CMAKE_BUILD_TYPE=Release \
