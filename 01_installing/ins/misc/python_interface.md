@@ -1,6 +1,6 @@
 # LAMMPS with Python Interface
 
-LAMMPS can be built with a Python interface as [described here](https://docs.lammps.org/Python_head.html). Run the commands below (for Della with USER-INTEL) to build the code in this way:
+LAMMPS can be built with a Python interface as [described here](https://docs.lammps.org/Python_head.html). Run the commands below (for Della with INTEL package) to build the code in this way:
 
 ```
 $ ssh <YourNetID>@della.princeton.edu
@@ -33,7 +33,7 @@ conda activate lammps-env
 srun python myscript.py
 ```
 
-Since the command-line switch "-sf intel" cannot be used, one must explicitly turn on the intel package and suffix in `in.lj`:
+Since the command-line switch "-sf intel" cannot be used, one must explicitly turn on the INTEL package and suffix in `in.lj`:
 
 ```
 units           lj
@@ -101,7 +101,7 @@ export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$HOME/.local/lib64:$HOME/.conda/envs/lam
 srun $HOME/.local/bin/lmp_della -sf intel -in in.melt
 ```
 
-Here are some timings for the system above with and without the user-intel package on the cascade lake nodes of Della with 4 MPI processes:
+Here are some timings for the system above with and without the INTEL package on the cascade lake nodes of Della with 4 MPI processes:
 
 | time (s) | user-intel |
 |:------:|:------:|
