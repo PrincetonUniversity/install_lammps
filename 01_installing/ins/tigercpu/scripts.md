@@ -1,10 +1,12 @@
-# TigerCPU
+# Tiger
 
-[TigerCPU](https://researchcomputing.princeton.edu/systems/tiger) is composed of 408 nodes with 40 CPU-cores per node. TigerCPU should be used for running multi-node parallel jobs. Single-node jobs should be run on Della.
+## CPU
+
+[Tiger (CPU)](https://researchcomputing.princeton.edu/systems/tiger) is composed of 320 nodes with 112 CPU-cores per node. Tiger (CPU) should be used for running multi-node parallel jobs. Single-node jobs should be run on Della.
 
 ### Mixed-precision version
 
-Run the commands below to build a version of LAMMPS for tigercpu with [USER-INTEL](../misc/notes.md#USER-INTEL):
+Run the commands below to build a version of LAMMPS for Tiger (CPU) with [INTEL](../misc/notes.md#INTEL):
 
 ```
 $ ssh <YourNetID>@tigercpu.princeton.edu
@@ -42,6 +44,8 @@ View the [in.melt](../misc/in.melt) file. Users will need to find the optimal va
 ### Double-precision version
 
 The code could also be built without [USER-INTEL](../misc/notes.md#user-intel).
+
+## GPU
 
 ## Getting Help
 
