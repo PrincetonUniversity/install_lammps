@@ -1,6 +1,6 @@
 ## Benchmarks
 
-The performance of the executable can be greatly improved by building it with external packages such as OPT, USER-OMP and USER-INTEL. Most MD simulations do not need to solve the equations of motion precisely. Our conclusions from the benchmarks are that the USER-OMP, USER-INTEL and OPT packages each lead to a speed-up. The USER-INTEL package has the biggest performance boost and it rivals the acceleration obtained from a GPU.
+The performance of the executable can be greatly improved by building it with external packages such as INTEL. Most MD simulations do not need to solve the equations of motion precisely. The INTEL package has the biggest performance boost and it rivals the acceleration obtained from a GPU.
 
 ### 1. Lennard-Jones fluid
 
