@@ -4,7 +4,7 @@ The Intel portion of [Stellar](https://researchcomputing.princeton.edu/systems/s
 
 ### Mixed-precision version
 
-Run these commands to install LAMMPS with the [INTEL-USER](../misc/notes.md#USER-INTEL) package on Stellar:
+Run these commands to install LAMMPS with the [INTEL](../misc/notes.md#INTEL) package on Stellar:
 
 ```
 $ ssh <YourNetID>@stellar-intel.princeton.edu
@@ -16,7 +16,7 @@ $ bash stellar_intel_lammps_user_intel.sh | tee install_lammps.log
 
 The executable will be installed into `~/.local/bin` which is included in your `PATH` by default. See the 01_installing/ins/stellar directory in this repo for alternative builds.
 
-The following Slurm script can be used on stellar-intel with the user-intel version:
+The following Slurm script can be used on stellar-intel with the INTEL package:
 
 ```
 #!/bin/bash
