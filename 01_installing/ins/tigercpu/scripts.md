@@ -2,7 +2,7 @@
 
 ## CPU
 
-[Tiger (CPU)](https://researchcomputing.princeton.edu/systems/tiger) is composed of 320 nodes with 112 CPU-cores per node. Tiger (CPU) should be used for running parallel jobs.
+[Tiger](https://researchcomputing.princeton.edu/systems/tiger) is composed of 320 nodes with 112 CPU-cores per node. Tiger should be used for running parallel jobs.
 
 ### Mixed-precision version
 
