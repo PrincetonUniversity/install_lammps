@@ -9,7 +9,7 @@
 Run the commands below to build a version of LAMMPS for Tiger (CPU) with [INTEL](../misc/notes.md#INTEL):
 
 ```
-$ ssh <YourNetID>@tigercpu.princeton.edu
+$ ssh <YourNetID>@tiger3.princeton.edu
 $ cd software  # or another directory
 $ wget https://raw.githubusercontent.com/PrincetonUniversity/install_lammps/master/01_installing/ins/tigercpu/tigerCpu_user_intel.sh
 # use a text editor to inspect tigerCpu_user_intel.sh and make modifications if necessary (e.g., add/remove LAMMPS packages)
