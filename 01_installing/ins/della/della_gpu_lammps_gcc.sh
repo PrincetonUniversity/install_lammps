@@ -13,7 +13,8 @@ module load fftw/gcc/3.3.9
 module load openmpi/gcc/4.1.2
 module load cudatoolkit/12.6
 
-cmake3 -D CMAKE_INSTALL_PREFIX=$HOME/.local \
+cmake3 \
+    -D CMAKE_INSTALL_PREFIX=$HOME/.local \
     -D CMAKE_BUILD_TYPE=Release \
     -D LAMMPS_MACHINE=gpu \
     -D ENABLE_TESTING=no \
