@@ -7,7 +7,7 @@ cd lammps-stable_${VERSION}
 mkdir build && cd build
 
 module purge
-module load gcc-toolset/14  # do not include in Slurm script
+module load gcc-toolset/14
 module load aocc/5.0.0
 module load aocl/aocc/5.0.0
 module load openmpi/aocc-5.0.0/4.1.6
