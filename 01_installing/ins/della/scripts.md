@@ -59,7 +59,7 @@ srun $HOME/.local/bin/lmp_della_double -in in.melt
 
 Della 9 provides about 10,000 AMD CPU cores. See this [build script](della9_amd_double_prec_aocc_aocl.sh):
 
-A sample Slurm script is below (note that gcc-tool and aocc modules are included):
+A sample Slurm script is below (note that gcc-toolset and aocc modules are included which is unusual since these are build tools):
 
 ```
 #!/bin/bash
