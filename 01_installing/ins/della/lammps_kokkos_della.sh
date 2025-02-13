@@ -25,7 +25,8 @@ cmake3 \
     -D Kokkos_ARCH_AMPERE80=yes \
     -D Kokkos_ENABLE_CUDA=yes \
     -D Kokkos_ENABLE_OPENMP=yes \
-   -D CMAKE_CXX_COMPILER=$HOME/software/lmp_hess/lammps-stable_29Aug2024/lib/kokkos/bin/nvcc_wrapper ../cmake
+    -D CMAKE_CXX_COMPILER=$HOME/software/lmp_hess/lammps-stable_29Aug2024/lib/kokkos/bin/nvcc_wrapper \
+    ../cmake
 
 make -j 8
 make install
