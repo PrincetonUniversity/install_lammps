@@ -55,6 +55,33 @@ $ wget https://raw.githubusercontent.com/PrincetonUniversity/install_lammps/mast
 srun $HOME/.local/bin/lmp_della_double -in in.melt
 ```
 
+# Della (AMD CPUs)
+
+See this [build script](della9_amd_double_prec_aocc_aocl.sh):
+
+A sample Slurm script is below (note that gcc-tool and aocc modules are included):
+
+```
+#!/bin/bash
+#SBATCH --job-name=lj-melt       # create a short name for your job
+#SBATCH --nodes=1                # node count
+#SBATCH --ntasks=4               # total number of tasks across all nodes
+#SBATCH --cpus-per-task=1        # cpu-cores per task (>1 if multi-threaded tasks)
+#SBATCH --mem-per-cpu=4G         # memory per cpu-core (4G is default)
+#SBATCH --time=00:05:00          # total run time limit (HH:MM:SS)
+
+module purge
+module load gcc-toolset/14
+module load aocc/5.0.0
+module load aocl/aocc/5.0.0
+module load openmpi/aocc-5.0.0/4.1.6
+
+export OMP_NUM_THREADS=$SLURM_CPUS_PER_TASK
+export SRUN_CPUS_PER_TASK=$SLURM_CPUS_PER_TASK
+
+srun $HOME/.local/bin/lmp_d9_double_aocc -in in.melt
+```
+
 # Della-GPU
 
 ### Build from Source
