@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# build lammps with MPI for A100 GPUs (sm_80)
+
 VERSION=29Aug2024
 wget https://github.com/lammps/lammps/archive/stable_${VERSION}.tar.gz
 tar zxf stable_${VERSION}.tar.gz
