@@ -11,7 +11,7 @@ mkdir build && cd build
 module purge
 module load fftw/gcc/3.3.9
 module load openmpi/gcc/4.1.2
-module load cudatoolkit/12.6
+module load cudatoolkit/12.8
 
 cmake3 \
     -D CMAKE_INSTALL_PREFIX=$HOME/.local \
