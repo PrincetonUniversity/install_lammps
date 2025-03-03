@@ -320,9 +320,13 @@ srun $HOME/.local/bin/lmp_tgrgpu -sf gpu -pk gpu 2 -in ../in.peptide.modified
 | intel,mkl,intelmpi     | LJ melt   |  8.3     | 64    |             |
 | aocc,aocl,openmpi/aocc | peptide   |  179.7     | 8    |             |
 | aocc,aocl,openmpi/aocc | peptide   |  94.4     | 16    |             |
+| intel,mkl,intelmpi     | peptide   |  97.7     | 16    |             |
 | aocc,aocl,openmpi/aocc | peptide   |  47.1     | 32    |             |
+| intel,mkl,intelmpi     | peptide   |       | 32    |             |
 | aocc,aocl,openmpi/aocc | peptide   |  24.3     | 64    |             |
 
+
+AMD
 
 ```
 #!/bin/bash
@@ -332,7 +336,7 @@ srun $HOME/.local/bin/lmp_tgrgpu -sf gpu -pk gpu 2 -in ../in.peptide.modified
 #SBATCH --cpus-per-task=1        # cpu-cores per task (>1 if multi-threaded tasks)
 #SBATCH --mem-per-cpu=4G         # memory per cpu-core (4G is default)
 #SBATCH --time=00:05:00          # total run time limit (HH:MM:SS)
-#SBATCH --exclusive
+#SBATCH --exclusive              # ONLY USE FOR BENCHMARKING
 
 module purge
 module load gcc-toolset/14
@@ -344,4 +348,27 @@ export OMP_NUM_THREADS=$SLURM_CPUS_PER_TASK
 export SRUN_CPUS_PER_TASK=$SLURM_CPUS_PER_TASK
 
 srun $HOME/.local/bin/lmp_d9_aocc_aocl -in in.melt
+```
+
+Intel
+
+```
+#!/bin/bash
+#SBATCH --job-name=peptide       # create a short name for your job
+#SBATCH --nodes=1                # node count
+#SBATCH --ntasks=32              # total number of tasks across all nodes
+#SBATCH --cpus-per-task=1        # cpu-cores per task (>1 if multi-threaded tasks)
+#SBATCH --mem-per-cpu=4G         # memory per cpu-core (4G is default)
+#SBATCH --time=00:05:00          # total run time limit (HH:MM:SS)
+#SBATCH --exclusive              # ONLY USE FOR BENCHMARKING
+
+module purge
+module load intel-oneapi/2024.2
+module load intel-mpi/oneapi/2021.13
+module load intel-mkl/2024.2
+
+export OMP_NUM_THREADS=$SLURM_CPUS_PER_TASK
+export SRUN_CPUS_PER_TASK=$SLURM_CPUS_PER_TASK
+
+srun $HOME/.local/bin/lmp_d9_intel_mkl -in in.peptide
 ```
