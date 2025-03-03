@@ -24,9 +24,9 @@ cmake3 \
     -D CMAKE_CXX_FLAGS_RELEASE="-Ofast -march=native -DNDEBUG" \
     -D PKG_KSPACE=yes \
     -D FFT=FFTW3 \
-    -D FFT_SINGLE=no \
-    -D FFTW3_INCLUDE_DIR=${FFTW3DIR}/include_LP64 \
-    -D FFTW3_LIBRARY=${FFTW3DIR}/lib_LP64/libfftw3.so \
+    -D FFT_SINGLE=yes \
+    -D FFTW3F_INCLUDE_DIR=${FFTW3DIR}/include_LP64 \
+    -D FFTW3F_LIBRARY=${FFTW3DIR}/lib_LP64/libfftw3f.so \
     -D PKG_OPENMP=yes \
     -D PKG_MOLECULE=yes \
     -D PKG_RIGID=yes \
