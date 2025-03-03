@@ -315,6 +315,11 @@ srun $HOME/.local/bin/lmp_tgrgpu -sf gpu -pk gpu 2 -in ../in.peptide.modified
 | aocc,aocl,openmpi/aocc | LJ melt   | 15.2     | 32    |             |
 | aocc,aocl,openmpi/aocc | LJ melt   | 15.2     | 32    |             |
 | aocc,aocl,openmpi/aocc | LJ melt   |  7.1     | 64    |             |
+| aocc,aocl,openmpi/aocc | peptide   |  179.7     | 8    |             |
+| aocc,aocl,openmpi/aocc | peptide   |  94.4     | 16    |             |
+| aocc,aocl,openmpi/aocc | peptide   |  47.1     | 32    |             |
+| aocc,aocl,openmpi/aocc | peptide   |  24.3     | 64    |             |
+
 
 ```
 #!/bin/bash
