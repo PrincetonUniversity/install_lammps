@@ -307,6 +307,33 @@ srun $HOME/.local/bin/lmp_tgrgpu -sf gpu -pk gpu 2 -in ../in.peptide.modified
 
 ## AMD CPU Nodes on Della (March 2025)
 
-| build                  | benchmark | time (s) | ntasks |
-|:-----------------------|----------:|---------:|-------:|
-| aocc,aocl,openmpi/aocc | LJ melt   | x        | 32     |
+| build                  | benchmark | loop time (s) | ntasks | notes |
+|:-----------------------|----------:|---------:|-------:|-----------:|
+| aocc,aocl,openmpi/aocc | LJ melt   | 58.9     | 8     |             |
+| aocc,aocl,openmpi/aocc | LJ melt   | 29.7     | 16     |             |
+| aocc,aocl,openmpi/aocc | LJ melt   | 29.6     | 16     |ntasks-per-socket=16  |
+| aocc,aocl,openmpi/aocc | LJ melt   | 15.2     | 32    |             |
+| aocc,aocl,openmpi/aocc | LJ melt   | 15.2     | 32    |             |
+| aocc,aocl,openmpi/aocc | LJ melt   |  7.1     | 64    |             |
+
+```
+#!/bin/bash
+#SBATCH --job-name=lj-melt       # create a short name for your job
+#SBATCH --nodes=1                # node count
+#SBATCH --ntasks=16              # total number of tasks across all nodes
+#SBATCH --cpus-per-task=1        # cpu-cores per task (>1 if multi-threaded tasks)
+#SBATCH --mem-per-cpu=4G         # memory per cpu-core (4G is default)
+#SBATCH --time=00:05:00          # total run time limit (HH:MM:SS)
+#SBATCH --exclusive
+
+module purge
+module load gcc-toolset/14
+module load aocc/5.0.0
+module load aocl/aocc/5.0.0
+module load openmpi/aocc-5.0.0/4.1.6
+
+export OMP_NUM_THREADS=$SLURM_CPUS_PER_TASK
+export SRUN_CPUS_PER_TASK=$SLURM_CPUS_PER_TASK
+
+srun $HOME/.local/bin/lmp_d9_aocc_aocl -in in.melt
+```
