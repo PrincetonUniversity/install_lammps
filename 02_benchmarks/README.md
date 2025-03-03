@@ -326,7 +326,7 @@ srun $HOME/.local/bin/lmp_tgrgpu -sf gpu -pk gpu 2 -in ../in.peptide.modified
 | aocc,aocl,openmpi/aocc | peptide   |  24.3     | 64    |             |
 | intel,mkl,intelmpi     | peptide   |  25.8     | 64    |             |
 
-AMD ([see build](01_installing/ins/della/della9_amd_double_prec_aocc_aocl.sh))
+AMD ([see build](../01_installing/ins/della/della9_amd_double_prec_aocc_aocl.sh))
 
 ```
 #!/bin/bash
@@ -350,7 +350,7 @@ export SRUN_CPUS_PER_TASK=$SLURM_CPUS_PER_TASK
 srun $HOME/.local/bin/lmp_d9_aocc_aocl -in in.melt
 ```
 
-Intel (see build)
+Intel ([see build](../01_installing/ins/della/della9_intel_mkl_intelmpi.sh))
 
 ```
 #!/bin/bash
