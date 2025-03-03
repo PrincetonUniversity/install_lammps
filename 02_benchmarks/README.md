@@ -303,3 +303,10 @@ export SRUN_CPUS_PER_TASK=$SLURM_CPUS_PER_TASK
  
 srun $HOME/.local/bin/lmp_tgrgpu -sf gpu -pk gpu 2 -in ../in.peptide.modified
 ```
+
+
+## AMD CPU Nodes on Della (March 2025)
+
+| build                  | benchmark | time (s) | ntasks |
+|:-----------------------|----------:|---------:|-------:|
+| aocc,aocl,openmpi/aocc | LJ melt   | x        | 32     |
