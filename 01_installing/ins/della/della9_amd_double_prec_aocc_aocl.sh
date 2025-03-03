@@ -27,7 +27,6 @@ cmake3 \
     -D FFT_SINGLE=yes \
     -D FFTW3F_INCLUDE_DIR=${FFTW3DIR}/include_LP64 \
     -D FFTW3F_LIBRARY=${FFTW3DIR}/lib_LP64/libfftw3f.so \
-    -D PKG_OPENMP=yes \
     -D PKG_MOLECULE=yes \
     -D PKG_RIGID=yes \
     ../cmake
