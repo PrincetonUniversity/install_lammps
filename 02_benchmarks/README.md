@@ -310,11 +310,14 @@ srun $HOME/.local/bin/lmp_tgrgpu -sf gpu -pk gpu 2 -in ../in.peptide.modified
 | build                  | benchmark | loop time (s) | ntasks | notes |
 |:-----------------------|----------:|---------:|-------:|-----------:|
 | aocc,aocl,openmpi/aocc | LJ melt   | 58.9     | 8     |             |
+| intel,mkl,intelmpi     | LJ melt   | 62.0     | 8     |             |
 | aocc,aocl,openmpi/aocc | LJ melt   | 29.7     | 16     |             |
 | aocc,aocl,openmpi/aocc | LJ melt   | 29.6     | 16     |ntasks-per-socket=8  |
+| intel,mkl,intelmpi     | LJ melt   | 32.0     | 16     |             |
 | aocc,aocl,openmpi/aocc | LJ melt   | 15.2     | 32    |             |
 | aocc,aocl,openmpi/aocc | LJ melt   | 15.2     | 32    |             |
 | aocc,aocl,openmpi/aocc | LJ melt   |  7.1     | 64    |             |
+| intel,mkl,intelmpi     | LJ melt   |  8.3     | 64    |             |
 | aocc,aocl,openmpi/aocc | peptide   |  179.7     | 8    |             |
 | aocc,aocl,openmpi/aocc | peptide   |  94.4     | 16    |             |
 | aocc,aocl,openmpi/aocc | peptide   |  47.1     | 32    |             |
