@@ -307,6 +307,8 @@ srun $HOME/.local/bin/lmp_tgrgpu -sf gpu -pk gpu 2 -in ../in.peptide.modified
 
 ## AMD CPU Nodes on Della (March 2025)
 
+Smaller loop times means the code ran faster.
+
 | build                  | benchmark | loop time (s) | ntasks | notes |
 |:-----------------------|----------:|---------:|-------:|-----------:|
 | aocc,aocl,openmpi/aocc | LJ melt   | 58.9     | 8     |             |
