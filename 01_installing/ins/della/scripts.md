@@ -35,10 +35,12 @@ srun $HOME/.local/bin/lmp_d9_double_aocc -in in.melt
 
 ## Mixed-precision version (Intel CPUs)
 
+You should favor running on the AMD CPUs over Intel since they are newer and there about 10000 AMD CPU-cores versus 3000 Intel CPU-cores on the "cpu" partition.
+
 Run the commands below to build LAMMPS in mixed precision for Della with the [INTEL](../misc/notes.md#USER-INTEL) package:
 
 ```bash
-$ ssh <YourNetID>@della.princeton.edu  # do not use the della-gpu login node for building CPU codes
+$ ssh <YourNetID>@della8.princeton.edu  # do not use della or della-gpu login node for building the Intel version of LAMMPS
 $ cd software  # or another directory
 $ wget https://raw.githubusercontent.com/PrincetonUniversity/install_lammps/master/01_installing/ins/della/lammps_mixed_prec_della.sh
 # use a text editor to inspect lammps_mixed_prec_della.sh and make modifications if necessary (e.g., add/remove LAMMPS packages)
@@ -62,9 +64,9 @@ The following Slurm script can be used to run the job on Della:
 #SBATCH --constraint=cascade
 
 module purge
-module load intel/2024.0
-module load intel-mpi/intel/2021.7.0
-module load intel-mkl/2024.0
+module load intel-oneapi/2024.2
+module load intel-mpi/intel/2021.13
+module load intel-mkl/2024.2
 
 export OMP_NUM_THREADS=$SLURM_CPUS_PER_TASK
 export SRUN_CPUS_PER_TASK=$SLURM_CPUS_PER_TASK
@@ -74,18 +76,6 @@ srun $HOME/.local/bin/lmp_intel -sf intel -in in.melt
 
 View the [in.melt](../misc/in.melt) file. Users will need to find the optimal values for `nodes`, `ntasks` and `cpus-per-task`. This can be done by conducting a [scaling analysis](https://researchcomputing.princeton.edu/support/knowledge-base/scaling-analysis).
 
-
-### Double-precision version (Intel CPUs)
-
-Make these changes for the double-precision version:
-
-```
-$ wget https://raw.githubusercontent.com/PrincetonUniversity/install_lammps/master/01_installing/ins/della/lammps_double_prec_della.sh
-```
-
-```
-srun $HOME/.local/bin/lmp_della_double -in in.melt
-```
 
 ## Della-GPU
 
