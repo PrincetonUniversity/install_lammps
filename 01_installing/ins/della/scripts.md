@@ -16,10 +16,9 @@ A sample Slurm script is below (note that gcc-toolset and aocc modules are inclu
 #SBATCH --cpus-per-task=1        # cpu-cores per task (>1 if multi-threaded tasks)
 #SBATCH --mem-per-cpu=4G         # memory per cpu-core (4G is default)
 #SBATCH --time=00:05:00          # total run time limit (HH:MM:SS)
-#SBATCH --constraint=amd
-#SBATCH --mail-type=begin        # send email when job begins
-#SBATCH --mail-type=end          # send email when job ends
+#SBATCH --mail-type=all          # receive email notifications
 #SBATCH --mail-user=<YourNetID>@princeton.edu
+#SBATCH --constraint=amd
 
 module purge
 module load gcc-toolset/14
@@ -57,8 +56,7 @@ The following Slurm script can be used to run the job on Della:
 #SBATCH --cpus-per-task=1        # cpu-cores per task (>1 if multi-threaded tasks)
 #SBATCH --mem-per-cpu=4G         # memory per cpu-core (4G is default)
 #SBATCH --time=00:05:00          # total run time limit (HH:MM:SS)
-#SBATCH --mail-type=begin        # send email when job begins
-#SBATCH --mail-type=end          # send email when job ends
+#SBATCH --mail-type=all          # receive email notifications
 #SBATCH --mail-user=<YourNetID>@princeton.edu
 #SBATCH --constraint=intel
 
@@ -111,8 +109,7 @@ $ bash della_gpu_lammps_gcc.sh | tee install_lammps.log
 #SBATCH --mem-per-cpu=4G         # memory per cpu-core (4G is default)
 #SBATCH --gres=gpu:1             # number of GPUs per node
 #SBATCH --time=00:05:00          # total run time limit (HH:MM:SS)
-#SBATCH --mail-type=begin        # send email when job begins
-#SBATCH --mail-type=end          # send email when job ends
+#SBATCH --mail-type=all          # receive email notifications
 #SBATCH --mail-user=<YourNetID>@princeton.edu
 
 module purge
