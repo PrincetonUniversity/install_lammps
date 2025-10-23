@@ -1,6 +1,6 @@
 #!/bin/bash
 
-VERSION=29Aug2024
+VERSION=22Jul2025
 wget https://github.com/lammps/lammps/archive/stable_${VERSION}.tar.gz
 tar zxvf stable_${VERSION}.tar.gz
 cd lammps-stable_${VERSION}
@@ -11,7 +11,7 @@ module purge
 module load intel-oneapi/2024.2
 module load intel-mpi/oneapi/2021.13
 module load intel-mkl/2024.2
-module load cudatoolkit/12.6
+module load cudatoolkit/12.9
 
 # add or remove packages if needed
 cmake3 -D CMAKE_INSTALL_PREFIX=$HOME/.local \
