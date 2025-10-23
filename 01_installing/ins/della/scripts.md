@@ -81,11 +81,11 @@ View the [in.melt](../misc/in.melt) file. Users will need to find the optimal va
 Run the commands below to build LAMMPS for Della-GPU using the Kokkos backend which will use a GPU-enabled FFT library:
 
 ```
-$ ssh <YourNetID>@della-gpu.princeton.edu  # do not use della8 for building GPU codes
+$ ssh <YourNetID>@della-gpu.princeton.edu  # do not use della9 for building GPU codes
 $ cd software  # or another directory
 $ wget https://raw.githubusercontent.com/PrincetonUniversity/install_lammps/refs/heads/master/01_installing/ins/della/lammps_kokkos_della.sh
-# use a text editor to inspect della_gpu_lammps_gcc.sh and make modifications if necessary (e.g., add/remove LAMMPS packages)
-$ bash della_gpu_lammps_gcc.sh | tee install_lammps.log
+# use a text editor to inspect lammps_kokkos_della.sh and make modifications if necessary (e.g., add/remove LAMMPS packages)
+$ bash lammps_kokkos_della.sh | tee install_lammps.log
 ```
 
 ### Another option
@@ -93,7 +93,7 @@ $ bash della_gpu_lammps_gcc.sh | tee install_lammps.log
 If the Kokkos build is not a solution for you then consider the one below. It uses FFFW as the FFT library which will not use the GPU. If you do not need to calculate FFT's then this is fine.
 
 ```
-$ ssh <YourNetID>@della-gpu.princeton.edu  # do not use della8 for building GPU codes
+$ ssh <YourNetID>@della-gpu.princeton.edu  # do not use della9 for building GPU codes
 $ cd software  # or another directory
 $ wget https://raw.githubusercontent.com/PrincetonUniversity/install_lammps/master/01_installing/ins/della/della_gpu_lammps_gcc.sh
 # use a text editor to inspect della_gpu_lammps_gcc.sh and make modifications if necessary (e.g., add/remove LAMMPS packages)
@@ -114,8 +114,8 @@ $ bash della_gpu_lammps_gcc.sh | tee install_lammps.log
 
 module purge
 module load fftw/gcc/3.3.9
-module load openmpi/gcc/4.1.2
-module load cudatoolkit/12.8
+module load openmpi/gcc/4.1.6
+module load cudatoolkit/12.9
 
 export OMP_NUM_THREADS=$SLURM_CPUS_PER_TASK
 export SRUN_CPUS_PER_TASK=$SLURM_CPUS_PER_TASK
