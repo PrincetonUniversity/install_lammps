@@ -2,16 +2,16 @@
 
 # build lammps with MPI for A100 GPUs (sm_80)
 
-VERSION=29Aug2024
+VERSION=22Jul2025
 wget https://github.com/lammps/lammps/archive/stable_${VERSION}.tar.gz
 tar zxf stable_${VERSION}.tar.gz
 cd lammps-stable_${VERSION}
 mkdir build && cd build
 
 module purge
-module load gcc-toolset/13
-module load openmpi/gcc/4.1.2
-module load cudatoolkit/12.8
+module load gcc-toolset/14
+module load openmpi/gcc/4.1.6
+module load cudatoolkit/12.9
 
 cmake3 \
     -D CMAKE_INSTALL_PREFIX=$HOME/.local \
@@ -27,7 +27,7 @@ cmake3 \
     -D Kokkos_ARCH_AMPERE80=yes \
     -D Kokkos_ENABLE_CUDA=yes \
     -D Kokkos_ENABLE_OPENMP=yes \
-    -D CMAKE_CXX_COMPILER=$HOME/software/lmp_hess/lammps-stable_29Aug2024/lib/kokkos/bin/nvcc_wrapper \
+    -D CMAKE_CXX_COMPILER=$HOME/software/lammps-stable_22Jul2025/lib/kokkos/bin/nvcc_wrapper \
     ../cmake
 
 make -j 8
