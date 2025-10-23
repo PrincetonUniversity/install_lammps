@@ -2,7 +2,11 @@
 
 [Tiger (GPU)](https://researchcomputing.princeton.edu/systems/tiger) is composed of 12 nodes with 112 CPU-cores per node and 4 NVIDIA H100 GPUs per node.
 
-### Mixed-precision version (recommended)
+### KOKKOS
+
+See [this script](lammps_kokkos_tigerGpu.sh). The Kokkos version will use the cuFFT GPU library for FFT's.
+
+### Mixed-precision version
 
 ```bash
 $ ssh <YourNetID>@tiger3.princeton.edu
@@ -47,10 +51,6 @@ To use 2 GPUs, replace `package gpu 1` with `package gpu 2` and `-sf gpu` with `
 ### Double-precision version
 
 The code could also be built without INTEL.
-
-## KOKKOS
-
-See [this script](lammps_kokkos_tigerGpu.sh).
 
 ## Getting Help
 
