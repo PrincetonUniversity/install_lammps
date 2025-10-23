@@ -1,6 +1,6 @@
 #!/bin/bash
   
-VERSION=29Aug2024
+VERSION=22Jul2025
 wget https://github.com/lammps/lammps/archive/refs/tags/stable_${VERSION}.tar.gz
 tar zvxf stable_${VERSION}.tar.gz
 cd lammps-stable_${VERSION}
