@@ -32,7 +32,7 @@ module purge
 module load intel-oneapi/2024.2
 module load intel-mpi/oneapi/2021.13
 module load intel-mkl/2024.2
-module load cudatoolkit/12.6
+module load cudatoolkit/12.9
 
 export OMP_NUM_THREADS=$SLURM_CPUS_PER_TASK
 export SRUN_CPUS_PER_TASK=$SLURM_CPUS_PER_TASK
