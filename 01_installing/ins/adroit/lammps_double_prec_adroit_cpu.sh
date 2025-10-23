@@ -1,32 +1,29 @@
 #!/bin/bash
 
-# double-precision build for single- and multi-node CPU jobs
+# build a double-precision version of lammps for adroit (cpu)
 
-VERSION=31Aug2021
-wget https://github.com/lammps/lammps/archive/refs/tags/patch_${VERSION}.tar.gz
-tar zvxf patch_${VERSION}.tar.gz
-cd lammps-patch_${VERSION}
+VERSION=22Jul2025
+wget https://github.com/lammps/lammps/archive/refs/tags/stable_${VERSION}.tar.gz
+tar zxf stable_${VERSION}.tar.gz
+cd lammps-stable_${VERSION}
 mkdir build && cd build
 
-# include the modules below in your Slurm scipt
 module purge
-module load intel/19.1.1.217 intel-mpi/intel/2019.7
+module load intel-oneapi/2024.2
+module load intel-mpi/oneapi/2021.13
+module load intel-mkl/2024.2
 
-cmake3 \
--D CMAKE_INSTALL_PREFIX=$HOME/.local \
--D LAMMPS_MACHINE=adroit \
--D CMAKE_BUILD_TYPE=Release \
--D CMAKE_CXX_COMPILER=icpc \
--D CMAKE_CXX_FLAGS_RELEASE="-Ofast -xHost -DNDEBUG" \
--D CMAKE_Fortran_COMPILER=/opt/intel/compilers_and_libraries_2020.1.217/linux/bin/intel64/ifort \
--D BUILD_OMP=yes \
+cmake3 -D CMAKE_INSTALL_PREFIX=$HOME/.local \
+-D LAMMPS_MACHINE=double \
+-D ENABLE_TESTING=no \
 -D BUILD_MPI=yes \
--D PKG_KSPACE=yes -D FFT=MKL -D FFT_SINGLE=no \
--D PKG_OPENMP=yes \
+-D BUILD_OMP=yes \
+-D CMAKE_BUILD_TYPE=Release \
+-D CMAKE_CXX_COMPILER=icpx \
+-D CMAKE_CXX_FLAGS_RELEASE="-Ofast -xHost -qopenmp -DNDEBUG" \
 -D PKG_MOLECULE=yes \
 -D PKG_RIGID=yes \
--D ENABLE_TESTING=yes ../cmake
+-D PKG_KSPACE=yes -D FFT=MKL -D FFT_SINGLE=no  ../cmake
 
 make -j 10
-#make test
 make install
