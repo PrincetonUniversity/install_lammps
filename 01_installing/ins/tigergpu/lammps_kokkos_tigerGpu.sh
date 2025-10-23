@@ -1,6 +1,6 @@
 #!/bin/bash
 
-VERSION=29Aug2024
+VERSION=22Jul2025
 wget https://github.com/lammps/lammps/archive/stable_${VERSION}.tar.gz
 tar zxf stable_${VERSION}.tar.gz
 cd lammps-stable_${VERSION}
@@ -8,8 +8,8 @@ mkdir build && cd build
 
 module purge
 module load fftw/gcc/3.3.10
-module load openmpi/gcc/4.1.6
-module load cudatoolkit/12.6
+module load openmpi/gcc/4.1.8
+module load cudatoolkit/12.9
 
 cmake3 \
     -D CMAKE_INSTALL_PREFIX=$HOME/.local \
@@ -28,7 +28,7 @@ cmake3 \
     -D Kokkos_ARCH_HOPPER90=yes \
     -D Kokkos_ENABLE_CUDA=yes \
     -D Kokkos_ENABLE_OPENMP=yes \
-    -D CMAKE_CXX_COMPILER=$HOME/software/lammps-stable_29Aug2024/lib/kokkos/bin/nvcc_wrapper \
+    -D CMAKE_CXX_COMPILER=$HOME/software/lammps-stable_22Jul2025/lib/kokkos/bin/nvcc_wrapper \
     ../cmake
 
 make -j 16
