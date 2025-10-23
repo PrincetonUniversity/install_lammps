@@ -4,7 +4,7 @@
 
 ## Della (AMD CPUs)
 
-Della 9 provides about 10,000 AMD CPU cores. See this [build script](della9_amd_double_prec_aocc_aocl.sh):
+Della provides about 10,000 AMD CPU cores. See this [build script](della9_amd_double_prec_aocc_aocl.sh):
 
 A sample Slurm script is below (note that gcc-toolset and aocc modules are included which is unusual since these are build tools):
 
@@ -39,7 +39,7 @@ You should favor running on the AMD CPUs over Intel since they are newer and the
 Run the commands below to build LAMMPS in mixed precision for Della with the [INTEL](../misc/notes.md#USER-INTEL) package:
 
 ```bash
-$ ssh <YourNetID>@della8.princeton.edu  # do not use della or della-gpu login node for building the Intel version of LAMMPS
+$ ssh <YourNetID>@della8.princeton.edu  # do not use della9 (AMD) or the della-gpu login node for building the Intel version of LAMMPS
 $ cd software  # or another directory
 $ wget https://raw.githubusercontent.com/PrincetonUniversity/install_lammps/master/01_installing/ins/della/lammps_mixed_prec_della.sh
 # use a text editor to inspect lammps_mixed_prec_della.sh and make modifications if necessary (e.g., add/remove LAMMPS packages)
@@ -113,7 +113,7 @@ $ bash della_gpu_lammps_gcc.sh | tee install_lammps.log
 #SBATCH --mail-user=<YourNetID>@princeton.edu
 
 module purge
-module load fftw/gcc/3.3.9
+module load fftw/gcc/3.3.10
 module load openmpi/gcc/4.1.6
 module load cudatoolkit/12.9
 
