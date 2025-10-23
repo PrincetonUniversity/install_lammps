@@ -2,16 +2,16 @@
 
 # build a double-precision version of lammps for della (cpu)
 
-VERSION=29Aug2024
+VERSION=22Jul2025
 wget https://github.com/lammps/lammps/archive/refs/tags/stable_${VERSION}.tar.gz
 tar zxf stable_${VERSION}.tar.gz
 cd lammps-stable_${VERSION}
 mkdir build && cd build
 
 module purge
-module load intel/2024.0
-module load intel-mpi/intel/2021.7.0
-module load intel-mkl/2024.0
+module load intel-oneapi/2024.2
+module load intel-mpi/oneapi/2021.13
+module load intel-mkl/2024.2
 
 cmake3 -D CMAKE_INSTALL_PREFIX=$HOME/.local \
 -D LAMMPS_MACHINE=della_double \
