@@ -9,7 +9,7 @@ Be sure to add the following to your Slurm script:
 #SBATCH --constraint=ice
 ```
 
-Below is a sampl Slurm script:
+Below is a sample Slurm script:
 
 ```
 #!/bin/bash
