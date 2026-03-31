@@ -1,9 +1,9 @@
 
 # Adroit (CPU)
 
-Please see [this script](lammps_double_prec_adroit_cpu.sh).
+Please use [this script](lammps_double_prec_adroit_cpu.sh) to install LAMMPS on Adroit (CPU).
 
-Add the following to your Slurm script:
+Be sure to add the following to your Slurm script:
 
 ```
 #SBATCH --constraint=ice
