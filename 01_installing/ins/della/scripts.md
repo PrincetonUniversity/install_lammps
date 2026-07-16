@@ -2,6 +2,11 @@
 
 [Della](https://researchcomputing.princeton.edu/systems/della) is a heterogeneous cluster composed of AMD and Intel CPUs and NVIDIA GPUs. Della can be used to run a variety of jobs from serial to multinode.
 
+*Outline*:
+- [Della (AMD GPUs)](#della-amd-cpus)
+- [Della (GPU)](#della-gpu)
+- [Della (GPU) with ML-IAP](#della-gpu-with-ml-iap)
+
 ## Della (AMD CPUs)
 
 Della provides about 10,000 AMD CPU cores. See this [build script](della9_amd_double_prec_aocc_aocl.sh):
