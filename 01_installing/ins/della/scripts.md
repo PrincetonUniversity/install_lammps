@@ -1,4 +1,4 @@
-# Della (CPU)
+# Della
 
 [Della](https://researchcomputing.princeton.edu/systems/della) is a heterogeneous cluster composed of AMD and Intel CPUs and NVIDIA GPUs. Della can be used to run a variety of jobs from serial to multinode.
 
@@ -124,6 +124,10 @@ srun $HOME/.local/bin/lmp_gpu -sf gpu -pk gpu 1 -in in.melt.gpu
 ```
 
 See the input file: [in.melt.gpu](../misc/in.melt.gpu).
+
+## Della (GPU) with ML-IAP
+
+Please see [these instructions](della_gpu_ml_iap.md) for building LAMMPS with the ML-AIP package on Della (GPU).
 
 
 ## Getting Help
