@@ -38,21 +38,20 @@ cupy-cuda13x
 
 # build lammps with MPI for A100 GPUs (sm_80)
 VERSION=patch_4Jul2026
-SRC_ROOT=$HOME/software/lammps/src
-INSTALL_PREFIX=$HOME/software/lammps/${VERSION}
+BASE_PATH=$(pwd)
+INSTALL_PREFIX=${BASE_PATH}/${VERSION}
 
 # Make Python env
-PYENV=$HOME/software/lammps/pyenv
-
+PYENV=${BASE_PATH}/pyenv
 if [ ! -x "${PYENV}/bin/python3" ]; then
     echo "ERROR: ${PYENV} not found or missing python3." >&2
     echo "Create it first with bash python_prep.sh" >&2
     exit 1
 fi
 
-conda activate /home/ROSENGROUP/software/lammps/pyenv
-mkdir -p "${SRC_ROOT}"
-cd "${SRC_ROOT}"
+conda activate ${PYENV}
+mkdir -p ${BASE_PATH}/lammps_github
+cd ${BASE_PATH}/lammps_github
 
 # Download LAMMPS
 wget https://github.com/lammps/lammps/archive/${VERSION}.tar.gz
