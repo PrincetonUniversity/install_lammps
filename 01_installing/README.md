@@ -8,6 +8,7 @@ This repo provides sample install scripts for LAMMPS. Most users will be able to
 * [Adroit (CPU)](ins/adroit/scripts.md#adroit-cpu)
 * [Della-GPU](ins/della/scripts.md#della-gpu)
 * [Della (CPU)](ins/della/scripts.md#della-cpu)
+* [StellarAI](ins/stellarai/scripts.md)
 * [Stellar](ins/stellar/scripts.md)
 * [Tiger (CPU)](ins/tigercpu/scripts.md)
 * [Tiger (GPU)](ins/tigergpu/scripts.md)
